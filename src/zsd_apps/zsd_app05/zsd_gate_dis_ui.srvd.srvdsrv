@@ -1,0 +1,5 @@
+@EndUserText.label: 'Gate Entry Apps - Dispatch UI'
+define service ZSD_GATE_DIS_UI {
+  expose ZSD_CH_GATE as MainHead;
+  expose ZSD_CI_GATE as MainItem;
+}

@@ -1,0 +1,172 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Gate Entry - Procurement',
+typeNamePlural: 'Gate Entry - Procurement',
+title: { type: #STANDARD, value: 'Gateentryno' }
+}}
+annotate entity ZMM_C_GATEHEAD
+    with 
+{
+  @UI.facet: [ { id:              'Header',
+                      purpose:         #STANDARD,
+                      type:            #IDENTIFICATION_REFERENCE,
+                      label:           'Gate Entry Details',
+                      position:        10 },
+                      { id:              'POHead',
+                      purpose:         #STANDARD,
+                      type:            #LINEITEM_REFERENCE,
+                      label:           'Order Details',
+                      position:        20,
+                      targetElement:   '_POHEAD'},
+                      { id:              'POItems',
+                      purpose:         #STANDARD,
+                      type:            #LINEITEM_REFERENCE,
+                      label:           'Order Item Details',
+                      position:        30,
+                      targetElement:   '_POITEM'}]
+@UI.hidden: true 
+Uuid;
+  @UI: {  lineItem:       [ { position: 05, label: 'Gate ID' } ],
+        identification:   [ { position: 05, label: 'Gate ID' } ]}
+        @EndUserText.label: 'Gate ID' 
+Gateentryid;
+  @UI: {  lineItem:       [ { position: 07, label: 'Gate ID Date' } ],
+        identification:   [ { position: 07, label: 'Gate ID Date' } ]}
+        @EndUserText.label: 'Gate ID Date'
+Gateentryiddate;
+  @UI: {  lineItem:       [ { position: 10, label: 'Series' } ],
+        identification:   [ { position: 10, label: 'Series' },
+        { type: #FOR_ACTION, dataAction: 'GateCheckIn', label: 'Gate CheckIn',position: 10 },        
+        { type: #FOR_ACTION, dataAction: 'Purchase', label: 'Purchase',position: 20 },
+        { type: #FOR_ACTION, dataAction: 'PRINT', label: 'QR Print',position: 30 }
+         ]}
+        @EndUserText.label: 'Series'
+  @UI.selectionField: [{ position: 10 }] 
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZGATE_SERIES_VH', element: 'value_low' },distinctValues: true }]   
+Gateentryseries;
+  @UI: {  lineItem:       [ { position: 20, label: 'Gate Entry Type' } ],
+        identification:   [ { position: 20, label: 'Gate Entry Type' } ]}
+        @EndUserText.label: 'Gate Entry Type'
+  @UI.selectionField: [{ position: 20 }] 
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZMGATE_TYPE_VH', element: 'value_low' }, distinctValues: true }]
+Gateentrytype;
+  @UI: {  lineItem:       [ { position: 30, label: 'Gate Entry No' } ],
+        identification:   [ { position: 30, label: 'Gate Entry No' } ]}
+        @EndUserText.label: 'Gate Entry No'
+  @UI.selectionField: [{ position: 30 }] 
+Gateentryno;
+  @UI: {  lineItem:       [ { position: 40, label: 'Gate Entry Date' } ],
+        identification:   [ { position: 40, label: 'Gate Entry Date' } ]}
+        @EndUserText.label: 'Gate Entry Date'
+Gateentrydate;
+  @UI: {  lineItem:       [ { position: 45, label: 'Gate Entry Time' } ],
+        identification:   [ { position: 45, label: 'Gate Entry Time' } ]}
+        @EndUserText.label: 'Gate Entry Time'
+Gateentrytime;
+  @UI: {  lineItem:       [ { position: 50, label: 'Company Code' } ],
+        identification:   [ { position: 50, label: 'Company Code' } ]}
+        @EndUserText.label: 'Company Code'
+  @UI.selectionField: [{ position: 50 }] 
+    @Consumption.valueHelpDefinition: [{ entity: { name: 'I_CompanyCodeVH',
+                                                   element: 'CompanyCode' } }]           
+Companycode;
+  @UI: {  lineItem:       [ { position: 60, label: 'Permit No' } ],
+        identification:   [ { position: 60, label: 'Permit No' } ]}
+        @EndUserText.label: 'Permit No'
+Permitno;
+  @UI: {  lineItem:       [ { position: 70, label: 'Trasporter ID' } ],
+        identification:   [ { position: 70, label: 'Trasporter ID' } ]}
+        @EndUserText.label: 'Trasporter ID'
+Trasporterid;
+  @UI: {  lineItem:       [ { position: 80, label: 'Vehicle No' } ],
+        identification:   [ { position:80, label: 'Vehicle No' } ]}
+        @EndUserText.label: 'Vehicle No'
+Vehicleno;
+  @UI: {  lineItem:       [ { position: 90, label: 'Type' } ],
+        identification:   [ { position: 90, label: 'Type' } ]}
+        @EndUserText.label: 'Type'
+Vehicletype;
+  @UI: {  lineItem:       [ { position: 100, label: 'Driver Name' } ],
+        identification:   [ { position: 100, label: 'Driver Name' } ]}
+        @EndUserText.label: 'Driver Name'
+Drivername;
+  @UI: {  lineItem:       [ { position: 110, label: 'Mobile No' } ],
+        identification:   [ { position: 110, label: 'Mobile No' } ]}
+        @EndUserText.label: 'Mobile No'
+Mobile;
+  @UI: {  lineItem:       [ { position: 120, label: 'License No' } ],
+        identification:   [ { position: 120, label: 'License No' } ]}
+        @EndUserText.label: 'License No'
+Licenseno;
+  @UI: {  lineItem:       [ { position: 130, label: 'Expire Date' } ],
+        identification:   [ { position: 130, label: 'Expire Date' } ]}
+        @EndUserText.label: 'Expire Date'
+Experiredt;
+  @UI: {  lineItem:       [ { position: 140, label: 'Chasis No' } ],
+        identification:   [ { position: 140, label: 'Chasis No' } ]}
+        @EndUserText.label: 'Chasis No'
+Chaseno;
+  @UI: {  lineItem:       [ { position: 150, label: 'Address' } ],
+        identification:   [ { position: 150, label: 'Address' } ]}
+        @EndUserText.label: 'Address'
+Address;
+  @UI: {  lineItem:       [ { position: 160, label: 'Challan No' } ],
+        identification:   [ { position: 160, label: 'Challan No' } ]}
+        @EndUserText.label: 'Challan No'
+Challanno;
+  @UI: {  lineItem:       [ { position: 170, label: 'Challan Date' } ],
+        identification:   [ { position: 170, label: 'Challan Date' } ]}
+        @EndUserText.label: 'Challan Date'
+Challandate;
+  @UI: {  lineItem:       [ { position: 180, label: 'LR No' } ],
+        identification:   [ { position: 180, label: 'LR No' } ]}
+        @EndUserText.label: 'LR No'
+Lrno;
+  @UI: {  lineItem:       [ { position: 190, label: 'LR Date' } ],
+        identification:   [ { position: 190, label: 'LR Date' } ]}
+        @EndUserText.label: 'LR Date'
+Lrdate;
+  @UI: {  lineItem:       [ { position: 200, label: 'Eway.Billno' } ],
+        identification:   [ { position: 200, label: 'Eway.Billno' } ]}
+        @EndUserText.label: 'Eway.Billno'
+Ewaybillno;
+  @UI: {  lineItem:       [ { position: 210, label: 'Eway.BillDate' } ],
+        identification:   [ { position: 210, label: 'Eway.BillDate' } ]}
+        @EndUserText.label: 'Eway.BillDate'
+Ewaybilldate;
+
+  @UI: {  lineItem:       [ { position: 220, label: 'Token Entry No' } ],
+        identification:   [ { position: 220, label: 'Token Entry No' } ]}
+        @EndUserText.label: 'Token Entry No'
+Tokenentryno;
+  @UI: {  lineItem:       [ { position: 230, label: 'ERP Referenceno' } ],
+        identification:   [ { position: 230, label: 'ERP Referenceno' } ]}
+        @EndUserText.label: 'ERP Referenceno'
+Erpreferenceno;
+  @UI: {  lineItem:       [ { position: 240, label: 'Security Remarks' } ],
+        identification:   [ { position: 240, label: 'Security Remarks' } ]}
+        @EndUserText.label: 'Security Remarks'
+Securityremarks;
+@UI.hidden: true
+Gateentryseqno;
+@UI.hidden: true
+Companyname;
+
+
+@UI.hidden: true
+Trasportername;
+@UI.hidden: true
+Createdby;
+@UI.hidden: true
+Createdat;
+@UI.hidden: true
+Lastchangedby;
+@UI.hidden: true
+Lastchangedat;
+@UI.hidden: true
+/* Associations */
+_POHEAD;
+@UI.hidden: true
+_POITEM;
+    
+}

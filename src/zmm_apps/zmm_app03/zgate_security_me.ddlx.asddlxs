@@ -1,0 +1,76 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Gate Security - Master',
+typeNamePlural: 'Gate Security - Master',
+title: { type: #STANDARD, value: 'Userid' },
+         description: { type: #STANDARD, value: 'Usrname' }
+         } }
+//@UI.deleteHidden: true         
+annotate entity ZGATE_C_SECURITY with
+{
+  @UI.facet: [ { id:              'Header',
+                      purpose:         #STANDARD,
+                      type:            #IDENTIFICATION_REFERENCE,
+                      label:           'Gate Security - Master',
+                      position:        10 } ]
+  @UI: { lineItem: [{ position: 10, label: 'User ID'}],
+    identification: [{ position: 10, label: 'User ID' } ] }
+  @EndUserText.label: 'User ID'
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'I_BusinessUserVH',element: 'UserID' },
+  additionalBinding: [{localElement: 'Usrname', element: 'PersonFullName'}]  }]
+  Userid;
+  @UI: { lineItem: [{ position: 30, label: 'Gate No'}],
+    identification: [{ position: 30, label: 'Gate No' } ] }
+  @EndUserText.label: 'Gate No'
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZGATE_NO_VH', element: 'value_low' },
+                                    distinctValues: true }] //this one for Dropdown option
+  Gateno;
+  @UI.hidden: true
+  Usrname;
+  @UI: { lineItem: [{ position: 20, label: 'Plant'}],
+    identification: [{ position: 20, label: 'Plant' } ] }
+  @EndUserText.label: 'Plant'
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'I_Plant', element: 'Plant' },
+  additionalBinding: [{localElement: 'Plantname', element: 'PlantName'}]          } ]
+  Plant;
+  @UI: { lineItem: [{ position: 35, label: 'Department'}],
+    identification: [{ position: 35, label: 'Department' } ] }
+  @EndUserText.label: 'Department'
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZGATE_DEPT_VH', element: 'value_low' },
+                                    distinctValues: true }] //this one for Dropdown option  
+  Dept;
+  @UI.hidden: true
+  Plantname;
+  @UI: { lineItem: [{ position: 40, label: 'Createdby'}],
+    identification: [{ position: 40, label: 'Createdby' } ] }
+  @EndUserText.label: 'Createdby'
+  Createdby;
+  @UI: { lineItem: [{ position: 50, label: 'Created Date'}],
+    identification: [{ position: 50, label: 'Created Date' } ] }
+  @EndUserText.label: 'Created Date'
+  Createdat;
+  @UI.hidden: true
+  Websiteurl;
+
+  @UI: { identification: [{ position: 65, label: 'Website Link' }] }
+  @EndUserText.label: 'Website Link'
+  @UI.hidden: true
+  WebsiteLinkText;
+
+  @UI: { lineItem: [{ position: 60, label: 'Website Link',
+                      type: #WITH_URL, url: 'Websiteurl1' }],
+         identification: [{ position: 60, label: 'Website Link',
+                            type: #WITH_URL, url: 'Websiteurl1' }] }
+  @EndUserText.label: 'Website Link'
+  
+  Websiteurl1;
+  @UI.hidden: true
+  Createdname;
+  @UI.hidden: true
+  Lastchangedby;
+  @UI.hidden: true
+  Lastchangedat;
+  @UI.hidden: true  
+  Gatenodes;
+
+}

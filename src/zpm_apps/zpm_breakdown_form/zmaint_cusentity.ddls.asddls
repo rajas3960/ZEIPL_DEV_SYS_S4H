@@ -1,0 +1,91 @@
+@EndUserText.label: 'Cutom Entity'
+@ObjectModel.query.implementedBy: 'ABAP:ZPM_FORM_IMP_CL'
+define custom entity ZMAINT_CUSENTITY
+
+{
+  key MaintenanceNotification      : abap.char( 12 );
+      MaintPriority                : abap.char( 1 );
+      Material                     : abap.char( 40 );
+      NotificationType             : abap.char( 2 );
+      NotificationText             : abap.char( 40 );
+      MaintenanceOrder             : abap.char( 12 );
+      MaintNotificationCode        : abap.char( 4 );
+      MaintenanceWorkCenterPlant   : abap.char( 4 );
+      MaintenanceNotificationdocno : abap.char( 40 );
+      PlantDes                     : abap.char( 30 );
+      EquipmentNo                  : abap.char( 18 );
+      EquipmentDes                 : abap.char( 40 );
+      CreationDate                 : erdat;
+      LastChangeTime               : abap.tims( 6 );
+      CreationdateTime             : abap.char( 30 );
+      NotificationCompletionDate   : abap.dats( 8 );
+      NotificationCompletionTime   : abap.tims( 6 );
+      CompletionDateTime           : abap.char( 30 );
+      MaintObjectDowntimeDuration  : abap.char( 10 );
+      AreaManager                  : abap.char( 30 );
+      RCATeam1                     : abap.char( 30 );
+      RCATeam2                     : abap.char( 30 );
+      PersonFullName               : abap.char( 30 );
+      SuperiorTechnicalObject      : abap.char( 40 );
+      InspectionCodeText           : abap.char( 40 );
+      MaintNotifItemText           : abap.char( 40 );
+      DrawupOPL                    : abap.char( 5 );
+      Standardize                  : abap.char( 5 );
+      Errorproof                   : abap.char( 5 );
+      Correctmaint                 : abap.char( 5 );
+      Issuempinf                   : abap.char( 5 );
+      Horreplication               : abap.char( 5 );
+      Poorbascon                   : abap.char( 5 );
+      Pooropecon                   : abap.char( 5 );
+      Deterioration                : abap.char( 5 );
+      Weakdesign                   : abap.char( 5 );
+      Poorskill                    : abap.char( 5 );
+      Des1                         : abap.char( 30 );
+      Des2                         : abap.char( 30 );
+      Des3                         : abap.char( 30 );
+      Des4                         : abap.char( 30 );
+      Des5                         : abap.char( 30 );
+      Des6                         : abap.char( 30 );
+      Perres1                      : abap.char( 30 );
+      Perres2                      : abap.char( 30 );
+      Perres3                      : abap.char( 30 );
+      Perres4                      : abap.char( 30 );
+      Perres5                      : abap.char( 30 );
+      Perres6                      : abap.char( 30 );
+      Deadline1                    : abap.dats( 8 );
+      Deadline2                    : abap.dats( 8 );
+      Deadline3                    : abap.dats( 8 );
+      Deadline4                    : abap.dats( 8 );
+      Deadline5                    : abap.dats( 8 );
+      Deadline6                    : abap.dats( 8 );
+      Datecomp1                    : abap.dats( 8 );
+      Datecomp2                    : abap.dats( 8 );
+      Datecomp3                    : abap.dats( 8 );
+      Datecomp4                    : abap.dats( 8 );
+      Datecomp5                    : abap.dats( 8 );
+      Datecomp6                    : abap.dats( 8 ); 
+      Countermeasure1              : abap.char( 30 );
+      Countermeasure2              : abap.char( 30 );
+      Countermeasure3              : abap.char( 30 );
+      Countermeasure4              : abap.char( 30 );
+      Countermeasure5              : abap.char( 30 );
+      Perresponse1                 : abap.char( 30 );
+      Perresponse2                 : abap.char( 30 );
+      Perresponse3                 : abap.char( 30 );
+      Perresponse4                 : abap.char( 30 );
+      Perresponse5                 : abap.char( 30 );
+      Targetdate1                  : abap.dats( 8 );
+      Targetdate2                  : abap.dats( 8 );
+      Targetdate3                  : abap.dats( 8 );
+      Targetdate4                  : abap.dats( 8 );
+      Targetdate5                  : abap.dats( 8 );
+      Datecom1                     : abap.dats( 8 );
+      Datecom2                     : abap.dats( 8 );
+      Datecom3                     : abap.dats( 8 );
+      Datecom4                     : abap.dats( 8 );
+      Datecom5                     : abap.dats( 8 );
+           
+      @ObjectModel.filter.enabled  : false
+      _item                        : association [0..*] to ZMAINTENANCE on $projection.MaintenanceNotification = _item.MaintenanceNotification;
+      ////_item1                       : association [0..*] to ZMAINT_CONT_DES on $projection.MaintenanceOrder     = _item1.MaintenanceOrder; 
+}

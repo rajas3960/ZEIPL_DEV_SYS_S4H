@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Defination For Asset'
+define service ZFA_ASSET_SD {
+  expose ZFA_ASSET_PV as MAINReport;
+}

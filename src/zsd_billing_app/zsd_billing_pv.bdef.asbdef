@@ -1,0 +1,26 @@
+projection;
+strict ( 2 );
+use draft;
+use side effects;
+define behavior for ZSD_BILLING_PV alias hdr
+{
+  use create;
+  use update;
+  use delete;
+  use action PostInvoice;
+  use action Resume;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Prepare;
+
+  use association Item { create; with draft; }
+}
+
+define behavior for ZSD_BILLING_IPV //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association hdr { with draft; }
+}

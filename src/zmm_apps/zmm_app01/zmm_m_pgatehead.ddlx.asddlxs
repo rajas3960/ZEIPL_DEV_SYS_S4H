@@ -1,0 +1,82 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Gate Entry - Procurement',
+typeNamePlural: 'Gate Entry - Procurement',
+title: { type: #STANDARD, value: 'Purchaseorder' }
+}}
+annotate entity ZMM_C_PGATEHEAD
+    with 
+{
+  @UI.facet: [ { id:              'Header',
+                      purpose:         #STANDARD,
+                      type:            #IDENTIFICATION_REFERENCE,
+                      label:           'Procurement - Header',
+                      position:        10 }]
+@UI.hidden: true 
+Uuid;
+  @UI: {  lineItem:       [ { position: 10, label: 'Supplier' } ],
+        identification:   [ { position: 10, label: 'Supplier' } ]}
+        @EndUserText.label: 'Supplier' 
+Vendor;
+  @UI: {  lineItem:       [ { position: 20, label: 'Order No' } ],
+        identification:   [ { position: 20, label: 'Order No' } ]}
+        @EndUserText.label: 'Order No' 
+Purchaseorder;
+  @UI: {  lineItem:       [ { position: 30, label: 'Order Date' } ],
+        identification:   [ { position: 30, label: 'Order Date' } ]}
+        @EndUserText.label: 'Order Date' 
+Orderdate;
+  @UI: {  lineItem:       [ { position: 40, label: 'Ref. No' } ],
+        identification:   [ { position: 40, label: 'Ref. No' } ]}
+        @EndUserText.label: 'Ref. No' 
+Referno;
+  @UI: {  lineItem:       [ { position: 50, label: 'Ref. Date' } ],
+        identification:   [ { position: 50, label: 'Ref. Date' } ]}
+        @EndUserText.label: 'Ref. Date' 
+Referdate;
+  @UI: {  lineItem:       [ { position: 60, label: 'From Place' } ],
+        identification:   [ { position: 60, label: 'From Place' } ]}
+        @EndUserText.label: 'From Place' 
+Fromplace;
+  @UI: {  lineItem:       [ { position: 70, label: 'To Place' } ],
+        identification:   [ { position: 70, label: 'To Place' } ]}
+        @EndUserText.label: 'To Place' 
+Toplace;
+  @UI: {  lineItem:       [ { position: 80, label: 'UOM' } ],
+        identification:   [ { position: 80, label: 'UOM' } ]}
+        @EndUserText.label: 'UOM' 
+Baseunit;
+  @UI: {  lineItem:       [ { position: 90, label: 'Challan Gross Wt' } ],
+        identification:   [ { position: 90, label: 'Challan Gross Wt' } ]}
+        @EndUserText.label: 'Challan Gross Wt' 
+Challangrossweight;
+  @UI: {  lineItem:       [ { position: 100, label: 'Challan Tare Wt' } ],
+        identification:   [ { position: 100, label: 'Challan Tare Wt' } ]}
+        @EndUserText.label: 'Challan Tare Wt' 
+Challantareweight;
+
+  @UI: {  lineItem:       [ { position: 110, label: 'Challan Net Wt' } ],
+        identification:   [ { position: 110, label: 'Challan Net Wt' } ]}
+        @EndUserText.label: 'Challan Net Wt' 
+Challannetweight;
+  @UI: {  lineItem:       [ { position: 120, label: 'Freight Orderno' } ],
+        identification:   [ { position: 120, label: 'Freight Orderno' } ]}
+        @EndUserText.label: 'Freight Orderno' 
+Freightorderno;
+@UI.hidden: true
+Gateentryno;
+@UI.hidden: true
+Suppliername;
+@UI.hidden: true
+Createdby;
+@UI.hidden: true
+Createdat;
+@UI.hidden: true
+Lastchangedby;
+@UI.hidden: true
+Lastchangedat;
+@UI.hidden: true
+/* Associations */
+_Head;
+    
+}

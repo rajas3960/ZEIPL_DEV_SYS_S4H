@@ -1,0 +1,137 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: { typeName: 'History Card Report',
+                typeNamePlural: 'History Card Reports',
+                title: { type: #STANDARD, label: 'History Card Reports', value: 'order_no' } }}
+annotate entity ZCV_HISTORYCARD with parameters @EndUserText.label: 'Start Date'P_Start_date,
+                                                @EndUserText.label: 'End Date'P_End_date
+{
+  @UI.facet: [ {    id:              'order_no',
+                     purpose:         #STANDARD,
+                     type:            #IDENTIFICATION_REFERENCE,
+                     label:           'History Card Reports',
+                     position:        10 }]
+  @UI.lineItem: [{ position: 10, label: 'Order' }]
+  @UI.identification: [{ position: 10, label: 'Order' }]
+  @UI.selectionField: [{ position: 10 }]
+  @EndUserText.label: 'Order'
+  order_no;
+  @UI.hidden: true
+  MaintOrderRoutingNumber;
+  @UI.lineItem: [{ position: 30, label: 'Technical Object' }]
+  @UI.identification: [{ position: 30, label: 'Technical Object' }]
+  @EndUserText.label: 'Technical Object'
+  Equipment_Number;
+  @UI.lineItem: [{ position: 40, label: 'Plant' }]
+  @UI.identification: [{ position: 40, label: 'Plant' }]
+  @EndUserText.label: 'Plant'
+  Plant;
+  @UI.lineItem: [{ position: 50, label: 'Main Work Center' }]
+  @UI.identification: [{ position: 50, label: 'Main Work Center' }]
+  @UI.selectionField: [{ position: 50 }]
+  @EndUserText.label: 'Main Work Center'
+  MainWorkCenter;
+  @UI.lineItem: [{ position: 60, label: 'Notification' }]
+  @UI.identification: [{ position: 60, label: 'Notification' }]
+  @EndUserText.label: 'Plant'
+  Notification;
+  @UI.lineItem: [{ position: 70, label: 'Order Description' }]
+  @UI.identification: [{ position: 70, label: 'Order Description' }]
+  @EndUserText.label: 'Plant'
+  Order_Description;
+  @UI.lineItem: [{ position: 80, label: 'Superior Functional Location' }]
+  @UI.identification: [{ position: 80, label: 'Superior Functional Location' }]
+  @EndUserText.label: 'Superior Functional Location'
+  FunctionalLocation;
+  @UI.lineItem: [{ position: 90, label: 'Order Type' }]
+  @UI.identification: [{ position: 90, label: 'Order Type' }]
+  @EndUserText.label: 'Plant'
+  Order_Type;
+  @UI.lineItem: [{ position: 90.1, label: 'Priority' }]
+  @UI.identification: [{ position: 90.1, label: 'Priority' }]
+  @EndUserText.label: 'Plant'
+  Priority;
+  @UI.lineItem: [{ position: 100, label: 'Basic Start Date' }]
+  @UI.identification: [{ position: 100, label: 'Basic Start Date' }]
+  @EndUserText.label: 'Start Date'
+  Start_date;
+  @UI.lineItem: [{ position: 110, label: 'Basic Start Time' }]
+  @UI.identification: [{ position: 110, label: 'Basic Start Time' }]
+  @EndUserText.label: 'Basic Start Time'
+  MaintOrdBasicStartTime;
+  @UI.lineItem: [{ position: 120, label: 'Basic Finish Date' }]
+  @UI.identification: [{ position: 120, label: 'Basic Finish Date' }]
+  @EndUserText.label: 'End Date'
+  End_date;
+  @UI.lineItem: [{ position: 130, label: 'Basic Finish Time' }]
+  @UI.identification: [{ position: 130, label: 'Basic Finish Time' }]
+  @EndUserText.label: 'Basic Finish Time'
+  MaintOrdBasicEndTime;
+  @UI.lineItem: [{ position: 140, label: 'Final Due Date' }]
+  @UI.identification: [{ position: 140, label: 'Final Due Date' }]
+  @EndUserText.label: 'Final Due Date'
+  final_duedate;
+  @UI.lineItem: [{ position: 150, label: 'Contact Information (Created By)' }]
+  @UI.identification: [{ position: 150, label: 'Contact Information (Created By)' }]
+  @EndUserText.label: 'Contact Information (Created By)'
+  created_by;
+  @UI.lineItem: [{ position: 160, label: 'System Status' }]
+  @UI.identification: [{ position: 160, label: 'System Status' }]
+  @EndUserText.label: 'System Status'
+  process_phase;
+  @UI.lineItem: [{ position: 170, label: 'Costcenter' }]
+  @UI.identification: [{ position: 170, label: 'Costcenter' }]
+  @EndUserText.label: 'Costcenter'
+  Costcenter;
+  @UI.lineItem: [{ position: 180, label: 'Main order Operation ' }]
+  @UI.identification: [{ position: 180, label: 'Main order Operation ' }]
+  @EndUserText.label: 'Main order Operation '
+  Main_order_Operation;
+  @UI.lineItem: [{ position: 190, label: 'Task performed' }]
+  @UI.identification: [{ position: 190, label: 'Task performed' }]
+  @EndUserText.label: 'Task performed'
+  Task_performed;
+  @UI.lineItem: [{ position: 200, label: 'Confirmed time' }]
+  @UI.identification: [{ position: 200, label: 'Confirmed time' }]
+  @EndUserText.label: 'Confirmed time'
+  actual_work;
+  @UI.lineItem: [{ position: 210, label: 'Confirmed UOM' }]
+  @UI.identification: [{ position: 210, label: 'Confirmed UOM' }]
+  @EndUserText.label: 'Confirmed UOM'
+  unit_work;
+  @UI.lineItem: [{ position: 220, label: 'Confirmed Person ' }]
+  @UI.identification: [{ position: 220, label: 'Confirmed Person ' }]
+  @EndUserText.label: 'Confirmed Person '
+  EnteredByUser;
+  @UI.lineItem: [{ position: 230, label: 'Confirmation Text' }]
+  @UI.identification: [{ position: 230, label: 'Confirmation Text' }]
+  @EndUserText.label: 'Confirmation Text'
+  ConfirmationText;
+  @UI.lineItem: [{ position: 240, label: 'Cause of Failure' }]
+  @UI.identification: [{ position: 240, label: 'Cause of Failure' }]
+  @EndUserText.label: 'Cause of Failure'
+  coding;
+  @UI.lineItem: [{ position: 250, label: 'Spares consumend ' }]
+  @UI.identification: [{ position: 250, label: 'Spares consumend ' }]
+  @EndUserText.label: 'Spares consumend '
+  Material;
+  @UI.lineItem: [{ position: 260, label: 'Cost of Spares' }]
+  @UI.identification: [{ position: 260, label: 'Cost of Spares' }]
+  @EndUserText.label: 'Cost of Spares'
+  component_price;
+  @UI.lineItem: [{ position: 270, label: 'Quantity Withdrawn' }]
+  @UI.identification: [{ position: 270, label: 'Quantity Withdrawn' }]
+  @EndUserText.label: 'Quantity Withdrawn'
+  qty_withdrawn;
+  @UI.hidden: true
+  MaintOrdOpComponentCurrency;
+  @UI.lineItem: [{ position: 280, label: 'Malfunction Time' }]
+  @UI.identification: [{ position: 280, label: 'Malfunction Time' }]
+  @EndUserText.label: 'Malfunction Time'
+  MaintObjectDowntimeDuration;
+  @UI.lineItem: [{ position: 290, label: 'Unit of Breakdown duration' }]
+  @UI.identification: [{ position: 290, label: 'Unit of Breakdown duration' }]
+  @EndUserText.label: 'Unit of Breakdown duration'
+  MaintObjDowntimeDurationUnit;
+
+}

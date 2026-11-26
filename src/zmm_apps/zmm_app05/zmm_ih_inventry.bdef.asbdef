@@ -1,0 +1,67 @@
+managed implementation in class zbp_mm_ih_inventry unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMM_IH_INVENTRY alias GateHead
+persistent table zmm_app04_hdb
+draft table zmm_app04_hdbd
+with additional save
+lock master total etag Lastchangedby
+authorization master ( instance )
+etag master Lastchangedby
+{
+  create ( authorization : global );
+  update ( features : instance );
+  delete ( features : instance );
+  field ( readonly, numbering : managed ) Uuid;
+  field ( readonly ) Gateentrydate,Gateentryid,Gateentryiddate,Gateentryno,Gateentryseqno,
+                    Gateentryseriesdes,Gateentrytime,Gateno,Gatenodes,MigoStatus;
+  field ( readonly ) Plant,Plantname,Materialdocument,Materialdocumentyear,vehicletypedes;
+  field ( readonly )Referno,Referdate,Challanno,Challandate,Entryslipattcmt,Entryfilename,
+                    Erpreferenceno,Entrymimetype,Experiredt,Securityremarks,Weighmentindicator;
+  field (features : instance) Gateentryseries;
+  association _Item { create; with draft;}
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+
+  action ( features : instance ) Purchase parameter ZPO_INPUT result [1] $self;
+  action ( features : instance ) GateCheckIn result [1] $self;
+  action ( features : instance ) WeightScrn result [1] $self;
+  action ( features : instance ) MigoPost parameter ZMM_MIGO_INPUT result [1] $self;
+  action ( features : instance ) GateSlipForm result [1] $self;
+
+  side effects {
+  action Purchase
+    affects $self, entity _Item ; }
+
+  mapping for zmm_app04_hdb corresponding;
+
+}
+
+define behavior for ZMM_II_INVENTRY alias GateItem
+persistent table zmm_app04_idb
+draft table zmm_app04_idbd
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update( features : instance );
+  delete( features : instance );
+  field ( readonly ) Uuid;
+field ( readonly, numbering : managed ) Subuuid;
+  field ( readonly ) Purchaseorder, Purchaseorderitem,Pendqty,Challannetweight,Materialgroup,Gateentryno,Subgateentryno;
+  field ( readonly ) Material,Materialtext,Plant,Plantname,Vendor,Suppliername,Baseunit,Grnqty,Inbounddelivery,
+                     Quantity,Netweight,Poordertype,Poordertypetext,Orderdate,Gateentryseries,Weightindicator,
+                     Poperunitprice;
+  association _Head {with draft;}
+  determination ChallanQtyCal on modify { field Challangrossweight; field Challantareweight; }
+  side effects { field Challangrossweight affects field Challannetweight;
+                 field Challantareweight affects field Challannetweight; }
+  action ( features : instance ) InbDelivery result [1] $self;
+  action ( features : instance ) ChallanInput parameter ZMM_CH_INPUT result [1] $self;
+  mapping for zmm_app04_idb corresponding;
+}

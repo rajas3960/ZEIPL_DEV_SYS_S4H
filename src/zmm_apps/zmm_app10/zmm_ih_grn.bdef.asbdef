@@ -1,0 +1,60 @@
+managed implementation in class zbp_mm_ih_grn unique;
+strict ( 2 );
+with draft;
+
+
+define behavior for ZMM_IH_GRN alias Head
+persistent table zmm_app04_hdb
+draft table zmm_app04_hdbd
+with additional save
+lock master total etag Lastchangedby
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update( features : instance );
+  delete( features : instance );
+  field ( readonly, numbering : managed ) Uuid;
+  field (readonly)  Gateno, Gatenodes, Gateentryno, Gateentryseqno, Gateentrydate,
+                    Gateentrytime, Gateentryid, Gateentryiddate, Plant, Plantname, Gateentryseries,
+                    Gateentryseriesdes, Permitno, Tokenentryno,
+                    Erpreferenceno, Trasporterid, Trasportername, Vehicleno, Vehicletype, Drivername,
+                    Mobile, Licenseno, Experiredt, Chaseno, Address, Challanno, Challandate, Lrno,
+                    Lrdate,  Securityremarks,DecNetWt,DecTareWt,Materialdocument,Materialdocumentyear,
+                    Referno, Referdate, Fromplace, Toplace, Freightorderno, Helpername, Minepassno, Forestpassno, Rakecontno,
+                    Createdname, Weighmentindicator, Weighmentmcno, weighmentmcndes, Weighuom,
+                    Grosswt, Tarewt,Netwt,Weighmentdate, Weighmenttime, Imagevaldindicator, Createdby, Createdat,Entryslipattcmt,
+                    Lastchangedby, Lastchangedat, GateEntryStatus, ImageValStatus,Weighslipattcmt,Weighfilename,Weighmimetype;
+  association _Item { create; with draft;}
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+
+  action ( features : instance ) MigoPost result [1] $self;
+//  action ( features : instance ) MigoPost parameter ZMM_MIGO_INPUT result [1] $self;
+  action ( features : instance ) InbDelivery result [1] $self;
+  determination Set_Inbound_dlv on modify { field Inbounddelivery; }
+  mapping for zmm_app04_hdb corresponding;
+}
+
+define behavior for ZMM_II_GRN //alias <alias_name>
+persistent table zmm_app04_idb
+draft table zmm_app04_idbd
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update( features : instance );
+  delete( features : instance );
+  field ( readonly ) Uuid;
+  field ( readonly ) Purchaseorder, Purchaseorderitem,Pendqty,Challannetweight,Materialgroup,Gateentryno,Subgateentryno;
+  field ( readonly ) Material,Materialtext,Plant,Plantname,Vendor,Suppliername,Baseunit,
+                     Quantity,Netweight,Poordertype,Poordertypetext,Orderdate,Gateentryseries,Weightindicator,
+                     Challanno,Challandate,Challantareweight,Challangrossweight,Challanqty,
+                     Ewaybillno,Ewaybilldate,Podocumt,Chdocumt,Sidocumt,Qadocumt,Remark,Grnqty;
+  association _Head {with draft;}
+  mapping for zmm_app04_idb corresponding;
+}

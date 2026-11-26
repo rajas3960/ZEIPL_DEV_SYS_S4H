@@ -1,0 +1,4 @@
+@EndUserText.label: 'SO Carrier Freight Orders for BTP'
+define service ZSD_SD_SO_TMFO {
+  expose ZSD_SO_TMFO_API as SoTmFo;
+}

@@ -1,0 +1,7 @@
+@EndUserText.label: 'SO Carrier Allocation'
+define service ZSD_UI_SO_TMCAR {
+  expose ZC_SD_SO_TMCAR  as Carrier;
+  expose ZC_SD_SO_TMFO   as FreightOrder;
+  expose ZSD_SO_TMSOITEM as SOItem;
+  expose ZMM_FO_VH       as FreightOrderVH;
+}

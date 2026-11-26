@@ -1,0 +1,56 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Sales Order LC Utlization App',
+typeNamePlural: 'Sales Order LC Utlization App',
+title: { type: #STANDARD, value: 'SalesDocument' }  } }
+annotate entity ZLC_APP02_PV with
+{
+  @UI.facet: [ { id:              'Header',
+                           purpose:         #STANDARD,
+                           type:            #IDENTIFICATION_REFERENCE,
+                           label:           'Sales Order Header',
+                           position:        10
+                           },
+                            { id:              'Items',
+                       purpose:         #STANDARD,
+                       type:            #LINEITEM_REFERENCE,
+                       label:           'LC Item Utlization',
+                       position:        20,
+                       targetElement:   '_litem'} ]
+
+
+  @UI: { lineItem: [{ position: 10, label: 'Sales Order' }],
+     identification: [{ position: 10, label: 'Sales Order' }]}
+  @Consumption.valueHelpDefinition: [{ entity:{ name: 'I_SalesOrderStdVH',element: 'SalesOrder' }}]
+  @UI.selectionField: [{element: 'SalesDocument'}]
+  SalesDocument;
+  @UI: { lineItem: [{ position: 14, label: 'Customer No' }],
+  identification: [{ position: 14, label: 'Customer No' }]}
+  SoldToParty;
+  @UI: { lineItem: [{ position: 18, label: 'Customer Name' }],
+  identification: [{ position: 18, label: 'Customer Name' }]}  
+  CustomerName;
+  @UI: { lineItem: [{ position: 20, label: 'Total LC Amount' }],
+  identification: [{ position: 20, label: 'Total LC Amount' }]}
+  TotLCamt;
+  @UI: { lineItem: [{ position: 30, label: 'Utilized Value' }],
+  identification: [{ position: 30, label: 'Utilized Value' }]}
+  Utilized_amt;
+  @UI: { lineItem: [{ position: 40, label: 'Open Limit' }],
+  identification: [{ position: 40, label: 'Open Limit' }]}
+  Balance_amt;
+  @UI: { lineItem: [{ position: 50, label: 'Created By' }],
+  identification: [{ position: 50, label: 'Created By' }]}
+  CreatedByUser;
+  @UI: { lineItem: [{ position: 60, label: 'Created On' }],
+  identification: [{ position: 60, label: 'Created On' }]}
+  CreationDate;
+  @UI.hidden: true
+  LastChangedByUser;
+  @UI.hidden: true
+  LastChangeDateTime;
+  /* Associations */
+  @UI.hidden: true
+  _litem;
+
+}

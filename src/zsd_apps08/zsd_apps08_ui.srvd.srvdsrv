@@ -1,0 +1,6 @@
+@EndUserText.label: 'SD Of the Broker Custom App'
+define service ZSD_APPS08_UI {
+  expose ZSD_APPS08_PV  as Mainpage;
+  expose ZSD_APPS08_IPV as Item;
+  expose ZSD_BP_VH;
+}

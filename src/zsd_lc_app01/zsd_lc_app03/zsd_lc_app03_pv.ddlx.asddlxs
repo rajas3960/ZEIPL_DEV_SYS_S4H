@@ -1,0 +1,125 @@
+@Metadata.layer:#PARTNER
+@UI: { headerInfo: {
+typeName: 'LC Approval - Custom Screen',
+typeNamePlural: 'LC Approval - Custom Screen',
+title: { type: #STANDARD, value: 'Lnum' }  } }
+annotate entity ZSD_LC_APP03_PV with
+{
+  @UI.facet: [ { id:              'Header',
+                            purpose:         #STANDARD,
+                            type:            #IDENTIFICATION_REFERENCE,
+                            label:           'LC Approval - Custom Screen',
+                            position:        10
+                            }]
+
+  @UI: {
+      lineItem: [
+          { position: 10, label: 'LC Number' },
+
+          { type: #FOR_ACTION,
+            dataAction: 'getapp',
+            label: 'Approve',
+            position: 130 },
+
+          { type: #FOR_ACTION,
+            dataAction: 'GetRej',
+            label: 'Reject',
+            position: 120 }
+      ],
+
+      identification: [
+          { position: 10, label: 'LC Number' }
+      ]
+  }
+  @UI.selectionField: [{ element: 'Lnum',position: 10 }]
+  @Consumption.valueHelpDefinition: [
+  {
+    entity: {
+      name: 'ZLC_APP01_RV',
+      element: 'Lnum'
+    }
+  }
+]
+@EndUserText.label: 'LC Number'
+  Lnum;  
+   @UI: { lineItem: [{ position: 20, label: 'Customer' }],
+  identification: [{ position: 20, label: 'Customer' }]}
+  @EndUserText.label: 'Customer'
+  Stp;
+  @UI: { lineItem: [{ position: 30, label: 'Customer Name' }],
+  identification: [{ position: 30, label: 'Customer Name' }]}
+  @EndUserText.label: 'Customer Name'
+  StpName;
+  @UI: { lineItem: [{ position: 40, label: 'Amount' }],
+  identification: [{ position: 40, label: 'Amount' }]}
+  @EndUserText.label: 'Amount'
+  LcAmt;
+  @UI: { lineItem: [{ position: 50, label: 'Tolerance %' }],
+  identification: [{ position: 50, label: 'Tolerance %' }]}
+  @EndUserText.label: 'Tolerance %'
+  Torlce;
+  @UI: { lineItem: [{ position: 60, label: 'Total LC Amount' }],
+  identification: [{ position: 60, label: 'Total LC Amount' }]}
+  @EndUserText.label: 'Total LC Amount'
+  TlcAmt;
+  @UI: { lineItem: [{ position: 70, label: 'Bank Name' }],
+  identification: [{ position: 70, label: 'Bank Name' }]}
+  @EndUserText.label: 'Bank Name'
+  Banknam;
+  @UI: { lineItem: [{ position: 80, label: 'Bank Branch' }],
+  identification: [{ position: 80, label: 'Bank Branch' }]}
+  @EndUserText.label: 'Bank Branch'
+  BankBranch;
+  @UI: { lineItem: [{ position: 120, label: 'LC created date' }],
+  identification: [{ position: 120, label: 'LC created date' }]}
+  @EndUserText.label: 'LC created date'
+  Createdon;
+  @UI: { lineItem: [{ position: 130, label: 'LC created By' }],
+  identification: [{ position: 130, label: 'LC created By' }]}
+  @EndUserText.label: 'LC created By'
+  Createdby;
+  @UI: {  lineItem:       [ { position: 05, label: 'Status',criticality:'stuscrt' } ],
+      identification: [ { position: 05, label: 'Status'} ] }
+        @UI.textArrangement: #TEXT_ONLY
+  @UI.dataPoint: { qualifier: 'StatusData', title: 'Status', criticality: 'stuscrt' }
+  @EndUserText.label: 'Status'
+  text;
+  @UI.hidden: true
+  LcCurr;
+  @UI.hidden: true
+  relstastu;
+  @UI.hidden: true
+  stuscrt;
+  @UI.hidden: true
+  Valfrm;
+  @UI.hidden: true
+  Valto;
+  @UI.hidden: true
+  Lastchangedby;
+  @UI.hidden: true
+  Lastchangedon;
+  @UI.hidden: true
+  Project;
+  @UI.hidden: true
+  Applicant;
+  @UI.hidden: true
+  Ldd;
+  @UI.hidden: true
+  Mark;
+  @UI.hidden: true
+  Beneficiary;
+  @UI.hidden: true
+  Incoterm;
+  @UI.hidden: true
+  Remark;
+  @UI.hidden: true
+  Popi;
+  @UI.hidden: true
+  Aclcamt;
+  @UI.hidden: true
+  Planlcamt;
+  @UI.hidden: true
+  Totboeamt;
+  @UI.hidden: true
+  Totavamt;
+}

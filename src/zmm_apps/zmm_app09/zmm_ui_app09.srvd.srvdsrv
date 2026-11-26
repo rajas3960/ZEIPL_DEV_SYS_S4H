@@ -1,0 +1,4 @@
+@EndUserText.label: 'Manage Email Master Application - Service'
+define service ZMM_UI_APP09 {
+  expose ZMM_C_APP09_RV as mainpage;
+}

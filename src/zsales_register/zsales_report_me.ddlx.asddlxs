@@ -1,0 +1,427 @@
+@Metadata.layer: #PARTNER
+@UI: {
+  headerInfo: { typeName: 'Sales Register',
+                typeNamePlural: 'Sales Register',
+                title: { type: #STANDARD, label: 'SalesRegister', value: 'Invno' } },
+  presentationVariant: [{  sortOrder: [{ by: 'Invno', direction:  #DESC }] }] }
+  
+annotate entity ZSALES_REPORT_CV
+    with 
+  {  
+    @UI.facet: [ { id:              'Invno',
+                   purpose:         #STANDARD,
+                   type:            #IDENTIFICATION_REFERENCE,
+                   label:           'Sales Register',
+                   position:        10 } ]
+    
+   @UI:{ lineItem: [{ position: 10, label: 'Invoice No' }],
+        identification: [{ position: 10, label: 'Invoice No' }] } 
+    @EndUserText.label: 'Invoice No'  
+   @UI.selectionField: [{ position: 10 }] 
+   Invno;
+   
+   @UI:{ lineItem: [{ position: 20, label: 'Invoice Date' }],
+        identification: [{ position: 20, label: 'Invoice Date' }] } 
+    @EndUserText.label: 'Invoice Date' 
+   Invdate;
+   
+   @UI:{ lineItem: [{ position: 30, label: 'Customer Name' }],
+        identification: [{ position: 30, label: 'Customer Name' }] } 
+    @EndUserText.label: 'Customer Name' 
+   Customername;
+   
+   @UI:{ lineItem: [{ position: 40, label: 'Customer Code' }],
+        identification: [{ position: 40, label: 'Customer Code' }] } 
+    @EndUserText.label: 'Customer Code' 
+   customercode;
+   
+   @UI:{ lineItem: [{ position: 50, label: 'Sales Order No' }],
+        identification: [{ position: 50, label: 'Sales Order No' }] } 
+    @EndUserText.label: 'Sales Order No' 
+   salesorder;
+   
+   @UI:{ lineItem: [{ position: 60, label: 'Item Name' }],
+        identification: [{ position: 60, label: 'Item Name' }] } 
+    @EndUserText.label: 'Item Name' 
+   BillingDocumentItem;
+   
+    @UI:{ lineItem: [{ position: 70, label: 'Sales Order Date' }],
+        identification: [{ position: 70, label: 'Sales Order Date' }] } 
+    @EndUserText.label: 'Sales Order Date' 
+   salesorderdt;
+   
+   @UI:{ lineItem: [{ position: 80, label: 'Invoice Quantity' }],
+        identification: [{ position: 80, label: 'Invoice Quantity' }] } 
+    @EndUserText.label: 'Invoice Quantity' 
+   invoiceqty;
+   
+   @UI:{ lineItem: [{ position: 90, label: 'SGST Amount' }],
+        identification: [{ position: 90, label: 'SGST Amount' }] } 
+    @EndUserText.label: 'SGST Amount' 
+   sgstamt;
+   
+   @UI:{ lineItem: [{ position: 92, label: 'SGST Percentage' }],
+        identification: [{ position: 92, label: 'SGST Percentage' }] } 
+    @EndUserText.label: 'SGST Percentage' 
+   sgstper;
+   
+    @UI:{ lineItem: [{ position: 100, label: 'CGST Amount' }],
+        identification: [{ position: 100, label: 'CGST Amount' }] } 
+    @EndUserText.label: 'CGST Amount' 
+   cgstamt;
+   
+   @UI:{ lineItem: [{ position: 102, label: 'CGST Percentage' }],
+        identification: [{ position: 102, label: 'CGST Percentage' }] } 
+    @EndUserText.label: 'CGST Percentage' 
+   cgstper;
+   
+   
+   @UI:{ lineItem: [{ position: 110, label: 'IGST Amount' }],
+        identification: [{ position: 110, label: 'IGST Amount' }] } 
+    @EndUserText.label: 'IGST Amount' 
+   igstamt;
+   
+   @UI:{ lineItem: [{ position: 112, label: 'IGST Percentage' }],
+        identification: [{ position: 112, label: 'IGST Percentage' }] } 
+    @EndUserText.label: 'IGST Percentage' 
+   igstper;
+   
+    @UI:{ lineItem: [{ position: 120, label: 'Material Amount' }],
+        identification: [{ position: 120, label: 'Material Amount' }] } 
+    @EndUserText.label: 'Material Amount' 
+   Materialamt;
+   
+   
+   @UI:{ lineItem: [{ position: 130, label: 'Sales Type ' }],
+        identification: [{ position: 130, label: 'Sales Type ' }] } 
+    @EndUserText.label: 'Sales Type ' 
+   Saletype;
+   
+   @UI:{ lineItem: [{ position: 140, label: 'Division Name' }],
+        identification: [{ position: 140, label: 'Division Name' }] } 
+    @EndUserText.label: 'Division Name' 
+   Division;
+   
+   @UI:{ lineItem: [{ position: 150, label: 'Sales Organization' }],
+        identification: [{ position: 150, label: 'Sales Organization' }] } 
+    @EndUserText.label: 'Sales Organization' 
+   SalesOrganization;
+   
+   @UI:{ lineItem: [{ position: 160, label: 'Sales Distribution' }],
+        identification: [{ position: 160, label: 'Sales Distribution' }] } 
+    @EndUserText.label: 'Sales Distribution' 
+   Salesdistribution;
+   
+//   @UI:{ lineItem: [{ position: 170, label: 'Sales Order Type' }],
+//        identification: [{ position: 170, label: 'Sales Order Type' }] } 
+//    @EndUserText.label: 'Sales Order Type' 
+//   SalesOrderType;
+//   
+//   @UI:{ lineItem: [{ position: 180, label: 'CreditMemo Request Type' }],
+//        identification: [{ position: 180, label: 'CreditMemo Request Type' }] } 
+//    @EndUserText.label: 'CreditMemo Request Type' 
+//   CreditMemoRequestType;
+//   
+//   @UI:{ lineItem: [{ position: 190, label: 'Customer Return Type' }],
+//        identification: [{ position: 190, label: 'Customer Return Type' }] } 
+//    @EndUserText.label: 'Customer Return Type' 
+//   CustomerReturnType;
+//   
+//   @UI:{ lineItem: [{ position: 200, label: 'DebitMemo Request Type' }],
+//        identification: [{ position: 200, label: 'DebitMemo Request Type' }] } 
+//    @EndUserText.label: 'DebitMemo Request Type' 
+//   DebitMemoRequestType;
+   
+   @UI:{ lineItem: [{ position: 210, label: 'Net Amount' }],
+        identification: [{ position: 210, label: 'Net Amount' }] } 
+    @EndUserText.label: 'Net Amount' 
+   Netamount;
+   
+   @UI:{ lineItem: [{ position: 220, label: 'Tax Amount' }],
+        identification: [{ position: 220, label: 'Tax Amount' }] } 
+    @EndUserText.label: 'Tax Amount' 
+   TaxAmount;
+   
+   @UI:{ lineItem: [{ position: 230, label: 'Bill Amount' }],
+        identification: [{ position: 230, label: 'Bill Amount' }] } 
+    @EndUserText.label: 'Bill Amount' 
+   BillAmount;
+   
+   @UI:{ lineItem: [{ position: 240, label: 'Basic Rate' }],
+        identification: [{ position: 240, label: 'Basic Rate' }] } 
+    @EndUserText.label: 'Basic Rate' 
+   BasicRate;
+   
+   @UI:{ lineItem: [{ position: 250, label: 'Vehicle No' }],
+        identification: [{ position: 250, label: 'Vehicle No' }] } 
+    @EndUserText.label: 'Vehicle No' 
+   Vehicleno;
+   
+   @UI:{ lineItem: [{ position: 260, label: 'Transporter Name' }],
+        identification: [{ position: 260, label: 'Transporter Name' }] } 
+    @EndUserText.label: 'Transporter Name' 
+   Transportername;
+   
+   @UI:{ lineItem: [{ position: 270, label: 'E-Invoice Ack No' }],
+        identification: [{ position: 270, label: 'E-Invoice Ack No' }] } 
+    @EndUserText.label: 'E-Invoice Ack No' 
+   EInvoiceAckNo;
+   
+   @UI:{ lineItem: [{ position: 280, label: 'E-Invoice Ack Date' }],
+        identification: [{ position: 280, label: 'E-Invoice Ack Date' }] } 
+    @EndUserText.label: 'E-Invoice Ack Date' 
+   EInvoiceAckDt;
+   
+   @UI:{ lineItem: [{ position: 290, label: 'E-Invoice IRN' }],
+        identification: [{ position: 290, label: 'E-Invoice IRN' }] } 
+    @EndUserText.label: 'E-Invoice IRN' 
+   EInvoiceIRN;
+   
+   @UI:{ lineItem: [{ position: 300, label: 'E-Way Bill Number' }],
+        identification: [{ position: 300, label: 'E-Way Bill Number' }] } 
+    @EndUserText.label: 'E-Way Bill Number' 
+   EWaybillno;
+   
+   @UI:{ lineItem: [{ position: 310, label: 'E-Way Bill Date' }],
+        identification: [{ position: 310, label: 'E-Way Bill Date' }] } 
+    @EndUserText.label: 'E-Way Bill Date' 
+   EWaybillDt;
+   
+   @UI:{ lineItem: [{ position: 320, label: 'Carrier Type' }],
+        identification: [{ position: 320, label: 'Carrier Type' }] } 
+    @EndUserText.label: 'Carrier Type' 
+   CarrierType;
+   
+   @UI:{ lineItem: [{ position: 322, label: 'LR/Challan Number' }],
+        identification: [{ position: 322, label: 'LR/Challan Number' }] } 
+    @EndUserText.label: 'LR / Challan Number' 
+   LRchallanno;
+   
+   @UI:{ lineItem: [{ position: 324, label: 'LR/Challan Date' }],
+        identification: [{ position: 324, label: 'LR/Challan Date' }] } 
+    @EndUserText.label: 'LR/Challan Date' 
+   LRchallandt;
+   
+   @UI:{ lineItem: [{ position: 330, label: 'Broker Code' }],
+        identification: [{ position: 330, label: 'Broker Code' }] } 
+    @EndUserText.label: 'Broker Code' 
+   Brokercode;
+   
+   @UI:{ lineItem: [{ position: 340, label: 'Broker Name' }],
+        identification: [{ position: 340, label: 'Broker Name' }] } 
+    @EndUserText.label: 'Broker Name' 
+   Brokername;
+   
+   @UI:{ lineItem: [{ position: 350, label: 'Broker Rate' }],
+        identification: [{ position: 350, label: 'Broker Rate' }] } 
+    @EndUserText.label: 'Broker Rate' 
+   Brokerrate;
+   
+   @UI:{ lineItem: [{ position: 360, label: 'Broker Value' }],
+        identification: [{ position: 360, label: 'Broker Value' }] } 
+    @EndUserText.label: 'Broker Value' 
+   Brokervalue;
+   
+   @UI:{ lineItem: [{ position: 370, label: 'Bill To Party Customer Code' }],
+        identification: [{ position: 370, label: 'Bill To Party Customer Code' }] } 
+    @EndUserText.label: 'Bill To Party Customer Code' 
+   Billtocustomercode;
+   
+   @UI:{ lineItem: [{ position: 380, label: 'Bill To Party Customer Name' }],
+        identification: [{ position: 380, label: 'Bill To Party Customer Name' }] } 
+    @EndUserText.label: 'Bill To Party Customer Name' 
+   Billtocustomername;
+   
+//   @UI:{ lineItem: [{ position: 390, label: 'PAN Number' }],
+//        identification: [{ position: 390, label: 'PAN Number' }] } 
+//    @EndUserText.label: 'PAN Number' 
+//   PANno;
+   
+   @UI:{ lineItem: [{ position: 400, label: 'GST Nnumber of Bill to Party Customer' }],
+        identification: [{ position: 400, label: 'GST Nnumber of Bill to Party Customer' }] } 
+    @EndUserText.label: 'GST Nnumber of Bill to Party Customer' 
+   GSTnobillto;
+   
+   @UI:{ lineItem: [{ position: 410, label: 'Sold to Party Customer Code' }],
+        identification: [{ position: 410, label: 'Sold to Party Customer Code' }] } 
+    @EndUserText.label: 'Sold to Party Customer Code' 
+   Soldtocustomercode;
+   
+   @UI:{ lineItem: [{ position: 420, label: 'Sold to Party Customer Name' }],
+        identification: [{ position: 420, label: 'Sold to Party Customer Name' }] } 
+    @EndUserText.label: 'Sold to Party Customer Name' 
+   Soldtocustomername;
+   
+   @UI:{ lineItem: [{ position: 430, label: 'GST Nnumber of Ship to Party Customer' }],
+        identification: [{ position: 430, label: 'GST Nnumber of Ship to Party Customer' }] } 
+    @EndUserText.label: 'GST Nnumber of Ship to Party Customer' 
+   GSTnoshipto;
+   
+   @UI:{ lineItem: [{ position: 440, label: 'Customer Reference Number' }],
+        identification: [{ position: 440, label: 'Customer Reference Number' }] } 
+    @EndUserText.label: 'Customer Reference Number' 
+   Customerref;
+   
+   @UI:{ lineItem: [{ position: 450, label: 'Customer Reference Date' }],
+        identification: [{ position: 450, label: 'Customer Reference Date' }] } 
+    @EndUserText.label: 'Customer Reference Date' 
+   Custrefdt;
+   
+   @UI:{ lineItem: [{ position: 460, label: 'Sale Contract Number' }],
+        identification: [{ position: 460, label: 'Sale Contract Number' }] } 
+    @EndUserText.label: 'Sale Contract Number' 
+   SalesContract;
+   
+   @UI:{ lineItem: [{ position: 470, label: 'Sales Contract Date' }],
+        identification: [{ position: 470, label: 'Sales Contract Date' }] } 
+    @EndUserText.label: 'Sales Contract Date' 
+   SalesContractDate;
+   
+   @UI:{ lineItem: [{ position: 480, label: 'Delivery Challan Number' }],
+        identification: [{ position: 480, label: 'Delivery Challan Number' }] } 
+    @EndUserText.label: 'Delivery Challan Number' 
+   Deliverychallanno;
+   
+   @UI:{ lineItem: [{ position: 490, label: 'Delivery Challan Date' }],
+        identification: [{ position: 490, label: 'Delivery Challan Date' }] } 
+    @EndUserText.label: 'Delivery Challan Date' 
+   Deliverychallandt;
+   
+   @UI:{ lineItem: [{ position: 500, label: 'Material Code' }],
+        identification: [{ position: 500, label: 'Material Code' }] } 
+    @EndUserText.label: 'Material Code' 
+   materialcode;
+   
+   @UI:{ lineItem: [{ position: 510, label: 'Material Name' }],
+        identification: [{ position: 510, label: 'Material Name' }] } 
+    @EndUserText.label: 'Material Name' 
+   Productdes;
+   
+    @UI:{ lineItem: [{ position: 520, label: 'TCS Rate' }],
+        identification: [{ position: 520, label: 'TCS Rate' }] } 
+    @EndUserText.label: 'TCS Rate' 
+   TCSrate;
+   
+   @UI:{ lineItem: [{ position: 530, label: 'TCS Value' }],
+        identification: [{ position: 530, label: 'TCS Value' }] } 
+    @EndUserText.label: 'TCS Value' 
+   TCSvalue;
+   
+    @UI:{ lineItem: [{ position: 540, label: 'Gate Entry No' }],
+        identification: [{ position: 540, label: 'Gate Entry No' }] } 
+    @EndUserText.label: 'Gate Entry No'  
+   @UI.selectionField: [{ position: 10 }] 
+   Gateentryno;
+   
+   @UI:{ lineItem: [{ position: 542, label: 'Gate Entry Date' }],
+        identification: [{ position: 542, label: 'Gate Entry Date' }] } 
+    @EndUserText.label: 'Gate Entry Date' 
+   YY1_GateEntryDate_BDH;
+   
+   @UI:{ lineItem: [{ position: 544, label: 'Gate Entry Time' }],
+        identification: [{ position: 544, label: 'Gate Entry Time' }] } 
+    @EndUserText.label: 'Gate Entry Time' 
+   YY1_GateEntryTime_BDH;
+
+   @UI:{ lineItem: [{ position: 550, label: 'GL Number' }],
+        identification: [{ position: 550, label: 'GL Number' }] } 
+    @EndUserText.label: 'GL Number' 
+   GLaccount;
+   
+   @UI:{ lineItem: [{ position: 560, label: 'Bill To Party Address' }],
+        identification: [{ position: 560, label: 'Bill To Party Address' }] } 
+    @EndUserText.label: 'Bill To Party Address' 
+   BilltopartyAdrs;
+   
+   @UI:{ lineItem: [{ position: 570, label: 'Ship To Party Address' }],
+        identification: [{ position: 570, label: 'Ship To Party Address' }] } 
+    @EndUserText.label: 'Ship To Party Address' 
+   shiptopartyadrs;
+   
+   @UI:{ lineItem: [{ position: 580, label: 'PAN No Bill To Party' }],
+        identification: [{ position: 580, label: 'PAN No Bill To Party' }] } 
+    @EndUserText.label: 'PAN No Bill To Party' 
+  PANnobillto;
+  
+  @UI:{ lineItem: [{ position: 590, label: 'PAN No Ship To Party' }],
+        identification: [{ position: 590, label: 'PAN No Ship To Party' }] } 
+    @EndUserText.label: 'PAN No Ship To Party' 
+   PANnoshipto;
+   
+//   @UI:{ lineItem: [{ position: 600, label: 'Export Pan No' }],
+//        identification: [{ position: 600, label: 'Export Pan No' }] } 
+//    @EndUserText.label: 'Export Pan No' 
+//   ExportPANno;
+   
+   @UI:{ lineItem: [{ position: 610, label: 'GL Description' }],
+        identification: [{ position: 610, label: 'GL Description' }] } 
+    @EndUserText.label: 'GL Description' 
+   GLDescription;
+   
+   @UI:{ lineItem: [{ position: 620, label: 'HSN Code' }],
+        identification: [{ position: 620, label: 'HSN Code' }] } 
+    @EndUserText.label: 'HSN Code' 
+   HSNcode;
+   
+         @UI:{ lineItem: [{ position: 630, label: 'Ship To Customer Name' }],
+        identification: [{ position: 630, label: 'Ship To Customer Name' }] } 
+    @EndUserText.label: 'Ship To Customer Name' 
+   shiptocustomername;
+      @UI:{ lineItem: [{ position: 640, label: 'Ship To Customer Code' }],
+        identification: [{ position: 640, label: 'Ship To Customer Code' }] } 
+    @EndUserText.label: 'Ship To Customer Code' 
+   Shiptocustomercode;
+   
+      @UI:{ lineItem: [{ position: 650, label: 'Payer Customer Code' }],
+        identification: [{ position: 650, label: 'Payer Customer Code' }] } 
+    @EndUserText.label: 'Payer Customer Code' 
+   payercustomercode;
+      @UI:{ lineItem: [{ position: 660, label: 'Payer Customer Name' }],
+        identification: [{ position: 660, label: 'Payer Customer Name' }] } 
+    @EndUserText.label: 'Payer Customer Name' 
+   payercustomername;
+   
+         @UI:{ lineItem: [{ position: 660, label: 'Sold To Party AdDRESS' }],
+        identification: [{ position: 660, label: 'Sold To Party AdDRESS' }] } 
+    @EndUserText.label: 'Sold To Party AdDRESS' 
+   SoldtopartyAdrs;
+   
+            @UI:{ lineItem: [{ position: 660, label: 'GST No Sold To' }],
+        identification: [{ position: 660, label: 'GST No Sold To' }] } 
+    @EndUserText.label: 'GST No Sold To' 
+   GSTnosoldto;
+   
+               @UI:{ lineItem: [{ position: 660, label: 'PAN No Sold To' }],
+        identification: [{ position: 660, label: 'PAN No Sold To' }] } 
+    @EndUserText.label: 'PAN No Sold To' 
+   PANnosoldto;
+   
+                  @UI:{ lineItem: [{ position: 660, label: 'Payer Party Address' }],
+        identification: [{ position: 660, label: 'Payer Party Address' }] } 
+    @EndUserText.label: 'Payer Party Address' 
+   payerpartyAdrs;
+   
+                  @UI:{ lineItem: [{ position: 660, label: 'PAN No Payer' }],
+        identification: [{ position: 660, label: 'PAN No Payer' }] } 
+    @EndUserText.label: 'PAN No Payer' 
+   PANnopayer;
+   
+                  @UI:{ lineItem: [{ position: 660, label: 'GST No Payer' }],
+        identification: [{ position: 660, label: 'GST No Payer' }] } 
+    @EndUserText.label: 'GST No Payer' 
+   GSTnopayer;
+   
+   
+    @UI.hidden: true   
+   Product;  
+//   @UI.hidden: true 
+//   Productdes;
+   
+@UI.hidden: true
+   BaseUnit;
+   
+   
+@UI.hidden: true
+   TransactionCurrency;
+      
+}

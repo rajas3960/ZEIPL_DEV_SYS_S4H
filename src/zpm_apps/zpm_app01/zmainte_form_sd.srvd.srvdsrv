@@ -1,0 +1,6 @@
+@EndUserText.label: 'Maintenance Form SD'
+define service ZMAINTE_FORM_SD {
+  expose ZMAINTE_CE      as MainHeader;
+  expose ZMAINTE_DES     as MainItem;
+  expose ZMAINTE_ITXT_RE;
+}

@@ -1,0 +1,9 @@
+CLASS zbp_mm_i_app09_rv DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zmm_i_app09_rv.
+puBLIC SECTION.
+class-DATA: gt_hdr type table of zmm_a_app09_htb.
+ENDCLASS.
+
+
+
+CLASS ZBP_MM_I_APP09_RV IMPLEMENTATION.
+ENDCLASS.

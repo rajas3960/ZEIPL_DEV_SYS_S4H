@@ -1,0 +1,93 @@
+@Metadata.layer: #PARTNER
+@UI: { headerInfo: {
+typeName: 'Billing Booking App',
+typeNamePlural: 'Billing Booking App',
+title: { type: #STANDARD, value: 'Sno' }  } }
+annotate entity ZSD_BILLING_PV with
+{
+  @UI.facet: [ { id:              'Header',
+                             purpose:         #STANDARD,
+                             type:            #IDENTIFICATION_REFERENCE,
+                             label:           'Billing Booking',
+                             position:        10
+                             },
+                              { id:              'Items',
+                         purpose:         #STANDARD,
+                         type:            #LINEITEM_REFERENCE,
+                         label:           'Line Item',
+                         position:        20,
+                         targetElement:   'Item'} ]
+  @UI.hidden: true
+  BillUuid;
+
+  @UI: { lineItem: [{ position: 10, label: 'Serial No' }],
+  identification: [{ position: 10, label: 'Serial No' },
+        { type: #FOR_ACTION, dataAction: 'PostInvoice', label: 'Park Invoice',position: 10 }]}
+  Sno;
+
+  @UI: { lineItem:       [{ position: 20, label: 'Invoicing Party' }],
+         identification: [{ position: 20, label: 'Invoicing Party' }] }
+  InvoicingParty;
+
+  @UI: { lineItem:       [{ position: 30, label: 'Invoice/Document Date' }],
+         identification: [{ position: 30, label: 'Invoice/Document Date' }] }
+  DocumentDate;
+
+  @UI: { lineItem:       [{ position: 40, label: 'Posting Date' }],
+         identification: [{ position: 40, label: 'Posting Date' }] }
+  PostingDate;
+
+  @UI: { lineItem:       [{ position: 50, label: 'Reference' }],
+         identification: [{ position: 50, label: 'Reference' }] }
+  Reference;
+
+  @UI: { lineItem:       [{ position: 60, label: 'Gross Invoice Amount' }],
+         identification: [{ position: 60, label: 'Gross Invoice Amount' }] }
+  Amount;
+
+  @UI.hidden: true
+  CurrencyKey;
+
+  @UI: { lineItem:       [{ position: 80, label: 'Business Place' }],
+         identification: [{ position: 80, label: 'Business Place' }] }
+  BusinessPlace;
+  //
+  //  @UI: { lineItem:       [{ position: 90, label: 'Calculate Tax' }],
+  //         identification: [{ position: 90, label: 'Calculate Tax' }] }
+  @UI.hidden: true
+  caltax;
+  @UI.hidden: true
+  CalculateTax;
+
+  @UI: { lineItem:       [{ position: 100, label: 'Document Type' }],
+         identification: [{ position: 100, label: 'Document Type' }] }
+  DocumentType;
+
+  //  @UI: { lineItem:       [{ position: 110, label: 'Withholding Tax' }],
+  //         identification: [{ position: 110, label: 'Withholding Tax' }] }
+  @UI.hidden: true
+  WithholdingTax;
+  @UI: { lineItem:       [{ position: 120, label: 'Supplier Invoice' }],
+           identification: [{ position: 120, label: 'Supplier Invoice' }] }
+
+  supplierinvoice;
+  @UI.hidden: true
+  LocalCreatedBy;
+
+  @UI.hidden: true
+  LocalCreatedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  /* Associations */
+  Item;
+
+}

@@ -1,0 +1,4 @@
+@EndUserText.label: 'Sales Register Service Definition'
+define service ZSALES_REGISTER_SD {
+  expose ZSALES_REPORT_CV as Sales;
+}

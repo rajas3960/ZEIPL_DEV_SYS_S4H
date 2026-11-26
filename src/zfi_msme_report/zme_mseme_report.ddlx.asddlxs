@@ -1,0 +1,52 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: { typeName: 'MSME REPORT',
+                typeNamePlural: 'MSME REPORT',
+                title: { type: #STANDARD, label: 'MSME REPORTS', value: 'Vendor' } },
+  presentationVariant: [{ sortOrder: [{ by: 'Vendor', direction:  #DESC }] }] }
+annotate entity ZC_MSME_REPORT_PV with
+  parameters
+    @EndUserText.label: 'Company Code'
+    P_companycode,
+    @EndUserText.label: 'Key Date'
+    p_currdate
+{
+  @UI.lineItem: [{ position: 10 , label: 'Supplier Code' }]
+  @UI.selectionField: [{ position: 10 }]
+  @EndUserText.label: 'Supplier'
+  Vendor;
+  @UI.lineItem: [{ position: 15 , label: 'Supplier Name' }]
+  VendorName;
+  @UI.lineItem: [{ position: 20 , label: 'MSME Reg. No.' }]
+  MSMEno;
+  @UI.lineItem: [{ position: 30 , label: 'MSME Reg. Date' }]
+  MSMEdate;
+  @UI.lineItem: [{ position: 40 , label: 'PAN NO' }]
+  PAN;
+  @UI.lineItem: [{ position: 50 , label: 'Invoice Number' }]
+  InvoiceNo;
+  @UI.lineItem: [{ position: 60 , label: 'Invoice Date' }]
+  InvDate;
+  @UI.lineItem: [{ position: 70 , label: 'Total Amount Due' }]
+  TotalDueAmount;
+  @UI.lineItem: [{ position: 80 , label: 'Amount Due' }]
+  AmountDueMoreThan45Days;
+  @UI.lineItem: [{ position: 90 , label: 'Outstanding Days' }]
+  ODDays;
+  @UI.lineItem: [{ position: 100 , label: 'NetDue Date' }]
+  NetDueDate;
+  @UI.lineItem: [{ position: 110 , label: 'Posting Date' }]
+  PostDate;
+  @UI.lineItem: [{ position: 120 , label: 'Company Code' }]
+  CompanyCode;
+  //  @UI.hidden: true
+  //  RecordDate;
+  @UI.hidden: true
+  GlobalCurrency;
+  @UI.lineItem: [{ position: 130 , label: 'Minority Indicator' }]
+  @UI.selectionField: [{ position: 20 }]
+  @EndUserText.label: 'Minority Indicator'
+  MinorityIndicator;
+
+
+}

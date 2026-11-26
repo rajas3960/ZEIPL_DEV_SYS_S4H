@@ -1,0 +1,21 @@
+managed implementation in class zbp_sd_lc_app03_rv unique;
+strict ( 2 );
+
+define behavior for ZSD_LC_APP03_RV //alias <alias_name>
+//persistent table <???>
+with unmanaged save
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+//  create ( authorization : global );
+//  update;
+//  delete;
+  field ( readonly ) Lnum;
+  action ( features : instance, authorization : instance ) getapp result [1] $self;
+  action ( features : instance, authorization : instance ) getrej result [1] $self;
+ side effects
+  { action getapp affects $self;
+    action getrej affects  $self ;
+}
+}

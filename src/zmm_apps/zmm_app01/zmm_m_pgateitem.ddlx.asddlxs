@@ -1,0 +1,71 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Gate Entry - Procurement Item',
+typeNamePlural: 'Gate Entry - Procurement Item',
+title: { type: #STANDARD, value: 'Material' }
+}}
+annotate entity ZMM_C_PGATEITEM
+    with 
+{
+  @UI.facet: [ { id:              'Header',
+                      purpose:         #STANDARD,
+                      type:            #IDENTIFICATION_REFERENCE,
+                      label:           'Procurement Item',
+                      position:        10 }]
+@UI.hidden: true 
+Uuid;
+  @UI: {  lineItem:       [ { position: 10, label: 'Item' } ],
+        identification:   [ { position: 10, label: 'Item' } ]}
+        @EndUserText.label: 'Order No'
+Purchaseorderitem;
+  @UI: {  lineItem:       [ { position: 20, label: 'Item Code' } ],
+        identification:   [ { position: 20, label: 'Item Code' } ]}
+        @EndUserText.label: 'Item Code'
+Material;
+  @UI: {  lineItem:       [ { position: 30, label: 'Item Name' } ],
+        identification:   [ { position: 30, label: 'Item Name' } ]}
+        @EndUserText.label: 'Item Name'
+Materialtext;
+  @UI: {  lineItem:       [ { position: 40, label: 'Order No' } ],
+        identification:   [ { position: 40, label: 'Order No' } ]}
+        @EndUserText.label: 'Order No'
+Purchaseorder;
+  @UI: {  lineItem:       [ { position: 50, label: 'Plant' } ],
+        identification:   [ { position: 50, label: 'Plant' } ]}
+        @EndUserText.label: 'Plant'
+Plant;
+  @UI: {  lineItem:       [ { position: 60, label: 'UOM' } ],
+        identification:   [ { position: 60, label: 'UOM' } ]}
+        @EndUserText.label: 'UOM'
+Baseunit;
+  @UI: {  lineItem:       [ { position: 70, label: 'Quantity' } ],
+        identification:   [ { position: 70, label: 'Quantity' } ]}
+        @EndUserText.label: 'Quantity'
+Quantity;
+  @UI: {  lineItem:       [ { position: 80, label: 'Remarks' } ],
+        identification:   [ { position: 80, label: 'Remarks' } ]}
+        @EndUserText.label: 'Remarks'
+Remark;
+@UI.hidden: true 
+Gateentryno;
+@UI.hidden: true 
+Plantname;
+@UI.hidden: true 
+Tareweight;
+@UI.hidden: true 
+Grossweight;
+@UI.hidden: true 
+Netweight;
+@UI.hidden: true 
+Createdby;
+@UI.hidden: true 
+Createdat;
+@UI.hidden: true 
+Lastchangedby;
+@UI.hidden: true 
+Lastchangedat;
+@UI.hidden: true 
+/* Associations */
+_Head;
+    
+}

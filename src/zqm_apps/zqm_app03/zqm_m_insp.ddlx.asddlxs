@@ -1,0 +1,127 @@
+@Metadata.layer: #CORE
+@UI: { headerInfo: {
+typeName: 'KPI - Specification',
+typeNamePlural: 'KPI - Specification',
+title: { type: #STANDARD, value: 'Inspectionlot' }
+}}
+@UI.createHidden: true
+@UI.deleteHidden: true
+
+annotate entity ZQM_C_INSP
+    with 
+{
+@UI.facet: [ {
+                id      : 'Header',
+                label   : 'Inspection Details',
+                type    : #IDENTIFICATION_REFERENCE,
+                purpose : #STANDARD,
+                position: 10
+                              },
+          {
+                id            : 'Item',
+                purpose       : #STANDARD,
+                type          : #LINEITEM_REFERENCE,
+                label         : 'Inspection Specification',
+                position      : 20,
+                targetElement : '_InspKPI'
+                              } ]
+@UI.hidden: true
+Uuid;
+  @UI: {  lineItem:       [ { position: 10, label: 'Inspectionlot' } ],
+        identification:   [ { position: 10, label: 'Inspectionlot' },
+        { type: #FOR_ACTION, dataAction: 'GetSpecificaton', label: 'Get Specification',position: 10 },
+        { type: #FOR_ACTION, dataAction: 'Createresult', label: 'Create Result',position: 20 },
+        { type: #FOR_ACTION, dataAction: 'updateresult', label: 'Update Result',position: 30 },
+        { type: #FOR_ACTION, dataAction: 'UpdateUD', label: 'UD Code',position: 40 },
+        { type: #FOR_ACTION, dataAction: 'PostInvoice', label: 'Park Debit Note',position: 50 } ]}
+        @EndUserText.label: 'Inspectionlot'
+Inspectionlot;
+  @UI: {  lineItem:       [ { position: 20, label: 'Inspection Date' } ],
+        identification:   [ { position: 20, label: 'Inspection Date' } ]}
+        @EndUserText.label: 'Inspection Date'
+Inspectiondate;
+  @UI: {  lineItem:       [ { position: 30, label: 'PurchaseOrder' } ],
+        identification:   [ { position: 30, label: 'PurchaseOrder' } ]}
+        @EndUserText.label: 'PurchaseOrder'
+Purchaseorder;
+  @UI: {  lineItem:       [ { position: 40, label: 'PO Item' } ],
+        identification:   [ { position: 40, label: 'PO Item' } ]}
+        @EndUserText.label: 'PO Item'
+Purchaseorderitem;
+@UI.hidden: true
+Materialdocument;
+@UI.hidden: true
+Materialdocumentyear;
+@UI.hidden: true
+Materialdocumentitem;
+  @UI: {  lineItem:       [ { position: 50, label: 'UOM' } ],
+        identification:   [ { position: 50, label: 'UOM' } ]}
+        @EndUserText.label: 'UOM'
+Baseunit;
+  @UI: {  lineItem:       [ { position: 60, label: 'Inspection Lotqty' } ],
+        identification:   [ { position: 60, label: 'Inspection Lotqty' } ]}
+        @EndUserText.label: 'Inspection Lotqty'
+Inspectionlotqty;
+@UI.hidden: true
+Inspectionlottype;
+  @UI: { identification:   [ { position: 80, label: 'Debit Amount' } ]}
+        @EndUserText.label: 'Debit Amount'
+Totalamt;
+  @UI: { identification:   [ { position: 90, label: 'Usage Decision' } ]}
+        @EndUserText.label: 'Usage Decision'
+Usagedecisioncode;
+  @UI: { identification:   [ { position: 100, label: 'Reference' } ]}
+        @EndUserText.label: 'Reference'
+Reference;
+  @UI: { identification:   [ { position: 110, label: 'Posting Date' } ]}
+        @EndUserText.label: 'Posting Date'
+Postingdate;
+  @UI: { identification:   [ { position: 120, label: 'Invoice' } ]}
+        @EndUserText.label: 'Invoice'
+Supplierinvoice;
+  @UI: { identification:   [ { position: 130, label: 'Fiscal Year' } ]}
+        @EndUserText.label: 'Fiscal Year'
+Fiscalyear;
+
+@UI.hidden: true
+Usagedecisiontext;
+
+@UI.hidden: true
+Createindicator;
+@UI.hidden: true
+Updateindicator;
+@UI.hidden: true
+Udcodeindicator;
+
+
+
+@UI.hidden: true
+Documentcurrency;
+
+@UI.hidden: true
+Postinvoiceflag;
+@UI.hidden: true
+Suppllier;
+@UI.hidden: true
+Taxcode;
+@UI.hidden: true
+Paymentterms;
+@UI.hidden: true
+Inspindicator;
+@UI.hidden: true
+Getspindicator;
+@UI.hidden: true
+Createdby;
+@UI.hidden: true
+Createdat;
+@UI.hidden: true
+Lastchangedby;
+@UI.hidden: true
+Lastchangedat;
+@UI.hidden: true
+/* Associations */
+_InspKPI;
+@UI.hidden: true
+_POHead;
+    
+}

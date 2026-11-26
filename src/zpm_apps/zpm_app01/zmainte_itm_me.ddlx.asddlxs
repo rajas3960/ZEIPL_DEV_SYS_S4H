@@ -1,0 +1,111 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'maintenancenotification item',
+typeNamePlural: 'maintenancenotification items',
+title: { type: #STANDARD, value: 'maintenancenotificationitem' } } }
+@UI.createHidden: true
+@UI.deleteHidden: true
+//@UI.updateHidden: true
+annotate entity ZMAINTE_ITM_C with
+{
+
+  @UI.facet: [ { id:              'Item',
+                purpose:         #STANDARD,
+                type:            #IDENTIFICATION_REFERENCE,
+                label:           'Standard Item',
+                position:        10 } ]
+
+  @UI:{ lineItem: [{ position: 10, label: 'maintenancenotification' }],
+      identification: [{ position: 10, label: 'maintenancenotification' }] }
+  @EndUserText.label: 'maintenancenotification'
+  maintenancenotification;
+  @UI:{ lineItem: [{ position: 20, label: 'maintenancenotificationitem' }],
+      identification: [{ position: 20, label: 'maintenancenotificationitem' }] }
+  @EndUserText.label: 'maintenancenotificationitem'
+  maintenancenotificationitem;
+  @UI:{ lineItem: [{ position: 30, label: 'Why1' }],
+      identification: [{ position: 30, label: 'Why1' }] }
+  @EndUserText.label: 'Why1'  
+  why1;
+  @UI:{ lineItem: [{ position: 40, label: 'Why2' }],
+      identification: [{ position: 40, label: 'Why2' }] }
+  @EndUserText.label: 'Why2'  
+  why2;
+  @UI:{ lineItem: [{ position: 50, label: 'Why3' }],
+      identification: [{ position: 50, label: 'Why3' }] }
+  @EndUserText.label: 'Why3'  
+  why3;
+  @UI:{ lineItem: [{ position: 60, label: 'Why4' }],
+      identification: [{ position: 60, label: 'Why4' }] }
+  @EndUserText.label: 'Why4'  
+  why4;
+    @UI:{ lineItem: [{ position: 70, label: 'Why5' }],
+      identification: [{ position: 70, label: 'Why5' }] }
+  @EndUserText.label: 'Why5'
+  why5;
+  
+  @UI.identification: [
+  {
+     position: 80,
+     type: #WITH_URL,
+     label: 'Link1',
+     value: 'url1',
+     url: 'url1'
+  }
+  ]
+
+  @UI.lineItem: [
+      {
+          position: 80,
+          type: #WITH_URL,
+          label: 'Link1',
+          value: 'url1',
+          url: 'url1'
+      }
+  ]
+  url1;
+//  @UI.identification: [
+//  {
+//   position: 90,
+//   type: #WITH_URL,
+//   label: 'Link2',
+//   value: 'url2',
+//   url: 'url2'
+//  }
+//  ]
+//
+//  @UI.lineItem: [
+//      {
+//          position: 90,
+//          type: #WITH_URL,
+//          label: 'Link2',
+//          value: 'url2',
+//          url: 'url2'
+//      }
+//  ]
+//  url2;
+//  @UI.identification: [
+//  {
+//  position: 100,
+//  type: #WITH_URL,
+//  label: 'Link3',
+//  value: 'url3',
+//  url: 'url3'
+//  }
+//  ]
+//
+//  @UI.lineItem: [
+//      {
+//          position: 100,
+//          type: #WITH_URL,
+//          label: 'Link3',
+//          value: 'url3',
+//          url: 'url3'
+//      }
+//  ]
+//  url3;
+  /* Associations */
+  @UI.hidden: true
+  _header;
+
+}

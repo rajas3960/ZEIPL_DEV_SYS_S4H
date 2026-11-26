@@ -1,0 +1,32 @@
+managed implementation in class zbp_mm_i_gentry unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMM_I_GENTRY alias GateSecEntry
+persistent table zmm_app04_hdb
+draft table zmm_app04_hdbd
+lock master total etag Lastchangedby
+authorization master ( instance )
+etag master Lastchangedby
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly, numbering : managed ) Uuid;
+  field ( mandatory : create ) Gateentryseries, Gateno;
+  field ( readonly ) Gateentryid,Gateentryiddate,Securityremarks,Createdname;
+  field ( mandatory ) Vehicleno, Vehicletype,Trasporterid,Licenseno,Engineno;
+  field ( features : instance) Minepassno, Forestpassno;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+
+  determination head_modify on save {create;}
+  action ( features : instance ) PRINT result [1] $self;
+  validation gatenocheck on save { create; update; }
+
+  mapping for zmm_gate_htb corresponding;
+}

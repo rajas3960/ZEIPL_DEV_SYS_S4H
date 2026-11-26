@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Quotation Comparision"
+  },
+  "ui5AppDetails": {
+    "appId": "zmmapps01pv.zmmapps01pv"
+  },
+  "navigation": {
+    "targetMappingId": "ZMM_APPS01_PV_UI5R_TM",
+    "semanticObject": "zmm_apps01_pv",
+    "action": "Display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "ZMM_APPS01_PV_UI5R_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Quotation Comparision"
+      }
+    }
+  ]
+}

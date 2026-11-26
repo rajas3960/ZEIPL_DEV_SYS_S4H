@@ -1,0 +1,4 @@
+@EndUserText.label: 'Carrier Freight Orders for BTP'
+define service ZMM_SD_PO_TMFO {
+  expose ZMM_PO_TMFO_API as PoTmFo;
+}

@@ -1,0 +1,80 @@
+@Metadata.layer: #PARTNER
+@UI: { headerInfo: {
+typeName: 'Compare Supplier Quotation',
+typeNamePlural: 'Compare Supplier Quotations',
+
+title: { type: #STANDARD, value: 'RequestForQuotation' },
+         description: { type: #STANDARD, value: 'RequestForQuotationName' }
+         } }
+annotate entity ZMM_APPS01_PV with
+{
+  @UI.facet: [       {
+                    label: 'Compare Supplier Quotations',
+                    id: 'Headerinfo',
+                    type: #COLLECTION,
+                    position: 10
+                    },
+
+                   {
+                    id:  'Header',
+                    purpose:         #STANDARD,
+                    type:            #IDENTIFICATION_REFERENCE,
+                    label:           'Compare Supplier Quotations',
+                    parentId: 'Headerinfo',
+                    position:        10
+                    } ,
+
+
+                    {
+                    id:              'Items',
+                    purpose:         #STANDARD,
+                    type:            #LINEITEM_REFERENCE,
+                    label:           'Quotations',
+                    position:        20,
+                    targetElement:   'ITEM'
+                    },
+                       {
+                       id: 'Creted',
+                       purpose: #STANDARD,
+                       type: #FIELDGROUP_REFERENCE,
+                       parentId: 'Headerinfo',
+                       label: 'Users Detials',
+                       position: 30,
+                       targetQualifier: 'UserGrp'
+                      }]
+  @UI: { lineItem: [{ position: 10, label: 'Request for Quotation'}]}
+  @UI.identification: [
+  { type: #FOR_ACTION, dataAction: 'Compare', label: 'Compare', position: 10 },
+  { type: #FOR_ACTION, dataAction: 'Award',  label: 'Award', position: 20 }
+]
+  @Consumption.valueHelpDefinition: [
+  {
+  entity: {
+    name: 'ZMM_RFQ_VH',
+    element: 'RequestForQuotation'
+  }
+  }
+  ]
+  @UI.selectionField: [{ element: 'RequestForQuotation',position: 20 }]
+  @EndUserText.label: 'Request for Quotation'
+  RequestForQuotation;
+  @UI: { lineItem: [{ position: 10, label: 'Request for Quotation Name'}] }
+  RequestForQuotationName;
+  @UI.fieldGroup: [{ qualifier: 'UserGrp', position: 10,label: 'Created By' }]
+  CreatedByUserName;
+  @UI.hidden: true
+  CreatedByUser;
+  @UI.fieldGroup: [{ qualifier: 'UserGrp', position: 20,label: 'Created On' }]
+  CreationDate;
+  @UI.fieldGroup: [{ qualifier: 'UserGrp', position: 30,label: 'Publishing Date' }]
+  RFQPublishingDate;
+  @UI.hidden: true
+  RFQLifecycleStatus;
+  @UI: { lineItem: [{ position: 30, label: 'Status'}] }
+  @UI.fieldGroup: [{ qualifier: 'UserGrp', position: 40,label: 'Status' }]
+  Status;
+  /* Associations */
+  @UI.hidden: true
+  ITEM;
+
+}

@@ -1,0 +1,97 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Requi no',
+typeNamePlural: 'Requi no',
+title: { type: #STANDARD, value: 'Requino' } } }
+@UI.createHidden: true
+@UI.deleteHidden: true
+@UI.updateHidden: true
+annotate entity ZRESERVATION_HDR_C
+    with 
+{
+   @UI.facet: [ { id:              'Header',
+                        purpose:         #STANDARD,
+                        type:            #IDENTIFICATION_REFERENCE,
+                        label:           'Standard Header',
+                        position:        10 },
+                        { id:              'Items',
+                          purpose:         #STANDARD,
+                          type:            #LINEITEM_REFERENCE,
+                          label:           'Standard Item',
+                          position:        20,
+                          targetElement:   '_item'} ]
+                          
+    @UI:{ lineItem: [{ position: 10, label: 'Requisition No' }],
+          identification: [{ position: 10, label: 'Requisition No' } ,
+       { type: #FOR_ACTION, dataAction: 'PDF', label: 'Get PDF Output',position: 10 }          
+          ] }
+  @UI.selectionField: [{ position: 10 }]
+  @EndUserText.label: 'Requisition No'                       
+    Requino;
+    
+     @UI:{ lineItem: [{ position: 20, label: 'Product' }],
+          identification: [{ position: 20, label: 'Product' } ] }
+  @EndUserText.label: 'Product'
+  Product;
+  
+   @UI:{ lineItem: [{ position: 30, label: 'Division' }],
+          identification: [{ position: 30, label: 'Division' } ] }
+  @EndUserText.label: 'Division' 
+  Div;
+  
+   @UI:{ lineItem: [{ position: 40, label: 'Stock Type' }],
+          identification: [{ position: 40, label: 'Stock Type' } ] }
+  @EndUserText.label: 'Stock Type'
+    Stocktype;
+  
+   @UI:{ lineItem: [{ position: 50, label: 'Prepared By' }],
+          identification: [{ position: 50, label: 'Prepared By' } ] }
+  @EndUserText.label: 'Prepared By'
+    Preparedby;
+    
+     @UI:{ lineItem: [{ position: 60, label: 'Attachment' }],
+          identification: [{ position: 60, label: 'Attachment' } ] }
+  @EndUserText.label: 'Attachment'
+    attachment;
+    
+    @UI:{ identification: [{ position: 70, label: 'Cost' } ] }
+  @EndUserText.label: 'Cost' 
+    cost;       
+     @UI:{ identification: [{ position: 80, label: 'Batch No' } ] }
+  @EndUserText.label: 'Batch No'
+    batchno;
+    @UI:{ identification: [{ position: 90, label: 'Requisition Date' } ] }
+  @EndUserText.label: 'Requisition Date'
+    RequiDt;
+    
+//     @UI:{ lineItem: [{ position: 50, label: 'Issue To' }],
+//          identification: [{ position: 50, label: 'Issue To' } ] }
+//  @EndUserText.label: 'Issue To'
+//    issueto;
+//    
+//     @UI:{ lineItem: [{ position: 60, label: 'Issue No' }],
+//          identification: [{ position: 60, label: 'Issue No' } ] }
+//  @EndUserText.label: 'Issue No'
+//    issueno;
+//    
+//    @UI:{ lineItem: [{ position: 70, label: 'Issue Date' }],
+//          identification: [{ position: 70, label: 'Issue Date' } ] }
+//  @EndUserText.label: 'Issue Date'
+//    issuedt;
+    
+    
+   
+    
+   
+    
+    
+    @UI.hidden: true
+    filename;
+    @UI.hidden: true
+    mimetype;
+    
+    @UI.hidden: true
+    /* Associations */
+    _item;
+    
+}

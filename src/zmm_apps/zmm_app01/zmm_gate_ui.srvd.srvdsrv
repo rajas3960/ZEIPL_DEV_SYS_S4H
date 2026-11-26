@@ -1,0 +1,6 @@
+@EndUserText.label: 'Gate Entry Apps MM- UI Version'
+define service ZMM_GATE_UI {
+  expose ZMM_C_GATEHEAD  as GateHead;
+  expose ZMM_C_PGATEHEAD as POGateHead;
+  expose ZMM_C_PGATEITEM as POGateItem;
+}

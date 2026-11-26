@@ -1,0 +1,13 @@
+@EndUserText.label: 'Request For Quotation - Service Binding UI'
+define service ZMM_C_APPS08_UI {
+  expose ZMM_C_APPS08_PV1 as Mainpage;
+  expose ZMM_C_APPS08_IPV;
+  expose ZMM_APPS08_SUP;
+  expose ZMM_APPS08_P;
+  expose ZMM_APPS08_I;
+  expose ZMM_APPS08_GRP;
+  expose ZMM_APPS_C1;
+  expose ZMM_APPS_C2;
+  expose ZMM_APPS_C3;
+  expose ZMM_APPS_C4      as Overview;
+}

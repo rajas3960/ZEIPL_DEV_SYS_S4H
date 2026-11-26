@@ -1,0 +1,7 @@
+@EndUserText.label: 'Service Definition for Form'
+define service ZMAINT_FORM_SD {
+  expose ZMAINT_CUSENTITY as MainHeader;
+  expose ZMAINTENANCE     as MainItem;
+  expose ZMAINT_TABLE_ir;
+  expose ZMAINT_CONT_DES;
+}

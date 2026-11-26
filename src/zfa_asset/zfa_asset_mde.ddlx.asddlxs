@@ -1,0 +1,59 @@
+@Metadata.layer: #PARTNER
+@UI: { headerInfo: {
+typeName: 'Debit Note',
+typeNamePlural: 'Debit Note',
+title: { type: #STANDARD, value: 'CompanyCode' } } }
+@UI.createHidden: true
+@UI.updateHidden: true
+@UI.deleteHidden: true
+annotate entity ZFA_ASSET_PV with
+{
+  @UI.facet: [ { id:              'Item',
+                   purpose:         #STANDARD,
+                   type:            #IDENTIFICATION_REFERENCE,
+                   label:           'Standard Item',
+                   position:        10 } ]
+
+
+  @UI: { lineItem:       [ { position: 10, label: 'Company Code' } ],
+         identification: [ { position: 10, label: 'Company Code' } ],
+         selectionField: [ { position: 10 } ] }
+  CompanyCode;
+  @UI: { lineItem:       [ { position: 20, label: 'Fixed Asset' } ],
+         identification: [ { position: 20, label: 'Fixed Asset' } ],
+         selectionField: [ { position: 20 } ] }
+  FixedAssetExternalID;
+  @UI: { lineItem:       [ { position: 30, label: 'Asset Under Construction' } ],
+         identification: [ { position: 30, label: 'Asset Under Construction' } ],
+         selectionField: [ { position: 30 } ] }
+  AUCExternalID;
+  @UI: { lineItem:       [ { position: 40, label: 'WBS Element' } ],
+         identification: [ { position: 40, label: 'WBS Element' } ],
+         selectionField: [ { position: 40 } ] }
+  WBSElementExternalID;
+  @UI: { lineItem:       [ { position: 50, label: 'Project' } ],
+         identification: [ { position: 50, label: 'Project' } ],
+         selectionField: [ { position: 50 } ] }
+  Project;
+  @UI: { lineItem:       [ { position: 60, label: 'Currency' } ],
+         identification: [ { position: 60, label: 'Currency' } ] }
+  Curr;
+  @UI: { lineItem:       [ { position: 70, label: 'Fixed Asset Value' } ],
+         identification: [ { position: 70, label: 'Fixed Asset Value' } ] }
+  FA_Amount;
+  @UI: { lineItem:       [ { position: 80, label: 'Asset Under Construction Value' } ],
+         identification: [ { position: 80, label: 'Asset Under Construction Value' } ] }
+  AUC_Amount;
+  @UI: { lineItem:       [ { position: 90, label: 'WBS Element Value' } ],
+         identification: [ { position: 90, label: 'WBS Element Value' } ] }
+  WBS_Amount;
+  @UI: { lineItem:       [ { position: 100, label: 'Supplier' } ],
+         identification: [ { position: 100, label: 'Supplier' } ] }
+  Supplier;
+  @UI: { lineItem:       [ { position: 110, label: 'Supplier Name' } ],
+         identification: [ { position: 110, label: 'Supplier Name' } ] }
+  SupplierName;
+  @UI: { lineItem:       [ { position: 120, label: 'Supplier Invoice' } ],
+         identification: [ { position: 120, label: 'Supplier Invoice' } ] }
+  SupplierInvoice;
+}

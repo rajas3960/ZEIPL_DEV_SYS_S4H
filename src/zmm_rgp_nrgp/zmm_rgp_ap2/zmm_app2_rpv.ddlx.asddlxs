@@ -1,0 +1,263 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Material Outward - Gate Pass',
+typeNamePlural: 'Material Outward - Gate Passes',
+title: { type: #STANDARD, value: 'Gpnum' },
+         description: { type: #STANDARD, value: 'Statustext' }  } }
+
+@UI.deleteHidden: true
+@UI.createHidden: true 
+annotate entity ZMM_APP2_RPV
+    with 
+{
+    @UI.facet: [ { id:              'Header',
+                          purpose:         #STANDARD,
+                          type:            #IDENTIFICATION_REFERENCE,
+                          label:           'Gate Pass Detials',
+                          position:        10 },
+                           { id:              'Items',
+                      purpose:         #STANDARD,
+                      type:            #LINEITEM_REFERENCE,
+                      label:           'Gate Pass In',
+                      position:        20,
+                       targetElement:   '_item'} ]
+                          
+@UI.hidden: true
+  Uuid;
+  @UI: { lineItem: [{ position: 10, label: 'RGP/NRGP Actual No' }],
+  identification: [{ position: 10, label: 'RGP/NRGP Actual No' },
+   { type: #FOR_ACTION, dataAction: 'Statusc', label: 'Gate Verify',position: 10 },
+   { type: #FOR_ACTION, dataAction: 'Gateout', label: 'Gate Out',position: 20 } ]}
+  @EndUserText.label: 'RGP/NRGP Actual No'
+  @UI.selectionField: [{ position: 10 }]  
+  Rgpnrpactualno;
+  @UI: { lineItem: [{ position: 20, label: 'Reference Type' }],
+  identification: [{ position: 20, label: 'Reference Type' }]}
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_GPTYPE', element: 'value_low' }, distinctValues: true }]
+  Gptype;
+  @UI: { lineItem: [{ position: 30, label: 'Vendor' }],
+  identification: [{ position: 30, label: 'Vendor',importance: #HIGH }]}
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'I_Supplier',
+  element: 'Supplier' }  , additionalBinding: [{localElement: 'Vendname', element: 'SupplierName' , usage: #RESULT  }]    }]
+  Vendnum;
+  @UI.hidden: true
+  @UI: { identification: [{ position: 35, label: 'Vendor Name' }]}  
+  Vendname;
+  @UI: { identification: [{ position: 40, label: 'Planned Return Date' }]}
+  Plnrtndate;
+  @UI: { identification: [{ position: 50, label: 'Dispatch Through' }]}
+  Dispby;
+  @UI: { lineItem: [{ position: 60, label: 'Issued Date' }],
+  identification: [{ position: 60, label: 'Issued Date' }]}
+  Issuedate;
+  @UI: { lineItem: [{ position: 70, label: 'Issued By' }],
+  identification: [{ position: 70, label: 'Issued By' }]}
+  Issuedby;
+  @UI: { identification: [{ position: 80, label: 'Total Value' }]}
+  Gpvalue;
+  @UI: { identification: [{ position: 90, label: 'Reason for GP' }]}
+  Rsngp;
+  @UI: { identification: [{ position: 100, label: 'Packing List' }]}
+  Pcklist;
+    @UI: { identification: [{ position: 110, label: 'Name' }]}
+  Createdby;
+  @UI: { identification: [{ position: 120, label: 'Created At' }]}
+  Createdat;
+  
+  @UI: { lineItem: [{ position: 40, label: 'Vehicle No' }],
+  identification: [{ position: 130, label: 'Vehicle No' }]}
+  Vehicleno;
+  
+  @UI: {lineItem: [{ position: 45, label: 'Vehicle Type' }],
+  identification: [{position: 140,label: 'Vehicle Type',importance: #HIGH}]}
+  @Consumption.valueHelpDefinition: [{entity: { name: 'ZMM_APP2_VEHICLE',element: 'value_low'}}]
+  Vehicletype;
+  
+   @UI: { lineItem: [{ position: 50, label: 'Transporter Name' }],
+  identification: [{ position: 150, label: 'Transporter',importance: #HIGH }]}
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZAPP2_TRANSPORT',
+    element: 'Supplier' } }]
+  Transporterid;
+  @UI.hidden: true
+  Transporter;
+      @UI: { identification: [{ position: 160, label: 'E-Way Bill No' }]}
+  Ewabillno;
+     @UI: { identification: [{ position: 170, label: 'LR Number' }]}
+  LRnumber;
+  
+     @UI: { identification: [{ position: 180, label: 'LR Date' }]}
+  LRdate;
+  
+     @UI: { identification: [{ position: 190, label: 'From Place' }]}
+  Fromplace;
+  
+     @UI: { identification: [{ position: 200, label: 'To Place' }]}
+  Toplace;
+  @UI: { identification: [{ position: 210, label: 'Net Weight' }]}
+  Netwgt;
+      @UI: { identification: [{ position: 220, label: 'Gross Weight' }]}
+  Grosswgt;
+   @UI: { identification: [{ position: 230, label: 'Tare Weight' }]}
+  Tarewgt;
+    @UI: { identification: [{ position: 240, label: 'Attachment',importance: #HIGH }]}
+  Zattachment;
+     @UI: { identification: [{ position: 250, label: 'Authorised Person' }]}
+  Contpr;
+      @UI: { identification: [{ position: 260, label: 'Requested By' }]}
+Reqby;
+    @UI: { identification: [{ position: 270, label: 'Requested Dept' }]}
+Reqdpt;
+
+ @UI: { lineItem: [{ position: 22, label: 'Gate Verify No.' }],
+  identification: [{ position: 280, label: 'Gate Verify No.' }
+  ]}
+  @UI.selectionField: [{ position: 20 }]
+  @EndUserText.label: 'Gate Verify No.'
+  Gpnum;
+    @UI: { identification: [{ position: 290, label: 'Gate Verify Date' }]}  
+  Gitdat;
+    @UI: { identification: [{ position: 300, label: 'Gate Verify Time' }]}  
+  Gittim;
+    @UI: { identification: [{ position: 310, label: 'Gate Check Status' }]}  
+  Statustext;
+    @UI: { identification: [{ position: 320, label: 'Gate Out Date' }]}    
+  Gotdat;
+    @UI: { identification: [{ position: 330, label: 'Gate Out Time' }]}    
+  Gottim;  
+//  @UI: { lineItem: [{ position: 200, label: 'Remarks' }],
+//  identification: [{ position: 200, label: 'Remarks' ,importance: #HIGH}]}
+//  @UI.multiLineText: true
+//  Remarks;
+  @UI.hidden: true
+  Curky;
+
+
+  @UI.hidden: true
+  Delmark;
+  @UI.hidden: true
+  Mark;
+  @UI.hidden: true
+  Lastchangedby;
+  @UI.hidden: true
+  Lastchangedat;
+  /* Associations */
+  @UI.hidden: true
+  _item;   
+
+  @UI.hidden: true
+
+  Mark2;
+  @UI.hidden: true
+  Seqnum;
+
+  
+//  
+//  @UI: { lineItem: [{ position: 10, label: 'Plant'}],
+//  identification: [{ position: 4, label: 'Gate Check-In No' },
+//      {type: #FOR_ACTION, dataAction: 'Statusc' , label: 'Gate Check-In' , position: 10},
+//      {type: #FOR_ACTION, dataAction: 'Gateout' , label: 'Gate Out' , position: 20}  
+//  ]}
+//Gpnum;
+//@UI: { lineItem: [{ position: 21, label: 'Document Type' }],
+//  identification: [{ position: 21, label: 'Document Type' }]}
+////  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_GPTYPE', element: 'value_low' }, distinctValues: true }]
+//Gptype;
+//@UI.hidden: true
+//Vendnum;
+//@UI.hidden: true
+//Vendname; 
+//@UI.hidden: true
+//Plnrtndate;
+//
+//@UI: { lineItem: [{ position: 30, label: 'Vehicle No' }],
+//  identification: [{ position: 30, label: 'Vehicle No',importance: #HIGH }]} 
+//Vehicleno;
+//
+//@UI: {lineItem: [{ position: 40, label: 'Vehicle Type' }],
+//identification: [{position: 40,label: 'Vehicle Type',importance: #HIGH}]}
+//@Consumption.valueHelpDefinition: [{entity: { name: 'ZMM_APP2_VEHICLE',element: 'value_low'}}]
+//vehicletype;
+//
+// @UI: { lineItem: [{ position: 50, label: 'Dispatch Through' }],
+//  identification: [{ position: 50, label: 'Dispatch Through' }]}
+//Dispby;
+//@UI.hidden: true
+//Issuedate;
+//@UI.hidden: true
+//Issuedby;
+//@UI: { lineItem: [{ position: 60, label: 'Transporter Name' }],
+//  identification: [{ position: 60, label: 'Transporter',importance: #HIGH }]}
+//  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZAPP2_TRANSPORT',
+//    element: 'Supplier' } }]
+// 
+//Transporter;
+//@UI.hidden: true
+//Remarks;
+//@UI.hidden: true
+//Gpvalue;
+//@UI.hidden: true
+//Curky;
+//@UI.hidden: true
+//Rsngp;
+//@UI.hidden: true
+//Frghtscope;
+//@UI.hidden: true
+//Pcklist;
+//@UI.hidden: true
+//Delmark;
+//@UI.hidden: true
+//Mark;
+// @UI: { lineItem: [{ position: 70, label: 'Name' }],
+//  identification: [{ position: 70, label: 'Name' }]}
+//Createdby;
+// @UI: { lineItem: [{ position: 80, label: 'Create date' }],
+//  identification: [{ position: 80, label: 'Create date' }]}
+//Createdat;
+// @UI: { lineItem: [{ position: 90, label: 'Lastchanged by' }],
+//  identification: [{ position: 90, label: 'Lastchanged by' }]}
+//Lastchangedby;
+// @UI: { lineItem: [{ position: 100, label: 'Lastchange date' }],
+//  identification: [{ position: 100, label: 'Lastchange date' }]}
+//Lastchangedat;
+//@UI.hidden: true
+//Zattachment;
+//@UI.hidden: true
+//Minetype;
+//@UI.hidden: true
+//Filename;
+//@UI.hidden: true
+//Ebeln;
+//@UI.hidden: true
+//Insurno;
+//@UI.hidden: true
+//Ewabillno;
+//@UI.hidden: true
+//Netwgt;
+//@UI.hidden: true
+//Grosswgt;
+//@UI.hidden: true
+//Tarewgt;
+//@UI.hidden: true
+//Uom;
+//@UI.hidden: true
+//Gateno;
+//@UI: { lineItem: [{ position: 6, label: 'Gate In Date' }],
+//  identification: [{ position: 6, label: 'Gate In Date' }]}
+//Gitdat;
+//@UI: { lineItem: [{ position: 7, label: 'Gate In Time' }],
+//  identification: [{ position: 7, label: 'Gate In Time' }]}
+//Gittim;
+//@UI: { lineItem: [{ position: 8, label: 'Gate Out Date' }],
+//  identification: [{ position: 8, label: 'Gate Out Date' }]}
+//Gotdat;
+//@UI: { lineItem: [{ position: 9, label: 'Gate Out Time' }],
+//  identification: [{ position: 9, label: 'Gate Out Time' }]}
+//Gottim;
+//@UI: { lineItem: [{ position: 110, label: 'Status' }],
+//  identification: [{ position: 110, label: 'Status' }]}
+//Statustext;
+//@UI.hidden: true
+///* Associations */
+//_status;
+//    
+}

@@ -1,0 +1,18 @@
+managed implementation in class zbp_app1_truck_rv unique;
+strict ( 2 );
+
+define behavior for ZAPP1_TRUCK_RV //alias <alias_name>
+persistent table zapp01_truck_hd
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+   create ( authorization : global );
+  update ( features : instance );
+  delete ( features : instance );
+
+//  create ;
+//  update;
+//  delete;
+  mapping for zapp01_truck_hd corresponding ;
+}

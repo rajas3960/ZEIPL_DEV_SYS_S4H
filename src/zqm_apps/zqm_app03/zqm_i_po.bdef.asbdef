@@ -1,0 +1,93 @@
+managed implementation in class zbp_qm_i_po unique;
+strict ( 1 );
+with draft;
+
+define behavior for ZQM_I_PO alias POHead
+persistent table zqm_app03_db
+draft table zqm_app03_dbd
+lock master total etag Lastchangedby
+authorization master ( instance )
+etag master Lastchangedby
+{
+  create ( authorization : global );
+  update(features : instance);
+  delete(features : instance);
+  field ( numbering : managed, readonly ) Uuid;
+  field ( readonly : update ) Purchaseorder, Purchaseorderitem;
+  field ( readonly) Orderdate, Orderquantity,Material,Materialdes,Companycode,Companycodename,
+                Plant,Plantname,Baseunit;
+
+  draft action( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  association _Insp { create; with draft;}
+  association _InspKPI {with draft;}
+
+  determination AddPO on save {create;}
+  action( features : instance ) GetInsp result [1] $self;
+
+  side effects {
+        action GetInsp
+            affects $self, entity _Insp;
+            }
+
+  mapping for zqm_app03_db corresponding;
+}
+
+define behavior for ZQM_I_INSP alias Inspection
+persistent table zqm_insp_db
+draft table zqm_insp_dbd
+lock dependent by _POHead
+authorization dependent by _POHead
+//etag master <field_name>
+{
+  update(features : instance);
+  delete(features : instance);
+  field ( readonly ) Uuid, Purchaseorder, Purchaseorderitem, Inspectionlot;
+  field ( readonly ) Inspectiondate, Baseunit, Inspectionlottype,Createdat,
+                    Createdby,Lastchangedat,Lastchangedby,Inspectionlotqty;
+  field ( readonly ) Materialdocument, Materialdocumentitem,Materialdocumentyear,Usagedecisioncode,Usagedecisiontext,
+                     Createindicator,Updateindicator,Udcodeindicator,Reference,Postingdate,Postinvoiceflag,
+                     Supplierinvoice,Suppllier,Fiscalyear,Documentcurrency,Totalamt,Taxcode,Paymentterms,
+                     Inspindicator,Getspindicator;
+  association _POHead{with draft;}
+  association _InspKPI { create; with draft;}
+
+  action( features : instance ) GetSpecificaton result [1] $self;
+  action( features : instance ) Createresult result [1] $self;
+  action( features : instance ) updateresult result [1] $self;
+  action( features : instance ) UpdateUD parameter ZQM_UD_PARAMETER result [1] $self;
+  action( features : instance ) PostInvoice parameter ZQM_INVOICE_INP result [1] $self;
+
+  side effects {
+        action GetSpecificaton
+            affects $self, entity _InspKPI;
+            }
+
+  mapping for zqm_insp_db corresponding;
+}
+
+define behavior for ZQM_I_KMIC alias InspSpecif
+persistent table zqm_kpi_db
+draft table zqm_kpi_dbd
+lock dependent by _POHead
+authorization dependent by _POHead
+//etag master <field_name>
+{
+  update(features : instance);
+  delete(features : instance);
+  field ( numbering : managed, readonly ) Granduuid;
+  field ( readonly ) Uuid, Purchaseorder, Purchaseorderitem, Inspectionlot, Plangroup, Boocharacteristic;
+  field (readonly) Boocharacteristicversion,Booperationid,Inspunit,Inspectionspecid,Inspectionspeplant,
+                   Masteric,Specification,Insptargetvalue,Insplowerlimit,Inspupperlimit,
+                   Inspresultoriginalvalue,Amtvalue,Createdat,Createdby,Lastchangedat,Lastchangedby;
+  association _POHead{with draft;}
+  association _Insp{with draft;}
+
+  determination Update on modify { field Inspresultmeanvalue; }
+
+  mapping for zqm_kpi_db corresponding;
+}

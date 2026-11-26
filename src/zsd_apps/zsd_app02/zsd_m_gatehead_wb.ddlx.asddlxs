@@ -1,0 +1,115 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Gate Entry - Weigh Bridge',
+typeNamePlural: 'Gate Entry - Weigh Bridge',
+title: { type: #STANDARD, value: 'Gateentryno' }
+}}
+@UI.createHidden: true
+@UI.deleteHidden: true
+annotate entity ZSD_C_GATEHEAD_WB
+    with 
+{
+  @UI.facet: [ { id:              'Header',
+                      purpose:         #STANDARD,
+                      type:            #IDENTIFICATION_REFERENCE,
+                      label:           'Gate Entry Details',
+                      position:        10 },
+                      { id:              'SalesHead',
+                      purpose:         #STANDARD,
+                      type:            #LINEITEM_REFERENCE,
+                      label:           'Order Details',
+                      position:        20,
+                      targetElement:   '_SalesHead'},
+                      { id:              'SalesItems',
+                      purpose:         #STANDARD,
+                      type:            #LINEITEM_REFERENCE,
+                      label:           'Order Item Details',
+                      position:        30,
+                      targetElement:   '_SalesItem'}]
+@UI.hidden: true 
+Uuid;
+  @UI: {  lineItem:       [ { position: 10, label: 'Gate Entry No' } ],
+        identification:   [ { position: 10, label: 'Gate Entry No' },
+        { type: #FOR_ACTION, dataAction: 'CaptureIMG', label: 'Capture IMG',position: 10 }
+         ]}
+        @EndUserText.label: 'Gate Entry No'
+  @UI.selectionField: [{ position: 10 }]  
+ @Consumption.filter:{ mandatory:true, multipleSelections: true }     
+Gateentryno;
+//  @UI: {  lineItem:       [ { position: 20, label: 'Gate Entry Type' } ],
+//        identification:   [ { position: 20, label: 'Gate Entry Type' } ]}
+//        @EndUserText.label: 'Gate Entry Type' 
+//Gateentrytype;
+  @UI: {  lineItem:       [ { position: 30, label: 'Gate Entry Date' } ],
+        identification:   [ { position: 30, label: 'Gate Entry Date' } ]}
+        @EndUserText.label: 'Gate Entry Date' 
+Gateentrydate;
+  @UI: {  lineItem:       [ { position: 40, label: 'Gate Entry Time' } ],
+        identification:   [ { position: 40, label: 'Gate Entry Time' } ]}
+        @EndUserText.label: 'Gate Entry Time' 
+Gateentrytime;
+  @UI: {  lineItem:       [ { position: 50, label: 'Plant' } ],
+        identification:   [ { position: 50, label: 'Plant' } ]}
+        @EndUserText.label: 'Plant'
+  @UI.selectionField: [{ position: 20 }]       
+Plant;
+@UI.hidden: true
+Plantname;
+  @UI: {  lineItem:       [ { position: 60, label: 'Transport ID' } ],
+        identification:   [ { position: 60, label: 'Transport ID' } ]}
+        @EndUserText.label: 'Transport ID' 
+Transportid;
+  @UI: {  lineItem:       [ { position: 70, label: 'Vehicle No' } ],
+        identification:   [ { position: 70, label: 'Vehicle No' } ]}
+        @EndUserText.label: 'Vehicle No' 
+Vehicleno;
+  @UI: {  lineItem:       [ { position: 80, label: 'Packing Details' } ],
+        identification:   [ { position: 80, label: 'Packing Details' } ]}
+        @EndUserText.label: 'Packing Details' 
+Packingdetails;
+  @UI: {  lineItem:       [ { position: 90, label: 'Dispatch Instr.Details' } ],
+        identification:   [ { position: 90, label: 'Dispatch Instr.Details' } ]}
+        @EndUserText.label: 'Dispatch Instr.Details' 
+Dispinstrdetails;
+  @UI: {  lineItem:       [ { position: 100, label: 'Contact details' } ],
+        identification:   [ { position: 100, label: 'Contact details' } ]}
+        @EndUserText.label: 'Contact details' 
+Contactdetails;
+  @UI: {  lineItem:       [ { position: 110, label: 'Driver Name' } ],
+        identification:   [ { position: 110, label: 'Driver Name' } ]}
+        @EndUserText.label: 'Driver Name' 
+Drivername;
+  @UI: {  lineItem:       [ { position: 120, label: 'Driver Address' } ],
+        identification:   [ { position: 120, label: 'Driver Address' } ]}
+        @EndUserText.label: 'Driver Address' 
+Driveraddress;
+  @UI: {  lineItem:       [ { position: 130, label: 'Driver License No' } ],
+        identification:   [ { position: 130, label: 'Driver License No' } ]}
+        @EndUserText.label: 'Driver License No' 
+Driverlicensenumber;
+  @UI: {  lineItem:       [ { position: 140, label: 'Driver mobile' } ],
+        identification:   [ { position: 140, label: 'Driver mobile' } ]}
+        @EndUserText.label: 'Driver mobile' 
+Drivermobile;
+  @UI: {  lineItem:       [ { position: 150, label: 'Remarks' } ],
+        identification:   [ { position: 150, label: 'Remarks' } ]}
+        @EndUserText.label: 'Remarks' 
+Remarks;
+@UI.hidden: true
+Gateentrysequence;
+@UI.hidden: true
+Transportname;
+@UI.hidden: true
+Createdby;
+@UI.hidden: true
+Createdat;
+@UI.hidden: true
+Lastchangedby;
+@UI.hidden: true
+Lastchangedat;
+/* Associations */
+@UI.hidden: true
+_SalesHead;
+@UI.hidden: true
+_SalesItem;    
+}

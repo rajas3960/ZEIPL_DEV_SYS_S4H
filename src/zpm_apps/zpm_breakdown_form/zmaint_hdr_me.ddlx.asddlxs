@@ -1,0 +1,68 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Maintenance Notification',
+typeNamePlural: 'Maintenance Notifications',
+title: { type: #STANDARD, value: 'MaintenanceNotification' } } }
+@UI.createHidden: true
+@UI.deleteHidden: true
+@UI.updateHidden: true
+annotate entity ZMAINT_HDR_C
+    with 
+{
+
+    @UI.facet: [ { id:              'Header',
+                        purpose:         #STANDARD,
+                        type:            #IDENTIFICATION_REFERENCE,
+                        label:           'Standard Header',
+                        position:        10 },
+                        { id:              'Items',
+                          purpose:         #STANDARD,
+                          type:            #LINEITEM_REFERENCE,
+                          label:           'Standard Item',
+                          position:        20,
+                          targetElement:   '_item'} ]
+    @UI:{ lineItem: [{ position: 10, label: 'MaintenanceNotification' }],
+          identification: [{ position: 10, label: 'MaintenanceNotification' },
+       { type: #FOR_ACTION, dataAction: 'PDF', label: 'Get PDF Output',position: 10 } ,
+       { type: #FOR_ACTION, dataAction: 'UpdateItem', label: 'UpdateItem',position: 20 }        
+          ] }
+    @UI.selectionField: [{ position: 10 }]
+    @EndUserText.label: 'MaintenanceNotification'                            
+    MaintenanceNotification;
+    @UI:{ lineItem: [{ position: 20, label: 'MaintPriority' }],
+          identification: [{ position: 20, label: 'MaintPriority' } ] }
+    @EndUserText.label: 'MaintPriority' 
+    MaintPriority;
+    @UI:{ lineItem: [{ position: 30, label: 'Material' }],
+          identification: [{ position: 30, label: 'Material' } ] }
+    @EndUserText.label: 'Material'
+    Material;
+    @UI:{ lineItem: [{ position: 40, label: 'NotificationType' }],
+          identification: [{ position: 40, label: 'NotificationType' } ] }
+    @EndUserText.label: 'NotificationType'
+    NotificationType;
+    @UI:{ lineItem: [{ position: 50, label: 'NotificationText' }],
+          identification: [{ position: 50, label: 'NotificationText' } ] }
+    @EndUserText.label: 'NotificationText'
+    NotificationText;
+    @UI:{ lineItem: [{ position: 60, label: 'MaintenanceOrder' }],
+          identification: [{ position: 60, label: 'MaintenanceOrder' } ] }
+    @EndUserText.label: 'MaintenanceOrder'
+    MaintenanceOrder;
+    @UI:{ lineItem: [{ position: 70, label: 'MaintNotificationCode' }],
+          identification: [{ position: 70, label: 'MaintNotificationCode' } ] }
+    @EndUserText.label: 'MaintNotificationCode'
+    MaintNotificationCode;
+    @UI:{ lineItem: [{ position: 80, label: 'attachment' }],
+          identification: [{ position: 80, label: 'attachment' } ] }
+    @EndUserText.label: 'attachment'
+    attachment;
+    @UI.hidden: true
+    filename;
+    @UI.hidden: true
+    mimetype;
+    /* Associations */
+    @UI.hidden: true
+    _item;
+    
+}

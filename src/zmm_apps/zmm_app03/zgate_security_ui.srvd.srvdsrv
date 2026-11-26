@@ -1,0 +1,4 @@
+@EndUserText.label: 'Gate Security Master UI'
+define service ZGATE_SECURITY_UI {
+  expose ZGATE_C_SECURITY as GateHead;
+}

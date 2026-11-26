@@ -1,0 +1,22 @@
+projection;
+strict ( 1 );
+
+define behavior for ZMAINT_HDR_C //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action PDF;
+  use action UpdateItem;
+
+  use association _item { create; }
+}
+
+define behavior for ZMAINT_ITM_C //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _header;
+}

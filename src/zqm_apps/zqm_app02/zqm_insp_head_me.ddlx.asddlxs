@@ -1,0 +1,130 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Manage Inspection Lot',
+typeNamePlural: 'Manage Inspection Lot',
+title: { type: #STANDARD, value: 'Inspectionlot' }
+}}
+@UI.createHidden: true
+@UI.deleteHidden: true
+annotate entity ZQM_C_INSP_HEAD
+    with 
+{
+  @UI.facet: [ { id:              'Header',
+                      purpose:         #STANDARD,
+                      type:            #IDENTIFICATION_REFERENCE,
+                      label:           'Standard Details',
+                      position:        10 },
+                      { id:              'SalesHead',
+                      purpose:         #STANDARD,
+                      type:            #LINEITEM_REFERENCE,
+                      label:           'Inspection Result Recording',
+                      position:        20,
+                      targetElement:   '_InspResult'} ]
+@UI.hidden: true 
+Uuid;
+  @UI: {  lineItem:       [ { position: 10, label: 'InspectionLot' } ],
+        identification:   [ { position: 10, label: 'InspectionLot' },
+        { type: #FOR_ACTION, dataAction: 'UpInsp', label: 'Get Inspection',position: 10 },        
+        { type: #FOR_ACTION, dataAction: 'Createresult', label: 'Create Result',position: 20 },
+        { type: #FOR_ACTION, dataAction: 'updateresult', label: 'Update Result',position: 30 },
+        { type: #FOR_ACTION, dataAction: 'UpdateUD', label: 'UD Code',position: 40 },
+        { type: #FOR_ACTION, dataAction: 'PostInvoice', label: 'Park Debit Note',position: 50 } 
+        ]}
+        @EndUserText.label: 'InspectionLot'
+  @UI.selectionField: [{ position: 10  }] 
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'I_InspectionLotStdVH', element: 'InspectionLot' } }]  
+Inspectionlot;
+  @UI: {  lineItem:       [ { position: 20, label: 'Inspection Date' } ],
+        identification:   [ { position: 20, label: 'Inspection Date' } ]}
+        @EndUserText.label: 'Inspection Date'
+Inspectiondate;
+  @UI: {  lineItem:       [ { position: 30, label: 'Product' } ],
+        identification:   [ { position: 30, label: 'Product' } ]}
+        @EndUserText.label: 'Product'
+  @UI.selectionField: [{ position: 40  }]         
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'I_ProductStdVH', element: 'Product' } }]    
+Material;
+@UI.hidden: true
+Materialdes;
+  @UI: {  lineItem:       [ { position: 40, label: 'Lot Qty' } ],
+        identification:   [ { position: 40, label: 'Lot Qty' } ]}
+        @EndUserText.label: 'Lot Qty'
+Inspectionlotqty;
+  @UI: {  lineItem:       [ { position: 50, label: 'Lot Type' } ],
+        identification:   [ { position: 50, label: 'Lot Type' } ]}
+        @EndUserText.label: 'Lot Type'
+Inspectionlottype;
+  @UI: {  lineItem:       [ { position: 60, label: 'Plant' } ],
+        identification:   [ { position: 60, label: 'Plant' } ]}
+        @EndUserText.label: 'Plant'
+  @UI.selectionField: [{ position: 30  }]
+@Consumption.valueHelpDefinition: [{ entity: { name: 'I_PLANTSTDVH', element: 'Plant' } }]            
+Plant;
+  @UI: {  lineItem:       [ { position: 70, label: 'PO Order' } ],
+        identification:   [ { position: 70, label: 'PO Order' } ]}
+        @EndUserText.label: 'PO Order'
+@UI.selectionField: [{ position: 20  }]
+@Consumption.valueHelpDefinition: [{ entity: { name: 'ZPO_HEAD_VH', element: 'PurchaseOrder' } }]                
+Purchaseorder;
+  @UI: {  lineItem:       [ { position: 80, label: 'MaterialDocument' } ],
+        identification:   [ { position: 80, label: 'MaterialDocument' } ]}
+        @EndUserText.label: 'MaterialDocument'
+Materialdocument;
+  @UI: { identification:   [ { position: 90, label: 'Document Year' } ]}
+        @EndUserText.label: 'Document Year'
+Materialdocumentyear;
+  @UI: { identification:   [ { position: 95, label: 'Debit Amount' } ]}
+        @EndUserText.label: 'Debit Amount'
+Totalamt;
+  @UI: { identification:   [ { position: 96, label: 'Usage Decision' } ]}
+        @EndUserText.label: 'Usage Decision'
+Usagedecisioncode;
+  @UI: { identification:   [ { position: 100, label: 'Reference' } ]}
+        @EndUserText.label: 'Reference'
+Reference;
+  @UI: { identification:   [ { position: 110, label: 'Posting Date' } ]}
+        @EndUserText.label: 'Posting Date'
+Postingdate;
+  @UI: { identification:   [ { position: 120, label: 'Invoice' } ]}
+        @EndUserText.label: 'Invoice'
+Supplierinvoice;
+  @UI: { identification:   [ { position: 130, label: 'Fiscal Year' } ]}
+        @EndUserText.label: 'Fiscal Year'
+Fiscalyear;
+@UI.hidden: true
+Usagedecisiontext;
+@UI.hidden: true
+Createindicator;
+@UI.hidden: true
+Udcodeindicator;
+@UI.hidden: true
+Updateindicator;
+@UI.hidden: true
+Materialdocumentitem;
+@UI.hidden: true
+Purchaseorderitem;
+@UI.hidden: true
+Orderdate;
+@UI.hidden: true
+Companycode;
+@UI.hidden: true
+Baseunit;
+@UI.hidden: true
+Orderquantity;
+@UI.hidden: true
+Documentcurrency;
+@UI.hidden: true
+Netamount;
+@UI.hidden: true
+Createdby;
+@UI.hidden: true
+Createdat;
+@UI.hidden: true
+Lastchangedby;
+@UI.hidden: true
+Lastchangedat;
+/* Associations */
+@UI.hidden: true
+_InspResult;
+    
+}

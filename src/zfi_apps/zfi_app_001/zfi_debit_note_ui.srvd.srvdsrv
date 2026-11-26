@@ -1,0 +1,5 @@
+@EndUserText.label: 'Debit Note UI Version SD'
+define service ZFI_DEBIT_NOTE_UI {
+  expose ZFI_HEADER_PROJECTION_VIEW as MainHead;
+  expose ZFI_ITEM_PROJECTION_VIEW   as MainItem;
+}

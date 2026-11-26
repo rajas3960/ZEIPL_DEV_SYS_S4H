@@ -1,0 +1,5 @@
+@EndUserText.label: 'Manage Inspection Result Recording - UI'
+define service ZQM_INSP_RESULT_UI {
+  expose ZQM_C_INSP_HEAD   as InspHead;
+  expose ZQM_C_INSP_RESULT as InspResultRcd;
+}

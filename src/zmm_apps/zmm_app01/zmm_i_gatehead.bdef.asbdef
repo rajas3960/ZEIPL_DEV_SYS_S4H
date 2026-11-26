@@ -1,0 +1,72 @@
+managed implementation in class zbp_mm_i_gatehead unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMM_I_GATEHEAD //alias <alias_name>
+persistent table zmm_gate_htb
+draft table zmm_gate_htb_d
+lock master total etag Lastchangedby
+authorization master ( instance )
+etag master Lastchangedby
+with additional save
+{
+  create ( authorization : global );
+  update ( features : instance );
+  delete ( features : instance );
+  field ( readonly, numbering : managed ) Uuid;
+
+  field ( readonly : update ) Gateentrytype, Gateentryseries, Companycode;
+  field ( readonly ) Gateentryno,Gateentryseqno, Gateentryseriesdes,Gateentrytypedes,
+                     Gateentrydate,Gateentrytime,Companyname,Gateentryid,Gateentryiddate;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+
+  action ( features : instance ) PRINT result [1] $self;
+  action ( features : instance ) Purchase parameter ZPURCHASE result [1] $self;
+  action ( features : instance ) GateCheckIn result [1] $self;
+  determination head_modify on save {create;}
+
+  association _POHEAD { create; with draft;}
+  association _POITEM { create; with draft;}
+
+  side effects {
+  action Purchase
+    affects $self, entity _POHEAD ; }
+
+  mapping for zmm_gate_htb corresponding;
+}
+
+define behavior for ZMM_I_PGATEHEAD //alias <alias_name>
+persistent table zmm_gate_phtb
+draft table zmm_gate_phtb_d
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update( features : instance );
+  delete ( features : instance );
+  field ( readonly ) Uuid, Purchaseorder,Suppliername,Vendor,Orderdate;
+  association _Head { with draft; }
+
+  mapping for zmm_gate_htb corresponding;
+}
+
+define behavior for ZMM_I_PGATEITEM //alias <alias_name>
+persistent table zmm_gate_pitb
+draft table zmm_gate_pitb_d
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update ( features : instance );
+  delete ( features : instance );
+  field ( readonly ) Uuid, Purchaseorder, Purchaseorderitem,Material,Materialtext;
+
+  association _Head { with draft; }
+
+  mapping for zmm_gate_pitb corresponding;
+}

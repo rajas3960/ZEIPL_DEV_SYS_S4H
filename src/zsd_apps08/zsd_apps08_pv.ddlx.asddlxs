@@ -1,0 +1,84 @@
+@Metadata.layer: #PARTNER
+@UI: { headerInfo: {
+//title.iconUrl: 'IMAGES',
+typeName: 'Broker Custom App',
+typeNamePlural: 'Broker Custom App',
+
+title: { type: #STANDARD, value: 'Brokerid' },
+         description: { type: #STANDARD, value: 'Brokerid' }
+         } }
+annotate entity ZSD_APPS08_PV with
+{
+  @UI.facet: [       {
+                   label: 'Header Information',
+                   id: 'Headerinfo',
+                   type: #COLLECTION,
+                   position: 10
+                   },
+
+                  {
+                   id:  'Header',
+                   purpose:         #STANDARD,
+                   type:            #IDENTIFICATION_REFERENCE,
+                   label:           'Broker Custom App',
+                   parentId: 'Headerinfo',
+                   position:        10
+                   } ,
+                   {
+                   id:              'Items',
+                   purpose:         #STANDARD,
+                   type:            #LINEITEM_REFERENCE,
+                   label:           'Broker Line Items',
+                   position:        20,
+                   targetElement:   '_item'
+                   }]
+  @UI: { lineItem: [{ position: 10, label: 'Broker ID'}] }
+  @UI: { identification: [{ position: 10, label: 'Broker ID' } ] }
+  @EndUserText.label: 'Broker ID'
+  @Consumption.valueHelpDefinition: [
+  {
+    entity: {
+      name: 'ZSD_BP_VH',
+      element: 'BusinessPartner'
+    },
+    additionalBinding: [
+      {
+        localElement: 'brokername',
+        element: 'BusinessPartnerName',
+        usage: #RESULT
+      }
+    ]
+  }
+  ]
+  Brokerid;
+  @UI: { lineItem: [{ position: 15, label: 'Broker Name'}] }
+  @UI: { identification: [{ position: 15, label: 'Broker Name' } ] }
+  @EndUserText.label: 'Broker Name'
+  brokername;
+  @UI: { lineItem: [{ position: 20, label: 'From Date'}] }
+  @UI: { identification: [{ position: 20, label: 'From Date' } ] }
+  Fromdt;
+  @UI: { lineItem: [{ position: 30, label: 'To Date'}] }
+  @UI: { identification: [{ position: 30, label: 'To Date' } ] }
+  Todate;
+  @UI: { lineItem: [{ position: 40, label: 'Net Amount'}] }
+  @UI: { identification: [{ position: 40, label: 'Net Amount' } ] }
+  Netamt;
+  @UI: { lineItem: [{ position: 50, label: 'Utilized Value'}] }
+  @UI: { identification: [{ position: 50, label: 'Utilized Value' } ] }
+  Total_utlize;
+  @UI: { lineItem: [{ position: 60, label: 'Open Limit'}] }
+  @UI: { identification: [{ position: 60, label: 'Open Limit' } ] }
+  Open_bal;
+  @UI.hidden: true
+  Bkcurr;
+  @UI: { lineItem: [{ position: 70, label: 'Created By'}] }
+  @UI: { identification: [{ position: 70, label: 'Created By' } ] }
+  Createdby;
+  @UI: { lineItem: [{ position: 80, label: 'Created On'}] }
+  @UI: { identification: [{ position: 80, label: 'Created On' } ] }
+  Createdon;
+  /* Associations */
+  @UI.hidden: true
+  _item;
+}

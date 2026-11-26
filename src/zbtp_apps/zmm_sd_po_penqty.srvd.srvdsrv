@@ -1,0 +1,8 @@
+@EndUserText.label: 'PO pending Qty - Sdef'
+define service ZMM_SD_PO_PENQTY {
+  expose ZMM_PO_PENDQTY        as PoPendingQty;
+  expose ZMM_SUP_VH2           as SupplierVH;
+  expose ZMM_POHDVH2           as PoHeaderVH;
+  expose ZMM_POITVH2           as PoItemVH;
+  expose ZMM_PRODUCTBYPLANT_VH as MaterialVH;
+}

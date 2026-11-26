@@ -1,0 +1,152 @@
+managed implementation in class zbp_sd_billing_rv unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZSD_BILLING_RV alias hdr
+with unmanaged save
+draft table zsd_billing_df
+lock master
+total etag LastChangedAt
+authorization master ( instance )
+etag master LastChangedAt
+{
+  create ( authorization : global );
+  update ( features : instance );
+  delete ( features : instance );
+
+  field ( readonly, numbering : managed ) BillUuid;
+  field ( readonly ) Sno, supplierinvoice, InvoicingParty, BusinessPlace, Amount, DocumentType;
+  field ( mandatory ) Reference, DocumentDate;
+
+  association Item { create ( features : instance ); with draft; }
+
+  draft action Resume;
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft determine action Prepare;
+  determination fill_hdata on save { create; update; }
+  determination SetDefaultDocumentType on modify
+  {
+    create;
+  }
+
+  validation validateRequiredFields on save
+  {
+
+    create; field DocumentDate, Reference;
+  }
+
+
+  action ( features : instance ) PostInvoice
+    result [1] $self;
+
+  mapping for zsd_billing_tb
+    {
+      BillUuid           = bill_uuid;
+      Sno                = sno;
+      InvoicingParty     = invoicing_party;
+      DocumentDate       = document_date;
+      PostingDate        = posting_date;
+      Reference          = reference;
+      Amount             = amount;
+      CurrencyKey        = currency_key;
+      BusinessPlace      = business_place;
+      CalculateTax       = calculate_tax;
+      DocumentType       = document_type;
+      WithholdingTax     = withholding_tax;
+      LocalCreatedBy     = local_created_by;
+      LocalCreatedAt     = local_created_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}
+
+define behavior for ZSD_BILLING_iRV alias item
+with unmanaged save
+draft table zsd_billing_idf
+lock dependent by hdr
+authorization dependent by hdr
+{
+  update ( features : instance );
+  delete ( features : instance );
+
+  field ( readonly, numbering : managed ) ItemUuid;
+  field ( readonly ) BillUuid, GlAccount, invoicingparty, Amount, CostCentre, CurrencyKey, Plant, TaxAmount;
+
+  association hdr { with draft; }
+
+  determination fill_ldata on save { create; update; }
+  determination CalculateTax on modify
+  {
+    field Amount, TaxCode;
+  }
+  determination UpdateGrossAmount on modify
+  {
+    field Amount, TaxAmount;
+  }
+  determination SyncHeaderInvoicingParty on modify
+  {
+    field InvoicingParty;
+    delete;
+  }
+
+
+  side effects
+  {
+    field Amount affects field TaxAmount, entity hdr;
+
+    field TaxCode affects field TaxAmount;
+    field TaxAmount affects entity hdr;
+    field SalesBillingNo affects field GlAccount, field ItemText, field CostCentre, field Assignment, field PaymentTerms, field TaxCode,
+        field Amount, field CurrencyKey, field TaxAmount, field Plant, field invoicingparty;
+    field SalesBillingItem affects field GlAccount, field ItemText, field CostCentre, field Assignment, field PaymentTerms, field TaxCode, field Amount,
+        field CurrencyKey, field TaxAmount, field Plant, field invoicingparty;
+  }
+
+  determination check_duplicate on modify
+  {
+    field SalesBillingNo, SalesBillingItem;
+  }
+  validation check_duplicate_item on save
+  {
+    field SalesBillingNo,
+    SalesBillingItem;
+  }
+
+  determination fill_from_billing on modify
+  {
+    field SalesBillingNo, SalesBillingItem;
+  }
+  validation check_invoicing_party on save
+  {
+    field InvoicingParty;
+  }
+  determination synchdrin_delete on save
+{
+  delete;
+}
+  mapping for zsd_billing_itb
+    {
+      ItemUuid           = item_uuid;
+      BillUuid           = bill_uuid;
+      GlAccount          = gl_account;
+      CostCentre         = cost_centre;
+      ItemText           = item_text;
+      Assignment         = assignment;
+      PaymentTerms       = payment_terms;
+      TaxCode            = tax_code;
+      SalesBillingNo     = sales_billing_no;
+      SalesBillingItem   = sales_billing_item;
+      Amount             = amount;
+      CurrencyKey        = currency_key;
+      TaxAmount          = tax_amount;
+      Plant              = plant;
+      LocalCreatedBy     = local_created_by;
+      LocalCreatedAt     = local_created_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}

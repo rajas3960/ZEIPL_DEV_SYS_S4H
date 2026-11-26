@@ -1,0 +1,53 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Freight Order',
+    typeNamePlural: 'Freight Orders',
+    title: { type: #STANDARD, value: 'FreightOrder' }
+  },
+  presentationVariant: [{ sortOrder: [{ by: 'ValidFrom', direction: #ASC }] }]
+}
+annotate entity ZC_MM_PO_TMFO with
+{
+  @UI.facet: [
+    { id: 'FreightOrder', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE,
+      label: 'Freight Order', position: 10 }
+  ]
+
+  @UI.hidden: true
+  FoUuid;
+  @UI.hidden: true
+  PurchaseOrder;
+  @UI.hidden: true
+  PurchaseOrderItem;
+
+  @UI: { lineItem: [{ position: 5 }] }
+  @EndUserText.label: 'Carrier'
+  Carrier;
+
+  @UI: { lineItem:       [{ position: 10, importance: #HIGH }],
+         identification: [{ position: 10 }] }
+  @EndUserText.label: 'Freight Order'
+  FreightOrder;
+
+  @UI: { lineItem:       [{ position: 20, importance: #HIGH }],
+         identification: [{ position: 20 }] }
+  @EndUserText.label: 'Valid From'
+  ValidFrom;
+
+  @UI: { lineItem:       [{ position: 30, importance: #HIGH }],
+         identification: [{ position: 30 }] }
+  @EndUserText.label: 'Valid To'
+  ValidTo;
+
+  @UI: { lineItem:       [{ position: 40, importance: #HIGH }],
+       identification: [{ position: 40 }] }
+  @EndUserText.label: 'FO Quantity'
+  FoQty;
+
+  @UI.hidden: true
+  FoUnit;
+
+  @UI.hidden: true
+  LocalLastChanged;
+}

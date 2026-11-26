@@ -1,0 +1,4 @@
+@EndUserText.label: 'Weighment Master UI Definition'
+define service ZMM_WMT_FLAG_UI {
+  expose ZMM_CH_WMT_FLAG as WeightMaster;
+}

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Carrier Allocation per PO Item - UI'
+define service ZMM_PO_TMCAR_UI {
+  expose ZC_MM_PO_TMCAR as CarrierAllocation;
+  expose ZC_MM_PO_TMFO  as CarrierFreightOrder;
+}

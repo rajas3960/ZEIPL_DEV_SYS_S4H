@@ -1,0 +1,48 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: { typeName: 'Weighment Flag - Master',
+                typeNamePlural: 'Weighment Flag - Master',
+                title: { type: #STANDARD, label: 'Weighment Flag - Master', value: 'Materialgroup' },
+                            description: { value: 'Gateentryseries' } } }
+//@UI.deleteHidden: true                            
+annotate entity ZMM_CH_WMT_FLAG
+    with 
+{
+  @UI.facet: [ { id:              'Header',
+                      purpose:         #STANDARD,
+                      type:            #IDENTIFICATION_REFERENCE,
+                      label:           'Weighment Master',
+                      position:        10 } ]
+  @UI: { lineItem: [{ position: 10, label: 'Gate Entry Type'}],
+  identification: [{ position: 10, label: 'Gate Entry Type' } ] }
+  @EndUserText.label: 'Gate Entry Type'  
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZMMGATE_SERIES_VH', element: 'value_low' },distinctValues: true }]                           
+Gateentryseries;
+  @UI: { lineItem: [{ position: 20, label: 'Material Group'}],
+  identification: [{ position: 20, label: 'Material Group' } ] }
+  @EndUserText.label: 'Material Group'
+  @Consumption.valueHelpDefinition: [ { entity: { name: 'ZMM_MATGROUP_VH', element: 'Materialgroup' }} ]
+  @UI.selectionField: [{ position: 10 }]  
+Materialgroup;
+  @UI: { lineItem: [{ position: 30, label: 'Weighment Flag'}],
+  identification: [{ position: 30, label: 'Weighment Flag' } ] }
+  @EndUserText.label: 'Weighment Flag'
+Weighmentflag;
+  @UI: { lineItem: [{ position: 40, label: 'Challan Qty Flag'}],
+  identification: [{ position: 40, label: 'Challan Qty Flag' } ] }
+  @EndUserText.label: 'Challan Qty Flag'
+Challanqtyflag;
+@UI.hidden: true
+Gateentryseriesdes;
+@UI.hidden: true
+Materialgroupdes;
+@UI.hidden: true
+Createdby;
+@UI.hidden: true
+Createdat;
+@UI.hidden: true
+Lastchangedby;
+@UI.hidden: true
+Lastchangedat;
+    
+}

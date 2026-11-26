@@ -1,0 +1,6 @@
+@EndUserText.label: 'Manage Inspection GR Debit UI'
+define service ZQM_GR_DEBIT_UI {
+  expose ZQM_C_PO   as MainPO;
+  expose ZQM_C_INSP as Inspection;
+  expose ZQM_C_KMIC as InspSpec;
+}

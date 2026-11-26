@@ -1,0 +1,35 @@
+managed implementation in class zbp_maint_hdr_i unique;
+strict ( 1 );
+
+define behavior for ZMAINT_HDR_I //alias <alias_name>
+//persistent table <???>
+with unmanaged save
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) MaintenanceNotification;
+  association _item { create; }
+  action ( features : instance ) PDF result [1] $self;
+  action ( features : instance ) UpdateItem result [1] $self;
+
+  side effects {
+  action UpdateItem
+    affects $self, entity _item ; }
+
+}
+
+define behavior for ZMAINT_ITM_I //alias <alias_name>
+persistent table zmaint_itm_db
+lock dependent by _header
+authorization dependent by _header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) maintenancenotificationcause, maintenancenotification, maintenancenotificationitem;
+  association _header;
+}

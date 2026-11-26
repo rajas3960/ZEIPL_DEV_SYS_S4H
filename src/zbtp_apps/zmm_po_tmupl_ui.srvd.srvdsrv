@@ -1,0 +1,4 @@
+@EndUserText.label: 'Carrier Allocation Upload - UI'
+define service ZMM_PO_TMUPL_UI {
+  expose ZC_MM_PO_TMUPL as CarrierUpload;
+}

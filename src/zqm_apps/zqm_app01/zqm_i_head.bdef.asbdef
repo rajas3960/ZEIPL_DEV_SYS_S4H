@@ -1,0 +1,77 @@
+managed implementation in class zbp_qm_i_head unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZQM_I_HEAD alias QMHeader
+persistent table zqm_app01_db
+draft table zqm_app01_dbd
+lock master total etag Lastchangedat
+authorization master ( instance )
+etag master Lastchangedat
+{
+  create ( authorization : global );
+  update(features : instance);
+  delete(features : instance);
+  field ( numbering : managed, readonly ) Uuid;
+  field (mandatory : create) Purchaseorder,Purchaseorderitem;
+  field (readonly) Orderdate,Companycode,Plant,Baseunit,Orderquantity,Documentcurrency,Netamount,
+                    Material,Materialdes,Createdat,Createdby,Lastchangedat,Lastchangedby,
+                    Inspectionlot,Inspectiondate,Inspectionlotqty,Inspectionlottype,Materialdocument,Taxcode,
+                    Materialdocumentitem,Materialdocumentyear,Plantname,Companycodename,Suppllier,Paymentterms;
+
+  association _ItemMIC { create; with draft;}
+  association _ItemSlab { with draft; }
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action( features : instance ) GetMIC result [1] $self;
+  action( features : instance ) UpInsp result [1] $self;
+  determination AddPO on save {create;}
+
+  validation POValid on save { create; field Purchaseorder; }
+
+  side effects {
+        action GetMIC
+            affects $self, entity _ItemMIC;
+            }
+  mapping for zqm_app01_db corresponding;
+}
+
+define behavior for ZQM_I_MIC alias QMMic
+persistent table zqm_mic_db
+draft table zqm_mic_dbd
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update(features : instance);
+  delete(features : instance);
+  field ( readonly ) Uuid, Plangroup, Boocharacteristic, Masteric;
+  association _Header { with draft; }
+  association _ItemSlab { create; with draft;}
+
+  mapping for zqm_mic_db corresponding;
+}
+
+define behavior for ZQM_I_SLAB alias QMSlab
+persistent table zqm_slab_db
+draft table zqm_slab_dbd
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update(features : instance);
+  delete(features : instance);
+  field ( numbering : managed, readonly ) Granduuid;
+  field ( readonly ) Uuid, Plangroup, Boocharacteristic,Slabno,Amount, Poqtyuom,Fromslabamt,Toslabamt ;
+  association _Header { with draft; }
+  association _ItemMIC { with draft; }
+
+  determination AddSlno on modify {create;}
+  determination AmtCal on modify {  field Fromslab; field Toslab; }
+
+  mapping for zqm_slab_db corresponding;
+}

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Purchase Order GR Posting - UI'
+define service ZMM_GRN_UI {
+  expose ZMM_CH_GRN as MainHead;
+  expose ZMM_CI_GRN as MainItem;
+}

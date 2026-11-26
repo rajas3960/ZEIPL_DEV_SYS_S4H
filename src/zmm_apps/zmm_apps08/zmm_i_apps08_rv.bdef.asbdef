@@ -1,0 +1,55 @@
+managed implementation in class zbp_mm_i_apps08_rv unique;
+strict ( 2 );
+
+with draft;
+
+
+define behavior for ZMM_I_APPS08_RV //alias <alias_name>
+//persistent table <???>
+draft table zmm_d_apps08_htb
+with unmanaged save
+lock master total etag BindingPeriodValidityEndDate
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+  action(features : instance) submit result [1] $self;
+  action(features : instance) finalsubmit result[1] $self;
+
+  determination  gt_hdr1 on save { field Remarks; }
+
+  field ( readonly ) Supplier, RequestForQuotation,BindingPeriodValidityEndDate,SupplierName,CashDiscount1Days,CashDiscount1Percent,CashDiscount2Days,CashDiscount2Percent,CompanyCode,DocumentCurrency,EmailAddress
+  , IncotermsLocation2,Passcode,IncotermsVersion,PurchasingGroup,PurchasingOrganization,QuotationLatestSubmissionDate,RequestForQuotationName,
+  TargetAmount;
+  association _Item { create; with draft; }
+  mapping for zmm_a_apps08_htb corresponding ;
+}
+
+define behavior for ZMM_C_APPS08_IV //alias <alias_name>
+draft table zmm_d_apps08_itm
+//persistent table <???>
+with unmanaged save
+lock dependent by _hdr
+authorization dependent by _hdr
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Supplier, RequestForQuotation, RequestForQuotationItem,Material,BaseUnit,OrderQuantityUnit,ScheduleLineOrderQuantity,netamount,PurchasingDocumentItemText;
+  determination gt_curr_net on modify { field rate ;}
+  determination gt_netmat on modify { field rate, requested;}
+  determination gt_data1 on save { field rate,requested,netamount; }
+  side effects {
+  field rate affects field curr , field netamount ;
+  field requested affects field netamount ;}
+
+  association _hdr { with draft;  }
+    mapping for zmm_a_apps08_itm corresponding ;
+}

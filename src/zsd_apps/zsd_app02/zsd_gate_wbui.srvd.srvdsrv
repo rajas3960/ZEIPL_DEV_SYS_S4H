@@ -1,0 +1,6 @@
+@EndUserText.label: 'Gate Entry Weigh Bridge - UI Version'
+define service ZSD_GATE_WBUI {
+  expose ZSD_C_GATEHEAD_WB  as GateWieghHead;
+  expose ZSD_C_SGATEHEAD_WB as GateWieghSHead;
+  expose ZSD_C_SGATEITEM_WB as GateWieghSItem;
+}

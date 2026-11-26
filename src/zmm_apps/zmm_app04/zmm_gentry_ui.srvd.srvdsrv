@@ -1,0 +1,4 @@
+@EndUserText.label: 'Incoming Gate Entry - UI Design'
+define service ZMM_GENTRY_UI {
+  expose ZMM_C_GENTRY as GateEntry;
+}

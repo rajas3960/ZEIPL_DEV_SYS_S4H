@@ -1,0 +1,84 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Gate Entry - Sales Item',
+typeNamePlural: 'Gate Entry - Sales Item',
+title: { type: #STANDARD, value: 'Material' }
+}}
+@UI.createHidden: true
+@UI.deleteHidden: true
+annotate entity ZSD_C_SGATEITEM_WB
+    with 
+{
+  @UI.facet: [ { id:              'Header',
+                      purpose:         #STANDARD,
+                      type:            #IDENTIFICATION_REFERENCE,
+                      label:           'Gate Entry Sales - Header',
+                      position:        10 }]
+@UI.hidden: true 
+Uuid;
+  @UI: {  lineItem:       [ { position: 10, label: 'Order No' } ],
+        identification:   [ { position: 10, label: 'Order No' },
+        { type: #FOR_ACTION, dataAction: 'FirstWeight', label: 'First Weight',position: 10 },
+        { type: #FOR_ACTION, dataAction: 'SecoundWeight', label: 'Secound Weight',position: 20 }
+         ]}
+        @EndUserText.label: 'Order No' 
+Salesdocument;
+  @UI: {  lineItem:       [ { position: 20, label: 'Order Item' } ],
+        identification:   [ { position: 20, label: 'Order Item' } ]}
+        @EndUserText.label: 'Order Item' 
+Salesitem;
+  @UI: {  lineItem:       [ { position: 30, label: 'Material' } ],
+        identification:   [ { position: 30, label: 'Material' } ]}
+        @EndUserText.label: 'Material' 
+Material;
+  @UI: {  lineItem:       [ { position: 40, label: 'Tare Weight' } ],
+        identification:   [ { position: 40, label: 'Tare Weight' } ]}
+        @EndUserText.label: 'Tare Weight' 
+Tareweight;
+  @UI: {  lineItem:       [ { position: 50, label: 'Gross Weight' } ],
+        identification:   [ { position: 50, label: 'Gross Weight' } ]}
+        @EndUserText.label: 'Gross Weight' 
+Grossweight;
+  @UI: {  lineItem:       [ { position: 60, label: 'Net Weight' } ],
+        identification:   [ { position: 60, label: 'Net Weight' } ]}
+        @EndUserText.label: 'Net Weight' 
+Netweight;
+  @UI: {  lineItem:       [ { position: 70, label: 'Batch' } ],
+        identification:   [ { position: 70, label: 'Batch' } ]}
+        @EndUserText.label: 'Batch' 
+Batch;
+  @UI: {  lineItem:       [ { position: 80, label: 'Plant' } ],
+        identification:   [ { position: 80, label: 'Plant' } ]}
+        @EndUserText.label: 'Plant' 
+Plant;
+  @UI: {  lineItem:       [ { position: 90, label: 'UOM' } ],
+        identification:   [ { position: 90, label: 'UOM' } ]}
+        @EndUserText.label: 'UOM' 
+Baseunit;
+  @UI: {  lineItem:       [ { position: 100, label: 'Quantity' } ],
+        identification:   [ { position: 100, label: 'Quantity' } ]}
+        @EndUserText.label: 'Quantity' 
+Quantity;
+  @UI: {  lineItem:       [ { position: 110, label: 'Remarks' } ],
+        identification:   [ { position: 110, label: 'Remarks' } ]}
+        @EndUserText.label: 'Remarks' 
+Remark;
+@UI.hidden: true 
+Gateentryno;
+@UI.hidden: true 
+Plantname;
+@UI.hidden: true 
+Materialdesc;
+@UI.hidden: true 
+Createdby;
+@UI.hidden: true 
+Createdat;
+@UI.hidden: true 
+Lastchangedby;
+@UI.hidden: true 
+Lastchangedat;
+/* Associations */
+@UI.hidden: true 
+_Head;
+    
+}

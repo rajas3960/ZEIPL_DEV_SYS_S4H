@@ -1,0 +1,4 @@
+@EndUserText.label: 'Sales Contract Report - Service'
+define service ZSD_SC_REPORT_SD {
+  expose ZSD_SC_REPORT_PV as SalesContractReport;
+}

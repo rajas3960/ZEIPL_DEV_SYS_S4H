@@ -1,0 +1,108 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Manage PO Debit-Credit Master',
+typeNamePlural: 'Manage PO Debit-Credit',
+title: { type: #STANDARD, value: 'Purchaseorder' }
+}}
+annotate entity ZQM_C_HEAD
+    with 
+{
+  @UI.facet: [ { id:              'Header',
+                      purpose:         #STANDARD,
+                      type:            #IDENTIFICATION_REFERENCE,
+                      label:           'Standard Details',
+                      position:        10 },
+                      { id:              'SalesHead',
+                      purpose:         #STANDARD,
+                      type:            #LINEITEM_REFERENCE,
+                      label:           'MIC Specification',
+                      position:        20,
+                      targetElement:   '_ItemMIC'} ]
+@UI.hidden: true 
+Uuid;
+  @UI: {  lineItem:       [ { position: 10, label: 'Purchase Order' } ],
+        identification:   [ { position: 10, label: 'Purchase Order' },
+        { type: #FOR_ACTION, dataAction: 'GetMIC', label: 'Get KPI',position: 10 } ]}
+//        { type: #FOR_ACTION, dataAction: 'UpInsp', label: 'Get Inspection',position: 20 } ]}
+        @EndUserText.label: 'Purchase Order'
+  @UI.selectionField: [{ position: 10  }] 
+  
+@Consumption.valueHelpDefinition: [{ entity: { name: 'ZPO_HEAD_VH', element: 'PurchaseOrder' } }]       
+Purchaseorder;
+  @UI: {  lineItem:       [ { position: 20, label: 'Order Item' } ],
+        identification:   [ { position: 20, label: 'Order Item' } ]}
+        @EndUserText.label: 'Order Item'
+        
+@Consumption.valueHelpDefinition: [{ entity: { name: 'ZPO_ITEM_VH', element: 'PurchaseOrderItem' },
+                            additionalBinding: [{ localElement: 'Purchaseorder',element: 'PurchaseOrder',
+                            usage: #FILTER_AND_RESULT }] }]               
+Purchaseorderitem;
+  @UI: {  lineItem:       [ { position: 30, label: 'Order Date' } ],
+        identification:   [ { position: 30, label: 'Order Date' } ]}
+        @EndUserText.label: 'Order Date'
+Orderdate;
+  @UI: {  lineItem:       [ { position: 40, label: 'Product' } ],
+        identification:   [ { position: 40, label: 'Product' } ]}
+        @EndUserText.label: 'Product'
+Material;
+  @UI: {  lineItem:       [ { position: 50, label: 'Company Code' } ],
+        identification:   [ { position: 50, label: 'Company Code' } ]}
+        @EndUserText.label: 'Company Code'
+Companycode;
+  @UI: {  lineItem:       [ { position: 60, label: 'Plant' } ],
+        identification:   [ { position: 60, label: 'Plant' } ]}
+        @EndUserText.label: 'Plant'
+  @UI.selectionField: [{ position: 20  }]
+@Consumption.valueHelpDefinition: [{ entity: { name: 'I_PLANTSTDVH', element: 'Plant' } }]                       
+Plant;
+  @UI: {  lineItem:       [ { position: 70, label: 'UOM' } ],
+        identification:   [ { position: 70, label: 'UOM' } ]}
+        @EndUserText.label: 'UOM'
+Baseunit;
+  @UI: {  lineItem:       [ { position: 80, label: 'Order Quantity' } ],
+        identification:   [ { position: 80, label: 'Order Quantity' } ]}
+        @EndUserText.label: 'Order Quantity'
+Orderquantity;
+  @UI: { identification:   [ { position: 90, label: 'Inspectionlot' } ]}
+         @EndUserText.label: 'Inspectionlot'
+//@UI.lineItem: [
+// {
+//   type: #FOR_INTENT_BASED_NAVIGATION,
+//   semanticObject: 'InspectionLot',
+//   semanticObjectAction: 'recordResults'
+// }
+//]          
+Inspectionlot;
+  @UI: { identification:   [ { position: 100, label: 'Inspection Date' } ]}
+         @EndUserText.label: 'Inspection Date'
+         
+Inspectiondate;
+@UI.hidden: true
+Inspectionlotqty;
+@UI.hidden: true
+Inspectionlottype;
+@UI.hidden: true
+Materialdocument;
+@UI.hidden: true
+Materialdocumentitem;
+@UI.hidden: true
+Materialdocumentyear;
+@UI.hidden: true
+Documentcurrency;
+@UI.hidden: true
+Netamount;
+@UI.hidden: true
+Createdby;
+@UI.hidden: true
+Createdat;
+@UI.hidden: true
+Lastchangedby;
+@UI.hidden: true
+Lastchangedat;
+/* Associations */
+@UI.hidden: true
+_ItemMIC;
+@UI.hidden: true
+_ItemSlab;
+    
+}

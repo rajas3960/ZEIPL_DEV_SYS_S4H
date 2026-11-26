@@ -1,0 +1,52 @@
+managed implementation in class zbp_sd_ih_displan unique;
+strict ( 1 );
+with draft;
+
+define behavior for ZSD_IH_DISPLAN alias DispHead
+persistent table zsd_app09_hdb
+draft table zsd_app09_hdbd
+with additional save
+lock master total etag Lastchangedby
+authorization master ( instance )
+etag master Lastchangedby
+{
+  create ( authorization : global );
+  update (features : instance);
+  delete(features : instance);
+  field ( readonly, numbering : managed ) Uuid;
+  field (readonly) Createdat,Createdby,Lastchangedat,Lastchangedby,Filename,Minetype,Status,UploadStatus;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+
+  determination attach on modify {field Attachment;}
+
+  action ( features : instance ) ExcelUpload result [1] $self;
+  side effects {
+                action ExcelUpload
+                affects entity _SalesItem;
+                }
+  association _SalesItem { create; with draft;}
+
+  mapping for zsd_app09_hdb corresponding;
+}
+
+define behavior for ZSD_II_DISPLAN alias SalesOrder
+persistent table zsd_app09_idb
+draft table zsd_app09_idbd
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update (features : instance);
+  delete(features : instance);
+  field ( readonly, numbering : managed ) Subuuid;
+  field ( readonly ) Uuid, Salesorder, Salesorderitem,Slno,Dispatchdate,Plant,Customer,Vehicleno,
+                        Transmode,Material,Baseunit,Totalorderqty,Dispplantqty,Createdat,Createdby,
+                        Lastchangedat,Lastchangedby,Numseq;
+  association _Head{with draft;}
+  mapping for zsd_app09_idb corresponding;
+}

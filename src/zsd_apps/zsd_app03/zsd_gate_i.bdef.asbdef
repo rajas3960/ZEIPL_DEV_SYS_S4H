@@ -1,0 +1,28 @@
+managed implementation in class zbp_sd_gate_i unique;
+strict ( 2 );
+
+define behavior for ZSD_GATE_I alias Mainhead
+persistent table zsd_ghd_db
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly, numbering : managed ) Gateentryuuid;
+  field ( readonly ) Gateentrytype, Gateentrydate, Gateentrytime, Trucknumber;
+  association _GateItem { create; }
+}
+
+define behavior for ZSD_GATE_ITEM_I alias MainItem
+persistent table zsd_git_db
+lock dependent by _GateHead
+authorization dependent by _GateHead
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Gateentryuuid, Gateentrytype, Gateentrydate, Gateentrytime, Trucknumber, Loadingid;
+  association _GateHead;
+}

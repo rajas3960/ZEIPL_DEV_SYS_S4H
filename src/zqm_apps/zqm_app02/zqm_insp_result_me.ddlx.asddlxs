@@ -1,0 +1,75 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Inepection - Result',
+typeNamePlural: 'Inepection - Result',
+title: { type: #STANDARD, value: 'Boocharacteristic' }
+}}
+@UI.createHidden: true
+@UI.deleteHidden: true
+annotate entity ZQM_C_INSP_RESULT
+    with 
+{
+@UI.facet: [ {
+                id      : 'Header',
+                label   : 'MIC - Specification',
+                type    : #IDENTIFICATION_REFERENCE,
+                purpose : #STANDARD,
+                position: 10
+                              } ]
+@UI.hidden: true     
+Uuid;
+  @UI: {  lineItem:       [ { position: 10, label: 'Inspectionlot' } ],
+        identification:   [ { position: 10, label: 'Inspectionlot' } ]}
+        @EndUserText.label: 'Inspectionlot'
+Inspectionlot;
+  @UI: {  lineItem:       [ { position: 20, label: 'Item' } ],
+        identification:   [ { position: 20, label: 'Item' } ]}
+        @EndUserText.label: 'Item'
+Boocharacteristic;
+  @UI: {  lineItem:       [ { position: 30, label: 'KPI' } ],
+        identification:   [ { position: 30, label: 'KPI' } ]}
+        @EndUserText.label: 'KPI'
+Masteric;
+  @UI: {  lineItem:       [ { position: 40, label: 'Specification' } ],
+        identification:   [ { position: 40, label: 'Specification' } ]}
+        @EndUserText.label: 'Specification'
+Specification;
+  @UI: {  lineItem:       [ { position: 50, label: 'Result Value' } ],
+        identification:   [ { position: 50, label: 'Result Value' } ]}
+        @EndUserText.label: 'Result Value'
+Inspresultmeanvalue;
+  @UI: {  lineItem:       [ { position: 60, label: 'Specification Unit' } ],
+        identification:   [ { position: 60, label: 'Specification Unit' } ]}
+        @EndUserText.label: 'Specification Unit'
+Inspunit;
+  @UI: {  lineItem:       [ { position: 70, label: 'Debit Amt' } ],
+        identification:   [ { position: 70, label: 'Debit Amt' } ]}
+        @EndUserText.label: 'Debit Amt'
+Amtvalue;
+@UI.hidden: true
+Plangroup;
+@UI.hidden: true
+Booperationid;
+@UI.hidden: true
+Inspectionspecid;
+@UI.hidden: true
+Inspectionspeplant;
+@UI.hidden: true
+Insptargetvalue;
+@UI.hidden: true
+Insplowerlimit;
+@UI.hidden: true
+Inspupperlimit;
+@UI.hidden: true
+Createdby;
+@UI.hidden: true
+Createdat;
+@UI.hidden: true
+Lastchangedby;
+@UI.hidden: true
+Lastchangedat;
+/* Associations */
+@UI.hidden: true
+_InspHead;
+    
+}

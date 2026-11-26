@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "MSME Report",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "MSME Vendor Outstanding Report"
+  },
+  "ui5AppDetails": {
+    "appId": "zfimsmereport"
+  },
+  "navigation": {
+    "targetMappingId": "ZFI_MSME_REPORT_UI5R_TM",
+    "semanticObject": "zfi_msme_report",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "ZFI_MSME_REPORT_UI5R_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "MSME Vendor Outstanding Report"
+      }
+    }
+  ]
+}

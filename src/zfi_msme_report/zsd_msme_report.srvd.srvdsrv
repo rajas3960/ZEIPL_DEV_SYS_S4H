@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service defination on MSME'
+define service ZSD_MSME_REPORT {
+  expose ZC_MSME_REPORT_PV as main;
+}

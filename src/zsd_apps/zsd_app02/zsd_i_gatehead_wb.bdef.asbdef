@@ -1,0 +1,63 @@
+managed implementation in class zbp_sd_i_gatehead_wb unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZSD_I_GATEHEAD_WB //alias <alias_name>
+persistent table zsd_gate_htb
+draft table zsd_gate_htb_d
+lock master total etag Lastchangedby
+authorization master (  instance )
+etag master Lastchangedby
+with additional save
+
+{
+  create ( authorization : global );
+  update( features : instance );
+  delete( features : instance );
+  field ( readonly, numbering : managed ) Uuid;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+
+  association _SalesHead { create; with draft;}
+  association _SalesItem { create; with draft;}
+
+  action ( features : instance ) CaptureIMG result [1] $self;
+
+  mapping for zsd_gate_htb corresponding;
+}
+
+define behavior for ZSD_I_SGATEHEAD_WB //alias <alias_name>
+persistent table zsd_gate_shtb
+draft table zsd_gate_shtb_d
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update( features : instance );
+  delete( features : instance );
+  field ( readonly ) Uuid, Salesdocument;
+  association _Head{with draft;}
+
+  mapping for zsd_gate_shtb corresponding;
+}
+
+define behavior for ZSD_I_SGATEITEM_WB //alias <alias_name>
+persistent table zsd_gate_sitb
+draft table zsd_gate_sitb_d
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update( features : instance );
+  delete( features : instance );
+  field ( readonly ) Uuid, Salesdocument, Salesitem;
+  association _Head{with draft;}
+  action ( features : instance ) FirstWeight result [1] $self;
+  action ( features : instance ) SecoundWeight result [1] $self;
+
+  mapping for zsd_gate_sitb corresponding;
+}

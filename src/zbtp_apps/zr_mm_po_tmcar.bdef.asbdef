@@ -1,0 +1,76 @@
+managed implementation in class zbp_r_mm_po_tmcar unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZR_MM_PO_TMCAR alias Carrier
+persistent table zmm_po_tmcar
+draft table zmm_po_tmcar_d
+lock master
+total etag LastChangedAt
+authorization master ( global )
+etag master LocalLastChanged
+{
+  create;
+  update;
+  delete;
+
+  field ( mandatory : create, readonly : update ) PurchaseOrder, PurchaseOrderItem, Carrier;
+  field ( readonly ) AllocatedQty, CarrierName, OrderUnit,
+  CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChanged;
+
+  association _FreightOrder { create; with draft; }
+
+  determination fillFromPOAndCarrier on modify { create; field PurchaseOrder, PurchaseOrderItem, Carrier; }
+  determination calcAllocatedQty on save { create; }
+
+  validation checkPOItem on save { create; field PurchaseOrder, PurchaseOrderItem; }
+  validation checkCarrier on save { create; field Carrier; }
+  validation checkAllocation on save { create; field AllocatedQty; }
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare
+  {
+    determination ( always ) calcAllocatedQty;
+    validation checkPOItem;
+    validation checkCarrier;
+    validation ( always ) checkAllocation;
+    validation FreightOrder~checkFreightOrder;
+    validation FreightOrder~checkValidity;
+  }
+
+  mapping for zmm_po_tmcar corresponding;
+}
+
+define behavior for ZR_MM_PO_TMFO alias FreightOrder
+persistent table zmm_po_tmfo
+draft table zmm_po_tmfo_d
+lock dependent by _Carrier
+authorization dependent by _Carrier
+etag master LocalLastChanged
+{
+  update;
+  delete;
+
+  field ( readonly, numbering : managed ) FoUuid;
+  field ( readonly ) PurchaseOrder, PurchaseOrderItem, Carrier, FoQty, FoUnit, LocalLastChanged;
+  field ( mandatory ) ValidFrom, ValidTo;
+  field ( features : instance ) FreightOrder;
+
+  association _Carrier { with draft; }
+
+  determination fillFoQty on modify { create; field FreightOrder; }
+  determination sumCarrierQty on modify { create; field FoQty; }
+
+  validation checkFreightOrder on save { create; field FreightOrder; }
+  validation checkValidity on save { create; field ValidFrom, ValidTo; }
+
+  side effects
+  {
+    field FreightOrder affects field FoQty, field FoUnit, field _Carrier.AllocatedQty;
+  }
+
+  mapping for zmm_po_tmfo corresponding;
+}

@@ -1,0 +1,40 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZSD_C_GATEHEAD_WB //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action CaptureIMG;
+
+  use action Edit;
+  use action Activate;
+  use action Resume;
+  use action Discard;
+  use action Prepare;
+
+  use association _SalesHead { create; with draft; }
+  use association _SalesItem { create; with draft; }
+}
+
+define behavior for ZSD_C_SGATEHEAD_WB //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Head { with draft; }
+}
+
+define behavior for ZSD_C_SGATEITEM_WB //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use action FirstWeight;
+  use action SecoundWeight;
+
+  use association _Head { with draft; }
+}

@@ -1,0 +1,26 @@
+managed implementation in class zbp_gate_i_security unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZGATE_I_SECURITY alias GateSecurity
+persistent table zmm_app03_db
+draft table zmm_app03_dbd
+lock master total etag Lastchangedat
+authorization master ( instance )
+etag master Lastchangedat
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( mandatory : create ) Userid, Gateno, Dept,Plant;
+//  field ( mandatory : update ) Userid, Gateno,Plant;
+  field ( readonly ) Createdat, Createdby, Lastchangedat, Lastchangedby,Gatenodes,Deptdes;
+
+  draft action Resume;
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft determine action Prepare; //{ validation ( always )  ; }
+
+  mapping for zmm_app03_db corresponding;
+}

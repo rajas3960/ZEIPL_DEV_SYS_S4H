@@ -1,0 +1,31 @@
+projection;
+strict ( 1 );
+use draft;
+
+define behavior for ZMM_APP1_RPV alias _HDR
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Resume;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Prepare;
+  use action issueout ;
+  use action printout;
+  use action checked;
+  use action RGP_NRGP_number;
+
+  use association _Item1 { create; with draft; }
+}
+
+//define behavior for ZMM_APP1_IPV1 alias _ITM1
+define behavior for ZMM_APP1_IPV1
+{
+  use update;
+  use delete;
+
+  use association _Header { with draft; }
+}

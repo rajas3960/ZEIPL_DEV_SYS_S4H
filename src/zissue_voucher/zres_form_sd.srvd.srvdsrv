@@ -1,0 +1,5 @@
+@EndUserText.label: 'RESERVATION FORM SERVICE DEFINITION'
+define service ZRES_FORM_SD {
+  expose ZRES_HDR_CE  as MainHead;
+  expose ZRES_ITEM_CE as MainItem;
+}

@@ -1,0 +1,35 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Manage PO Debit-Credit Master Apps",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Manage PO Debit-Credit Master"
+  },
+  "ui5AppDetails": {
+    "appId": "qmpodebitmaster.zqmpodebitmaster"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_CC8E3323C474CA69D97C44A0D5D5C74D5E0EEB28_TM",
+    "semanticObject": "zqm_podebit_master",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_CC8E3323C474CA69D97C44A0D5D5C74D5E0EEB28_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Manage PO Debit-Credit Master",
+        "subtitle": "Apps"
+      }
+    }
+  ]
+}

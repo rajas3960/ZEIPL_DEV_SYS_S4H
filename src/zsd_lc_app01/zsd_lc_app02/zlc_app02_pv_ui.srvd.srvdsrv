@@ -1,0 +1,5 @@
+@EndUserText.label: 'SD Of Sales LC Utilization'
+define service ZLC_APP02_PV_UI {
+  expose ZLC_APP02_PV  as MainPage;
+  expose ZLC_APP02_IPV as Litem;
+}

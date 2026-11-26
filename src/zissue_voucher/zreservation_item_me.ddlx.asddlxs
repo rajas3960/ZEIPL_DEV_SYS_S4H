@@ -1,0 +1,71 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Reservation Item',
+typeNamePlural: 'Reservation Item',
+title: { type: #STANDARD, value: 'ReservationItem' } } }
+@UI.createHidden: true
+@UI.deleteHidden: true
+@UI.updateHidden: true
+annotate entity ZRESERVATION_ITEM_C
+    with 
+{
+@UI.facet: [ { id:              'Item',
+                   purpose:         #STANDARD,
+                   type:            #IDENTIFICATION_REFERENCE,
+                   label:           'Standard Item',
+                   position:        10 } ]
+                   
+    @UI:{ lineItem: [{ position: 10, label: 'Reservation' }],
+        identification: [{ position: 10, label: 'Reservation' }] } 
+@EndUserText.label: 'Reservation'                
+    Reservation;
+    
+    @UI:{ lineItem: [{ position: 20, label: 'Reservation Item' }],
+        identification: [{ position: 20, label: 'Reservation Item' }] } 
+@EndUserText.label: 'Reservation Item' 
+    ReservationItem;
+    
+    @UI:{ lineItem: [{ position: 30, label: 'Material Code' }],
+        identification: [{ position: 30, label: 'Material Code' }] } 
+@EndUserText.label: 'Material Code' 
+    productcode;
+    
+    @UI:{ lineItem: [{ position: 40, label: 'Item Details' }],
+        identification: [{ position: 40, label: 'Item Details' }] } 
+@EndUserText.label: 'Item Details' 
+    itemdetails;
+    
+    @UI:{ lineItem: [{ position: 50, label: 'UM' }],
+        identification: [{ position: 50, label: 'UM' }] } 
+@EndUserText.label: 'UM' 
+    um;
+    
+    @UI:{ lineItem: [{ position: 60, label: 'Req Qty' }],
+        identification: [{ position: 60, label: 'Req Qty' }] } 
+@EndUserText.label: 'Req Qty' 
+    reqqty;
+    
+    @UI:{ lineItem: [{ position: 70, label: 'Issue Qty' }],
+        identification: [{ position: 70, label: 'Issue Qty' }] } 
+@EndUserText.label: 'Issue Qty' 
+    issueqty;
+    
+    
+    @UI:{ lineItem: [{ position: 80, label: 'Rate' }],
+        identification: [{ position: 80, label: 'Rate' }] } 
+@EndUserText.label: 'Rate' 
+    rate;
+    
+    @UI:{ lineItem: [{ position: 90, label: 'Provisional Amount' }],
+        identification: [{ position: 90, label: 'Provisional Amount' }] } 
+@EndUserText.label: 'Provisional Amount' 
+    provamt;
+    
+    
+    @UI.hidden: true
+    Currency;
+    @UI.hidden: true
+    /* Associations */
+    _header;
+    
+}

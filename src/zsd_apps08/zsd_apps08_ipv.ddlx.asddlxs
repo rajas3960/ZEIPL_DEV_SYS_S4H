@@ -1,0 +1,33 @@
+@Metadata.layer: #PARTNER
+annotate entity ZSD_APPS08_IPV
+    with 
+{
+ @UI.facet: [ { id:              'Itemboi',
+                 purpose:         #STANDARD,
+                 type:            #IDENTIFICATION_REFERENCE,
+                 label:           'Broker Line Items',
+                 position:        10 } ]
+      @UI: { lineItem: [{ position: 20, label: 'line Item' }],
+  identification : [{ position: 20, label: 'line Item' }]  }
+    Srno;
+      @UI.hidden: true
+    Partnerid;
+      @UI: { lineItem: [{ position: 10, label: 'Business Partner' }],
+  identification : [{ position: 10, label: 'Business Partner' }]  }
+    Brokerid;
+      @UI: { lineItem: [{ position: 30, label: 'Net Amount' }],
+  identification : [{ position: 30, label: 'Net Amount' }]  }
+    Netamt;
+      @UI.hidden: true
+    Bkcurr;
+      @UI: { lineItem: [{ position: 40, label: 'Created By' }],
+  identification : [{ position: 40, label: 'Created By' }]  }
+    Createdby;
+      @UI: { lineItem: [{ position: 50, label: 'Created On' }],
+  identification : [{ position: 50, label: 'Created On' }]  }
+    Createdon;
+    /* Associations */
+    @UI.hidden: true
+    _hdr;
+    
+}

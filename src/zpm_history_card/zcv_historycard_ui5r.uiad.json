@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "History Card Report"
+  },
+  "ui5AppDetails": {
+    "appId": "historycardreport.zpmhiscard"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_E1917094057C390F70FF484A4E0BBA26AA806467_TM",
+    "semanticObject": "zpm_his_card",
+    "action": "DISPLAY",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_E1917094057C390F70FF484A4E0BBA26AA806467_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "History Card Report"
+      }
+    }
+  ]
+}

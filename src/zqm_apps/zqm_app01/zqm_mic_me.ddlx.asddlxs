@@ -1,0 +1,75 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'MIC - Specification',
+typeNamePlural: 'MIC - Specification',
+title: { type: #STANDARD, value: 'Masteric' }
+}}
+@UI.createHidden: true
+
+annotate entity ZQM_C_MIC
+    with 
+{
+@UI.facet: [ {
+                id      : 'Header',
+                label   : 'MIC - Specification',
+                type    : #IDENTIFICATION_REFERENCE,
+                purpose : #STANDARD,
+                position: 10
+                              },
+          {
+                id            : 'Item',
+                purpose       : #STANDARD,
+                type          : #LINEITEM_REFERENCE,
+                label         : 'Slab Details',
+                position      : 20,
+                targetElement : '_ItemSlab'
+                              } ]
+@UI.hidden: true                              
+Uuid;
+@UI.hidden: true
+Plangroup;
+@UI.hidden: true
+Boocharacteristic;
+  @UI: {  lineItem:       [ { position: 10, label: 'KPI' } ],
+        identification:   [ { position: 10, label: 'KPI' } ]}
+        @EndUserText.label: 'KPI'
+Masteric;
+  @UI: {  lineItem:       [ { position: 20, label: 'Specification' } ],
+        identification:   [ { position: 20, label: 'Specification' } ]}
+        @EndUserText.label: 'Specification'
+Specification;
+@UI.hidden: true
+Boocharacteristicversion;
+@UI.hidden: true
+Inspectionlot;
+@UI.hidden: true
+Booperationid;
+@UI.hidden: true
+Inspunit;
+@UI.hidden: true
+Inspectionspecid;
+@UI.hidden: true
+Inspectionspeplant;
+@UI.hidden: true
+Insptargetvalue;
+@UI.hidden: true
+Insplowerlimit;
+@UI.hidden: true
+Inspupperlimit;
+@UI.hidden: true
+Inspresultmeanvalue;
+@UI.hidden: true
+Createdby;
+@UI.hidden: true
+Createdat;
+@UI.hidden: true
+Lastchangedby;
+@UI.hidden: true
+Lastchangedat;
+@UI.hidden: true
+/* Associations */
+_Header;
+@UI.hidden: true
+_ItemSlab;
+    
+}

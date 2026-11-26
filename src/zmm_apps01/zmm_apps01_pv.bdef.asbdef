@@ -1,0 +1,17 @@
+projection;
+strict ( 2 );
+use side effects;
+
+define behavior for ZMM_APPS01_PV alias _HDR
+{
+
+  use action Compare;
+  use action Award;
+  use association ITEM;
+}
+
+define behavior for ZMM_APPS01_IPV alias item
+{
+
+  use association hdr;
+}

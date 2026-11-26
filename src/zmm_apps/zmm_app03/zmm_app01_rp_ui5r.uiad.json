@@ -1,0 +1,35 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Gate Entry Master"
+  },
+  "ui5AppDetails": {
+    "appId": "zrp01"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_75D2EB54A450099EDF80978D57E05B38F9B8FADA_TM",
+    "semanticObject": "YY1_APP01_RP",
+    "action": "manage",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_75D2EB54A450099EDF80978D57E05B38F9B8FADA_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Gate Entry Master",
+        "subtitle": "Application"
+      }
+    }
+  ]
+}

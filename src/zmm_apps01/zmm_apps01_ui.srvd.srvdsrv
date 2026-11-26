@@ -1,0 +1,5 @@
+@EndUserText.label: 'SD Supplier Quotation'
+define service ZMM_APPS01_UI {
+  expose ZMM_APPS01_PV  as Hdr;
+  expose ZMM_APPS01_IPV as Item;
+}

@@ -1,0 +1,178 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Maintenance Notification',
+typeNamePlural: 'Maintenance Notifications',
+title: { type: #STANDARD, value: 'MaintenanceNotification' } } }
+@UI.createHidden: true
+@UI.deleteHidden: true
+//@UI.updateHidden: true
+annotate entity ZMAINTE_HDR_C with
+{
+
+  @UI.facet: [ { id:              'Header',
+                  purpose:         #STANDARD,
+                  type:            #IDENTIFICATION_REFERENCE,
+                  label:           'Header Details',
+                  position:        10 },
+                  { id:              'Items',
+                    purpose:         #STANDARD,
+                    type:            #LINEITEM_REFERENCE,
+                    label:           'Item Details',
+                    position:        20,
+                    targetElement:   '_item'} ]
+  @UI:{ lineItem: [{ position: 10, label: 'MaintenanceNotification' }],
+        identification: [{ position: 10, label: 'MaintenanceNotification' },
+     { type: #FOR_ACTION, dataAction: 'PDF', label: 'Get PDF Output',position: 10 } ,
+     { type: #FOR_ACTION, dataAction: 'UpdateItem', label: 'Update Item',position: 20 }
+        ] }
+  @UI.selectionField: [{ position: 10 }]
+  @EndUserText.label: 'MaintenanceNotification'
+  MaintenanceNotification;
+  @UI:{ lineItem: [{ position: 20, label: 'MaintPriority' }],
+        identification: [{ position: 20, label: 'MaintPriority' } ] }
+  @EndUserText.label: 'MaintPriority'
+  MaintPriority;
+  //  @UI:{ lineItem: [{ position: 30, label: 'Material' }],
+  //        identification: [{ position: 30, label: 'Material' } ] }
+  //  @EndUserText.label: 'Material'
+  @UI.hidden: true
+  Material;
+  @UI:{ lineItem: [{ position: 40, label: 'NotificationType' }],
+        identification: [{ position: 40, label: 'NotificationType' } ] }
+  @EndUserText.label: 'NotificationType'
+  NotificationType;
+  @UI:{ lineItem: [{ position: 50, label: 'NotificationText' }],
+        identification: [{ position: 50, label: 'NotificationText' } ] }
+  @EndUserText.label: 'NotificationText'
+  NotificationText;
+  @UI:{ lineItem: [{ position: 60, label: 'MaintenanceOrder' }],
+        identification: [{ position: 60, label: 'MaintenanceOrder' } ] }
+  @EndUserText.label: 'MaintenanceOrder'
+  MaintenanceOrder;
+  @UI:{ lineItem: [{ position: 70, label: 'MaintNotificationCode' }],
+        identification: [{ position: 70, label: 'MaintNotificationCode' } ] }
+  @EndUserText.label: 'MaintNotificationCode'
+  MaintNotificationCode;
+  @UI:{ lineItem: [{ position: 80, label: 'Attachment' }],
+        identification: [{ position: 80, label: 'Attachment' } ] }
+  @EndUserText.label: 'Attachment'
+  attachment;
+  @UI.hidden: true
+  filename;
+  @UI.hidden: true
+  mimetype;
+  @UI: { lineItem: [{ position: 90, label: 'Upload Attachment' }],
+         identification:[{ position: 90, label: 'Upload Attachment' } ]}
+  @EndUserText.label: 'Upload Attachment'
+  excelattachment;
+  @UI.hidden: true
+  excelfilename;
+  @UI.hidden: true
+  excelmimetype;
+  //  @UI.identification: [
+  //     {
+  //         position: 100,
+  //         type: #WITH_URL,
+  //         label: 'Link1',
+  //         value: 'webaddress',
+  //         url: 'webaddress'
+  //     }
+  //  ]
+  //
+  //  @UI.lineItem: [
+  //      {
+  //          position: 100,
+  //          type: #WITH_URL,
+  //          label: 'Link1',
+  //          value: 'webaddress',
+  //          url: 'webaddress'
+  //      }
+  //  ]
+  @UI.hidden: true
+  webaddress;
+  //  @UI.identification: [
+  //   {
+  //       position: 110,
+  //       type: #WITH_URL,
+  //       label: 'Link2',
+  //       value: 'webaddress1',
+  //       url: 'webaddress1'
+  //   }
+  //  ]
+  //
+  //  @UI.lineItem: [
+  //      {
+  //          position: 110,
+  //          type: #WITH_URL,
+  //          label: 'Link2',
+  //          value: 'webaddress1',
+  //          url: 'webaddress1'
+  //      }
+  //  ]
+  @UI.hidden: true
+  webaddress1;
+  //  @UI.identification: [
+  //  {
+  //      position: 120,
+  //      type: #WITH_URL,
+  //      label: 'Link3',
+  //      value: 'webaddress2',
+  //      url: 'webaddress2'
+  //  }
+  //  ]
+  //
+  //  @UI.lineItem: [
+  //      {
+  //          position: 120,
+  //          type: #WITH_URL,
+  //          label: 'Link3',
+  //          value: 'webaddress2',
+  //          url: 'webaddress2'
+  //      }
+  //  ]
+  @UI.hidden: true
+  webaddress2;
+  @UI.identification: [
+  {
+   position: 130,
+   type: #WITH_URL,
+   label: 'Link of loss calculation',
+   value: 'webaddress3',
+   url: 'webaddress3'
+  }
+  ]
+
+  @UI.lineItem: [
+      {
+          position: 130,
+          type: #WITH_URL,
+          label: 'Web Address3',
+          value: 'webaddress3',
+          url: 'webaddress3'
+      }
+  ]
+  webaddress3;
+  @UI.identification: [
+  {
+   position: 140,
+   type: #WITH_URL,
+   label: 'Link for Technical Analysis Report',
+   value: 'webaddress4',
+   url: 'webaddress4'
+  }
+  ]
+
+  @UI.lineItem: [
+      {
+          position: 140,
+          type: #WITH_URL,
+          label: 'Link for Technical Analysis Report',
+          value: 'webaddress4',
+          url: 'webaddress4'
+      }
+  ]
+  webaddress4;
+  /* Associations */
+  @UI.hidden: true
+  _item;
+}

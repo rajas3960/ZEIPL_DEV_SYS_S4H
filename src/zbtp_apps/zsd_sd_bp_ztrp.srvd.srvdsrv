@@ -1,0 +1,4 @@
+@EndUserText.label: 'Transporter VH - Web API'
+define service ZSD_SD_BP_ZTRP {
+  expose ZSD_BP_ZTRP_VH as Transporter;
+}

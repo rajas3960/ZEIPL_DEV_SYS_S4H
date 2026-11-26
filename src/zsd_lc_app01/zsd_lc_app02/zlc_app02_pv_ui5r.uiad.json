@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "LC sales Utilization"
+  },
+  "ui5AppDetails": {
+    "appId": "zlcapp02pv.zlcapp02pv"
+  },
+  "navigation": {
+    "targetMappingId": "ZLC_APP02_PV_UI5R_TM",
+    "semanticObject": "zlc_app02_pv",
+    "action": "Display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "ZLC_APP02_PV_UI5R_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "LC sales Utilization"
+      }
+    }
+  ]
+}

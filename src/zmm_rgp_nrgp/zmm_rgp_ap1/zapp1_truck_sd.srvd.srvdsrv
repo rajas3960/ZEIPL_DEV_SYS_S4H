@@ -1,0 +1,4 @@
+@EndUserText.label: 'Vehicle Type Details'
+define service ZAPP1_TRUCK_SD {
+  expose ZAPP1_TRUCK_PV;
+}

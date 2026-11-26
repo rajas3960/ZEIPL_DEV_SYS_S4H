@@ -1,0 +1,4 @@
+@EndUserText.label: 'SD Of Custom Screen - LC approval'
+define service ZSD_LC_APP03_UI {
+  expose ZSD_LC_APP03_PV as main;
+}

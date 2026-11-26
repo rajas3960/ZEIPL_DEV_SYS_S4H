@@ -1,0 +1,5 @@
+@EndUserText.label: 'SD Of the LC Master Maintainence'
+define service ZLC_APP01_UI {
+  expose ZLC_APP01_RPV  as MainPage;
+  expose ZLC_APP01_IPV1;
+}

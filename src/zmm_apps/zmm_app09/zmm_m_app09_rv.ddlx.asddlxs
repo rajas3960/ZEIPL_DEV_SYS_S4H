@@ -1,0 +1,52 @@
+@Metadata.layer: #CUSTOMER
+
+@UI.headerInfo: {
+    typeName: 'Vendor Request',
+    typeNamePlural: 'Vendor Requests',
+    title: { type: #STANDARD, value: 'OrganizationName1' },
+    description: { type: #STANDARD, value: 'Supplier' }
+}
+
+
+
+annotate entity ZMM_C_APP09_RV
+    with
+{
+@UI.facet: [
+    {
+        id: 'GeneralInfo',
+        purpose: #STANDARD,
+        type: #IDENTIFICATION_REFERENCE,
+        label: 'General Information',
+        position: 10
+    }
+]
+    @UI.hidden: true
+    Supplier;
+
+    @UI.hidden: true
+    AddressID;
+
+    @UI.lineItem: [{ position: 10, label: 'Organization Name' }, { type: #FOR_ACTION, dataAction: 'gt_getmail', label: 'Generate Password', inline: true, emphasized: true }]
+    @UI.identification: [{ position: 10, label: 'Organization Name' },{ type: #FOR_ACTION, dataAction: 'gt_getmail', label: 'Generate Password'},
+    { type: #FOR_INTENT_BASED_NAVIGATION, label: 'Rediret to' ,semanticObject: 'YY1_APP01_RP',semanticObjectAction: 'manage'}]
+    OrganizationName1;
+
+    @UI.selectionField: [{ position: 10 }]
+    @UI.lineItem: [{ position: 20, label: 'Email' }]
+    @UI.identification: [{ position: 20, label: 'Email' }]
+    @Consumption.filter: {
+        mandatory: true,
+        multipleSelections: false,
+        selectionType: #SINGLE
+    }
+    EmailAddress;
+
+    @UI.hidden: true
+    passcode;
+
+    @UI.lineItem: [{ position: 30, label: 'Status' }]
+    @UI.identification: [{ position: 30, label: 'Status' }]
+    status;
+
+}

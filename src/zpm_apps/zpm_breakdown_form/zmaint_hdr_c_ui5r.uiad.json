@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "RCA Form"
+  },
+  "ui5AppDetails": {
+    "appId": "maintanancebreakdown.zpmbreakmaintenance"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_4F6B909CB852DD58735D9B642BE55643D1734B36_TM",
+    "semanticObject": "zpm_maint_breakdown",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_4F6B909CB852DD58735D9B642BE55643D1734B36_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "RCA Form"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+managed implementation in class zbp_mainte_hdr_i unique;
+strict ( 1 );
+with draft;
+define behavior for ZMAINTE_HDR_I //alias <alias_name>
+//persistent table zmaint_hd
+draft table zmaint_hddb
+with unmanaged save
+lock master total etag LastChangeTime
+authorization master ( instance )
+etag master LastChangeTime
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) MaintenanceNotification,MaintPriority,Material,NotificationType,NotificationText,
+                     MaintenanceOrder,MaintNotificationCode,attachment;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+
+  association _item { create; with draft;}
+  action ( features : instance ) PDF result [1] $self;
+  action ( features : instance ) UpdateItem  result [1] $self;
+  action ( features : instance ) ExcelUpload  result [1] $self;
+
+  determination attachment on save { field excelattachment,webaddress,webaddress1,webaddress2,webaddress3,webaddress4; }
+
+   side effects {
+  action UpdateItem
+    affects $self, entity _item ; }
+}
+
+define behavior for ZMAINTE_ITM_I //alias <alias_name>
+persistent table ZMAINT_IDB
+draft table ZMAINT_IDBD
+lock dependent by _header
+authorization dependent by _header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly )  maintenancenotification, maintenancenotificationitem,
+                     why1,why2,why3,why4,why5;
+  association _header{with draft;}
+
+  determination url on save { field url1,url2,url3; }
+}

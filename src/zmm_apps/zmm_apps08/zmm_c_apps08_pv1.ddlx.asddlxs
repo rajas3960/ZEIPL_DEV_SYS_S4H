@@ -1,0 +1,120 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: { typeName: 'Supplier Quation - Apps',
+                typeNamePlural: 'Supplier Quation - Apps',
+                title: { type: #STANDARD, label: 'Supplier Quation - Apps', value: 'Supplier' },
+                description:{ value: 'RequestForQuotation' } } }
+@UI.deleteHidden: true
+@UI.createHidden: true
+annotate entity ZMM_C_APPS08_PV1 with
+{
+  @UI.facet: [
+    {
+      label: 'Request For Quation - Header',
+      id: 'GeneralInfo',
+      type: #IDENTIFICATION_REFERENCE,
+      position: 10
+    },
+    {
+      id:              'PLAN_I',
+      label:           'Request For Quotation - Item',
+      purpose:         #STANDARD,
+      type:            #LINEITEM_REFERENCE,
+      position:        30,
+      targetElement:   '_Item'
+    },
+    {
+      id:        'DeliveryTerms',
+      label:     'Delivery Terms',
+      type:      #FIELDGROUP_REFERENCE,
+      position:  20,
+      targetQualifier: 'DeliveryTerms'
+    }
+  ]
+
+  @EndUserText.label: 'Supplier'
+  @UI.lineItem: [ { position: 10 , label: 'Supplier'} ]
+  @UI.identification: [ { position: 10 , label: 'Supplier' },{ type: #FOR_ACTION ,dataAction: 'submit',label: 'Submit Qutation',position: 10 },{ type: #FOR_ACTION ,dataAction: 'finalsubmit',label: 'Final Submit',position: 10 }  ]
+  Supplier;
+
+  @EndUserText.label: 'Supplier'
+  @UI.lineItem: [ { position: 20 , label: 'Request For Quotation'} ]
+  @UI.identification: [ { position: 20 , label: 'Request For Quotation' }  ]
+  RequestForQuotation;
+
+  @UI.lineItem: [ { hidden: true} ]
+//  @UI.selectionField: [ { position: 10 } ]
+//  @Consumption.filter.mandatory: true
+//  @Consumption.filter: { selectionType: #SINGLE }
+  EmailAddress;
+
+  @UI.lineItem: [ { hidden: true} ]
+//  @UI.selectionField: [ { position: 20 } ]
+//  @Consumption.filter.mandatory: true
+//  @Consumption.filter: { selectionType: #SINGLE }
+  Passcode;
+
+  @UI.hidden: true
+  /* Associations */
+  _Item;
+
+  @UI.lineItem: [ { position: 20 , label: 'Purchasing Group'} ]
+  @UI.identification: [ { position: 20 , label: 'Purchasing Group' }  ]
+  PurchasingGroup;
+
+  @UI.lineItem: [ { position: 30 , label: 'Purchasing Organization'} ]
+  @UI.identification: [ { position: 30 , label: 'Purchasing Organization' }  ]
+  PurchasingOrganization;
+
+  @UI.lineItem: [ { position: 40 , label: 'Binding EndDate'} ]
+  @UI.identification: [ { position: 40 , label: 'Binding EndDate' }  ]
+  BindingPeriodValidityEndDate;
+
+  @UI.lineItem: [ { position: 50 , label: 'Request For QuotationName'} ]
+  @UI.identification: [ { position: 50 , label: 'Request For QuotationName' }  ]
+  RequestForQuotationName;
+
+  @UI.lineItem: [ { position: 60 , label: 'Company Code'} ]
+  @UI.identification: [ { position: 60 , label: 'Company Code' }  ]
+  CompanyCode;
+
+  @UI.hidden: true
+  DocumentCurrency;
+
+  @UI.lineItem: [ { position: 70 , label: 'Target Amount'} ]
+  @UI.identification: [ { position: 70 , label: 'Target Amount' }  ]
+  TargetAmount;
+
+  @UI.lineItem: [ { position: 80 , label: 'Quotation Submission Date'} ]
+  @UI.identification: [ { position: 80 , label: 'Quotation Submission Date' }  ]
+  QuotationLatestSubmissionDate;
+
+  /* ===== Delivery Terms tab fields ===== */
+  @UI.fieldGroup: [ { qualifier: 'DeliveryTerms', position: 10, label: 'Payment Terms' } ]
+  PaymentTerms;
+
+  @UI.fieldGroup: [ { qualifier: 'DeliveryTerms', position: 20, label: 'Cash Discount 1 Days' } ]
+  CashDiscount1Days;
+
+  @UI.fieldGroup: [ { qualifier: 'DeliveryTerms', position: 30, label: 'Cash Discount 1 Percent' } ]
+  CashDiscount1Percent;
+
+  @UI.fieldGroup: [ { qualifier: 'DeliveryTerms', position: 40, label: 'Cash Discount 2 Days' } ]
+  CashDiscount2Days;
+
+  @UI.fieldGroup: [ { qualifier: 'DeliveryTerms', position: 50, label: 'Cash Discount 2 Percent' } ]
+  CashDiscount2Percent;
+
+  @UI.fieldGroup: [ { qualifier: 'DeliveryTerms', position: 60, label: 'Incoterms Version' } ]
+  IncotermsVersion;
+
+  @UI.fieldGroup: [ { qualifier: 'DeliveryTerms', position: 70, label: 'Incoterms Classification' } ]
+  IncotermsClassification;
+
+  @UI.fieldGroup: [ { qualifier: 'DeliveryTerms', position: 80, label: 'Incoterms Location 1' } ]
+  IncotermsLocation1;
+
+  @UI.fieldGroup: [ { qualifier: 'DeliveryTerms', position: 90, label: 'Incoterms Location 2' } ]
+  IncotermsLocation2;
+
+}

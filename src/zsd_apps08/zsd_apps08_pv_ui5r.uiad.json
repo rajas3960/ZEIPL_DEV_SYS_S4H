@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Broker Master"
+  },
+  "ui5AppDetails": {
+    "appId": "zsdapps08pv.zsdapps08pv"
+  },
+  "navigation": {
+    "targetMappingId": "ZSD_APPS08_PV_UI5R_TM",
+    "semanticObject": "zsd_apps08_pv",
+    "action": "Display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "ZSD_APPS08_PV_UI5R_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Broker Master"
+      }
+    }
+  ]
+}

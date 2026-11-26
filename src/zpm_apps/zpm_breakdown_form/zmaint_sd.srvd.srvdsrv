@@ -1,0 +1,5 @@
+@EndUserText.label: 'Breakdown Maintenance SD'
+define service ZMAINT_SD {
+  expose ZMAINT_HDR_C as MaintenanceHDR;
+  expose ZMAINT_ITM_C as MaintenanceITM;
+}

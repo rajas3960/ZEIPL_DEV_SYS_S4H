@@ -1,0 +1,53 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'maintenancenotification item',
+typeNamePlural: 'maintenancenotification items',
+title: { type: #STANDARD, value: 'maintenancenotificationitem' } } }
+@UI.createHidden: true
+@UI.deleteHidden: true
+@UI.updateHidden: true
+annotate entity ZMAINT_ITM_C
+    with 
+{
+    
+    @UI.facet: [ { id:              'Item',
+                   purpose:         #STANDARD,
+                   type:            #IDENTIFICATION_REFERENCE,
+                   label:           'Standard Item',
+                   position:        10 } ]
+                   
+    @UI:{ lineItem: [{ position: 10, label: 'maintenancenotificationcause' }],
+        identification: [{ position: 10, label: 'maintenancenotificationcause' }] } 
+//    
+    
+//    @UI:{ lineItem: [{ position: 10, label: 'maintenancenotificationcause' }],
+//          identification: [{ position: 10, label: 'maintenancenotificationcause' },
+//       { type: #FOR_ACTION, dataAction: 'UpdateItem', label: 'UpdateItem',position: 10 }          
+//          ] }
+    @EndUserText.label: 'maintenancenotificationcause' 
+    maintenancenotificationcause;
+    @UI:{ lineItem: [{ position: 20, label: 'maintenancenotification' }],
+        identification: [{ position: 20, label: 'maintenancenotification' }] } 
+    @EndUserText.label: 'maintenancenotification'
+    maintenancenotification;
+    @UI:{ lineItem: [{ position: 30, label: 'maintenancenotificationitem' }],
+        identification: [{ position: 30, label: 'maintenancenotificationitem' }] } 
+    @EndUserText.label: 'maintenancenotificationitem'
+    maintenancenotificationitem;
+    @UI:{ lineItem: [{ position: 40, label: 'maintnotificationcausecode' }],
+        identification: [{ position: 40, label: 'maintnotificationcausecode' }] } 
+    @EndUserText.label: 'maintnotificationcausecode'
+    maintnotificationcausecode;
+    @UI:{ lineItem: [{ position: 50, label: 'maintenanceplanningplant' }],
+        identification: [{ position: 50, label: 'maintenanceplanningplant' }] } 
+    @EndUserText.label: 'maintenanceplanningplant'
+    maintenanceplanningplant;
+     @UI:{ lineItem: [{ position: 50, label: 'maintnotifcausetext' }],
+        identification: [{ position: 50, label: 'maintnotifcausetext' }] } 
+    @EndUserText.label: 'maintnotifcausetext'
+    maintnotifcausetext;
+    /* Associations */
+    @UI.hidden: true
+    _header;
+    
+}

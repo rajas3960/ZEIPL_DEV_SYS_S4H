@@ -1,0 +1,4 @@
+@EndUserText.label: 'SERVICE DEFINITION'
+define service ZSD_HISTORYCARD {
+  expose ZCV_HISTORYCARD as HistoryCard;
+}

@@ -1,0 +1,30 @@
+managed implementation in class zbp_reservation_hdr_i unique;
+strict ( 2 );
+
+define behavior for ZRESERVATION_HDR_I alias MainHeader
+with unmanaged save
+//persistent table <???>
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) Requino;
+  association _item { create; }
+  action ( features : instance ) PDF result [1] $self;
+}
+
+define behavior for ZRESERVATION_ITEM_I alias MainItem
+with unmanaged save
+//persistent table <???>
+lock dependent by _header
+authorization dependent by _header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Reservation, ReservationItem;
+  association _header;
+}

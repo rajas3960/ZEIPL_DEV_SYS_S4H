@@ -1,0 +1,70 @@
+managed implementation in class zbp_sd_i_gatehead unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZSD_I_GATEHEAD //alias <alias_name>
+persistent table zsd_gate_htb
+draft table zsd_gate_htb_d
+lock master total etag Lastchangedby
+authorization master ( instance )
+etag master Lastchangedby
+with additional save
+{
+  create ( authorization : global );
+  update ( features : instance );
+  delete( features : instance );
+  field ( readonly, numbering : managed ) Uuid;
+  field ( readonly : update ) Gateentrytype, Companycode;
+  field ( readonly ) Plant,Plantname,Gateentryno,Gateentrydate,Gateentrytime,Gateentrysequence;
+  field ( readonly ) Gateentryid, Gateentryiddate, Gateentrytypetext;
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+
+  action ( features : instance ) SalesOrder parameter ZSALESORDER result [1] $self;
+  action ( features : instance ) PRINT result [1] $self;
+  action ( features : instance ) GateCheckIn result [1] $self;
+
+  determination headmodify on save {create;}
+
+  association _SalesHead { create; with draft;}
+  association _SalesItem { create; with draft;}
+
+  side effects {
+  action SalesOrder
+    affects $self, entity _SalesHead; }
+
+  mapping for zsd_gate_htb corresponding;
+}
+
+define behavior for ZSD_I_SGATEHEAD //alias <alias_name>
+persistent table zsd_gate_shtb
+draft table zsd_gate_shtb_d
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update ( features : instance );
+  delete ( features : instance );
+  field ( readonly ) Uuid, Salesdocument;
+  association _Head{with draft;}
+
+  mapping for zsd_gate_shtb corresponding;
+}
+
+define behavior for ZSD_I_SGATEITEM //alias <alias_name>
+persistent table zsd_gate_sitb
+draft table zsd_gate_sitb_d
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update ( features : instance );
+  delete ( features : instance );
+  field ( readonly ) Uuid, Salesdocument, Salesitem;
+  association _Head{with draft;}
+
+  mapping for zsd_gate_sitb corresponding;
+}

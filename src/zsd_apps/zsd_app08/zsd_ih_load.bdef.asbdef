@@ -1,0 +1,43 @@
+managed implementation in class zbp_sd_ih_load unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZSD_IH_LOAD alias LoadHead
+persistent table zsd_app05_hdb
+draft table zsd_app05_hdbd
+lock master total etag Lastchangedby
+authorization master ( instance )
+etag master Lastchangedby
+{
+  create ( authorization : global );
+  update ( features : instance );
+  delete ( features : instance );
+  field ( readonly, numbering : managed ) Uuid;
+  field ( readonly ) Gateentryno, Gateentrydate, Gateentrytype, Gateno, Plant, Vehicleno, Loadstdate, Loadsttime,
+  Loadenddate, Loadendtime;
+  association _Item { create; with draft; }
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+  action ( features : instance ) LoadSt result [1] $self;
+  action ( features : instance ) Loadend result [1] $self;
+  mapping for zsd_app05_hdb corresponding;
+}
+
+define behavior for ZSD_II_LOAD alias LoadItem
+persistent table zsd_app05_idb
+draft table zsd_app05_idbd
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update ( features : instance );
+  delete ( features : instance );
+  field ( readonly ) Uuid, Salesdocument, Salesitem, Material, Materialdesc;
+  //  field ( readonly : update ) Storagelocation;
+  determination imagecount on modify { field Loadcheck; }
+  association _Head { with draft; }
+  mapping for zsd_app05_idb corresponding;
+}

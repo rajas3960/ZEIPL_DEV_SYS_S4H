@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Gate Entry - Apps",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Gate Entry - Apps"
+  },
+  "ui5AppDetails": {
+    "appId": "gateentrysd.zsdgateentry"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_D8A2709F08FC4CA24E4385928501E77331A4846E_TM",
+    "semanticObject": "zsd_gate_entry",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_D8A2709F08FC4CA24E4385928501E77331A4846E_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Gate Entry - Apps"
+      }
+    }
+  ]
+}

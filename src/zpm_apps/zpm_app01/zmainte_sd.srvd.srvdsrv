@@ -1,0 +1,5 @@
+@EndUserText.label: 'Maintenance SD'
+define service ZMAINTE_SD {
+  expose ZMAINTE_HDR_C as Header;
+  expose ZMAINTE_ITM_C as Item;
+}

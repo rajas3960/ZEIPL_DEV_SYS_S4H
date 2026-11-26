@@ -1,0 +1,46 @@
+projection;
+strict ( 1 );
+use draft;
+use side effects;
+
+define behavior for ZQM_C_PO alias POHead
+{
+  use create;
+  use update;
+  use delete;
+
+  use action GetInsp;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _Insp { create; with draft; }
+  use association _InspKPI { with draft; }
+}
+
+define behavior for ZQM_C_INSP alias Inspection
+{
+  use update;
+  use delete;
+
+  use action Createresult;
+  use action GetSpecificaton;
+  use action UpdateUD;
+  use action updateresult;
+  use action PostInvoice;
+
+  use association _POHead { with draft; }
+  use association _InspKPI { create; with draft; }
+}
+
+define behavior for ZQM_C_KMIC alias InspSpecif
+{
+  use update;
+  use delete;
+
+  use association _POHead { with draft; }
+  use association _Insp { with draft; }
+}

@@ -1,0 +1,6 @@
+@EndUserText.label: 'Gate Entry Apps - UI Version'
+define service ZSD_GATE_UI {
+  expose ZSD_C_GATEHEAD  as GateHead;
+  expose ZSD_C_SGATEHEAD as SalesGateHead;
+  expose ZSD_C_SGATEITEM as SalesGateItem;
+}

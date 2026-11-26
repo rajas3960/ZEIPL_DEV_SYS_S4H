@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Print Supplier Debit Note"
+  },
+  "ui5AppDetails": {
+    "appId": "printsupplierdebitnote.printsupplierdebitnote"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_C3630494BA520B99E5F31F11E9DD67D03B75E4E3_TM",
+    "semanticObject": "print_supplier_debit_note",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_C3630494BA520B99E5F31F11E9DD67D03B75E4E3_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Print Supplier Debit Note"
+      }
+    }
+  ]
+}

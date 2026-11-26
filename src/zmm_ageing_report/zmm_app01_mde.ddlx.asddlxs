@@ -1,0 +1,131 @@
+@Metadata.layer: #PARTNER
+@UI: {
+  headerInfo: { typeName: 'Inventory Stock Ageing ',
+                typeNamePlural: 'Inventory Stock Ageing ',
+                title: { type: #STANDARD, label: 'Inventory Stock Ageing ', value: 'Product' } },
+  presentationVariant: [{ sortOrder: [{ by: 'SDDocument', direction:  #ASC }] }] }
+annotate entity ZMM_APP01_PV
+    with 
+{
+    @UI.facet: [ {    id:              'Product',
+                    purpose:         #STANDARD,
+                    type:            #IDENTIFICATION_REFERENCE,
+                    label:           'Inventory Stock Ageing ',
+                    position:        10 }]
+  //                   { id:              'Product',
+  //                     purpose:         #STANDARD,
+  //                     type:            #LINEITEM_REFERENCE,
+  //                     label:           'Product',
+  //                     position:        10,
+  //                     targetElement:   'Product'},
+  //                     {
+  //                       id: 'Overdue_Days',
+  //                       purpose: #HEADER, 
+  //                       type: #DATAPOINT_REFERENCE,
+  //                       position: 20,
+  //                       targetQualifier: 'CRITICALITY'
+  //                      } ]
+
+  
+  @UI.lineItem     : [{ position: 10, label: 'CompanyCode'  }]
+  @UI.identification      : [{position: 10, label: 'CompanyCode' }]
+  CompanyCode;
+  @UI.lineItem     : [{ position: 20, label: 'Plant'  }]
+  @UI.identification      : [{position: 20, label: 'Plant' }]
+  @UI.selectionField      : [{position: 20}]
+  Plant;
+  @UI.lineItem     : [{ position: 30, label: 'StorageLocation'  }]
+  @UI.identification      : [{position: 30, label: 'StorageLocation' }]
+  @UI.selectionField      : [{position: 30}]
+  StorageLocation;
+  @UI.lineItem     : [{ position: 40, label: 'Product Group'  }]
+  @UI.identification      : [{position: 40, label: 'Product Group' }]
+  @UI.selectionField      : [{position: 40}]
+  ProductGroup;
+  @UI.lineItem     : [{ position: 50, label: 'Product Type'  }]
+  @UI.identification      : [{position: 50, label: 'Product Type' }]
+  @UI.selectionField      : [{position: 50}]
+  ProductType;
+  @UI.lineItem     : [{ position: 60, label: 'Product'  }]
+  @UI.selectionField      : [{position: 60}]
+  @UI.identification      : [{position: 60, label: 'Product' }]
+  @EndUserText.label: 'Product'
+  Product;
+  @UI.lineItem     : [{ position: 70, label: 'ProductDescription'  }]
+  @UI.identification      : [{position: 70, label: 'ProductDescription' }]
+  ProductDescription;
+  @UI.lineItem     : [{ position: 40, label: 'PlantName'  }]
+  @UI.identification      : [{position: 40, label: 'PlantName' }]
+  PlantName;
+  @UI.lineItem     : [{ position: 50, label: 'Material Base Unit'  }]
+  @UI.identification      : [{position: 50, label: 'Material Base Unit' }]
+  MaterialBaseUnit;
+  @UI.lineItem     : [{ position: 80, label: 'InventorySpecialStockType'  }]
+  @UI.identification      : [{position: 80, label: 'InventorySpecialStockType' }]
+  //  @UI.selectionField      : [{position: 80}]
+  InventorySpecialStockType;
+  @UI.lineItem     : [{ position: 90, label: 'InventorySpecialStockTypeName'  }]
+  @UI.identification      : [{position: 90, label: 'InventorySpecialStockTypeName' }]
+  InventorySpecialStockTypeName;
+  @UI.hidden: true
+  InventoryStockType;
+  @UI.lineItem     : [{ position: 130, label: 'Total Stock'  }]
+  @UI.identification      : [{position: 130, label: 'Total Stock' }]
+  Quantity;
+  @UI.hidden: true
+  NSDM_Display_Currency;
+  @UI.lineItem     : [{ position: 140, label: 'Total Stock Value'  }]
+  @UI.identification      : [{position: 140, label: 'Total Stock Value' }]
+  StockValueInDisplayCurrency;
+  @UI.lineItem     : [{ position: 150, label: '0-30(Qty)'  }]
+  @UI.identification      : [{position: 150, label: '0-30(Qty)' }]
+  Quantity_30;
+  @UI.lineItem     : [{ position: 155, label: '0-30(Value)'  }]
+  @UI.identification      : [{position: 155, label: '0-30(Value)' }]
+  Value_30;
+  @UI.lineItem     : [{ position: 160, label: '31-60(Qty)'  }]
+  @UI.identification      : [{position: 160, label: '31-60(Qty)' }]
+  Quantity_60;
+  @UI.lineItem     : [{ position: 165, label: '31-60(Value)'  }]
+  @UI.identification      : [{position: 165, label: '31-60(Value)' }]
+  Value_60;
+  @UI.lineItem     : [{ position: 200, label: '61-180(Qty)'  }]
+  @UI.identification      : [{position: 200, label: '61-180(Qty)' }]
+  Quantity_180;
+  @UI.lineItem     : [{ position: 205, label: '61-180(Value)'  }]
+  @UI.identification      : [{position: 205, label: '61-180(Value)' }]
+  Value_180;
+  @UI.lineItem     : [{ position: 210, label: '181-365(Qty)'  }]
+  @UI.identification      : [{position: 210, label: '181-365(Qty)' }]
+  Quantity_365;
+  @UI.lineItem     : [{ position: 215, label: '181-365(Value)'  }]
+  @UI.identification      : [{position: 215, label: '181-365(Value)' }]
+  Value_365;
+  @UI.lineItem     : [{ position: 220, label: 'Beyond 1 year > 360 Days (Qty)'  }]
+  @UI.identification      : [{position: 200, label: 'Beyond 1 year(Qty)' }]
+  Quantity_bucket;
+  @UI.lineItem     : [{ position: 225, label: 'Beyond 1 year > 360 Days (Value)'  }]
+  @UI.identification      : [{position: 225, label: 'Beyond 1 year(Value)' }]
+  Value_bucket;
+  @UI.dataPoint: {
+  visualization: #PROGRESS,
+  criticality: 'CRITICALITY',
+  criticalityRepresentation: #WITH_ICON
+  }
+  @UI.lineItem     : [{ position: 235, label: 'Ageing Days', criticality: 'CRITICALITY' }]
+  @UI.identification      : [{position: 235, label: 'Ageing Days',criticality: 'CRITICALITY' }]
+  Overdue_Days;
+  @UI.hidden: true
+  CRITICALITY;
+//  @UI.dataPoint: {
+//  visualization: #PROGRESS,
+//  targetValueElement: 'Total',
+//  criticality: 'CRITICALITY',
+//  criticalityRepresentation: #WITH_ICON
+//  }
+//  @UI.lineItem: [{ position: 240, type: #AS_DATAPOINT, label: 'Progress' }]
+//  @UI.identification: [{ position: 240, type: #AS_DATAPOINT, label: 'Progress' }]
+//  Progress;
+//  @UI.hidden: true
+//  Total;
+}

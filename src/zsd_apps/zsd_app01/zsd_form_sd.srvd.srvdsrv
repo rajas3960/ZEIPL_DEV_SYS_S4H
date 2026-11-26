@@ -1,0 +1,4 @@
+@EndUserText.label: 'Form Printing Service Definition'
+define service ZSD_FORM_SD {
+  expose ZHEAD_FORM_CE as HeadForm;
+}

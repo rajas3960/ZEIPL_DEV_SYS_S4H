@@ -1,0 +1,4 @@
+@EndUserText.label: 'Material Group VH API for BTP'
+define service ZMM_API_MATGRP {
+  expose ZMM_MATGRP_VH as MaterialGroup;
+}

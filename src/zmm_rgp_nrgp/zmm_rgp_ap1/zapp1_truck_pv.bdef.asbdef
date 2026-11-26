@@ -1,0 +1,9 @@
+projection;
+strict ( 2 );
+
+define behavior for ZAPP1_TRUCK_PV //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+}

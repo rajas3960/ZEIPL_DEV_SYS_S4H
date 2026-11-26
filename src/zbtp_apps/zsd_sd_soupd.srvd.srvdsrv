@@ -1,0 +1,10 @@
+@EndUserText.label: 'Gate Entry - Sales Order data for BTP'
+define service ZSD_SD_SOUPD {
+  expose ZSD_SOUPD_SOITEM  as SalesOrderItem;
+  expose ZSD_SOUPD_RETITEM as ReturnItem;
+  expose ZSD_SOUPD_PARTNER as OrderPartner;
+  expose ZSD_SOUPD_CUSTVH  as Customer;
+  expose ZSD_ORDER_VH1     as SalesOrderVH;
+  expose ZSD_ORDERITEM_VH1 as SalesOrderItemVH;
+  expose ZSD_OPEN_QTY1     as OpenQty;
+}

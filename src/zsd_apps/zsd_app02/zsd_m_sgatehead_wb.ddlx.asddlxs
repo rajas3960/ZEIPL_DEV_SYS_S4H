@@ -1,0 +1,89 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Gate Entry - Sales',
+typeNamePlural: 'Gate Entry - Sales',
+title: { type: #STANDARD, value: 'Salesdocument' }
+}}
+@UI.createHidden: true
+@UI.deleteHidden: true
+annotate entity ZSD_C_SGATEHEAD_WB
+    with 
+{
+  @UI.facet: [ { id:              'Header',
+                      purpose:         #STANDARD,
+                      type:            #IDENTIFICATION_REFERENCE,
+                      label:           'Gate Entry Sales - Header',
+                      position:        10 }]
+@UI.hidden: true 
+Uuid;
+  @UI: {  lineItem:       [ { position: 10, label: 'Customer' } ],
+        identification:   [ { position: 10, label: 'Customer' } ]}
+        @EndUserText.label: 'Customer' 
+Customer;
+  @UI: {  lineItem:       [ { position: 20, label: 'Order No' } ],
+        identification:   [ { position: 20, label: 'Order No' } ]}
+        @EndUserText.label: 'Order No' 
+Salesdocument;
+  @UI: {  lineItem:       [ { position: 30, label: 'Company Code' } ],
+        identification:   [ { position: 30, label: 'Company Code' } ]}
+        @EndUserText.label: 'Company Code' 
+Companycode;
+  @UI: {  lineItem:       [ { position: 40, label: 'From Place' } ],
+        identification:   [ { position: 40, label: 'From Place' } ]}
+        @EndUserText.label: 'From Place' 
+Fromplace;
+  @UI: {  lineItem:       [ { position: 50, label: 'To Place' } ],
+        identification:   [ { position: 50, label: 'To Place' } ]}
+        @EndUserText.label: 'To Place' 
+Toplace;
+  @UI: {  lineItem:       [ { position: 60, label: 'Billing From' } ],
+        identification:   [ { position: 60, label: 'Billing From' } ]}
+        @EndUserText.label: 'Billing From' 
+Billingfrom;
+  @UI: {  lineItem:       [ { position: 70, label: 'Consignee' } ],
+        identification:   [ { position: 70, label: 'Consignee' } ]}
+        @EndUserText.label: 'Consignee' 
+Consignee;
+  @UI: {  lineItem:       [ { position: 80, label: 'Bill To' } ],
+        identification:   [ { position: 80, label: 'Bill To' } ]}
+        @EndUserText.label: 'Bill To' 
+Billto;
+  @UI: {  lineItem:       [ { position: 90, label: 'Ship To' } ],
+        identification:   [ { position: 90, label: 'Ship To' } ]}
+        @EndUserText.label: 'Ship To' 
+Shipto;
+  @UI: {  lineItem:       [ { position: 100, label: 'Broker' } ],
+        identification:   [ { position: 100, label: 'Broker' } ]}
+        @EndUserText.label: 'Broker' 
+Broker;
+  @UI: {  lineItem:       [ { position: 110, label: 'Do Remark' } ],
+        identification:   [ { position: 110, label: 'Do Remark' } ]}
+        @EndUserText.label: 'Do Remark' 
+Doremark;
+  @UI: {  lineItem:       [ { position: 120, label: 'Stock type' } ],
+        identification:   [ { position: 120, label: 'Stock type' } ]}
+        @EndUserText.label: 'Stock type' 
+Stocktype;
+  @UI: {  lineItem:       [ { position: 130, label: 'Division' } ],
+        identification:   [ { position: 130, label: 'Division' } ]}
+        @EndUserText.label: 'Division' 
+Division;
+@UI.hidden: true
+Gateentryno;
+@UI.hidden: true
+Companyname;
+@UI.hidden: true
+Customername;
+@UI.hidden: true
+Createdby;
+@UI.hidden: true
+Createdat;
+@UI.hidden: true
+Lastchangedby;
+@UI.hidden: true
+Lastchangedat;
+/* Associations */
+@UI.hidden: true
+_Head;
+    
+}

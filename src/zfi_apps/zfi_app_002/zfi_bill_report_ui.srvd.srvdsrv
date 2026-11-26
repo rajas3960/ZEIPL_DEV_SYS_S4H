@@ -1,0 +1,4 @@
+@EndUserText.label: 'Broker Bill Report UI'
+define service ZFI_BILL_REPORT_UI {
+  expose ZFI_BILL_REPORT_PV as BrokerBillReport;
+}

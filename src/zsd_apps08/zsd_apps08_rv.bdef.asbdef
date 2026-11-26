@@ -1,0 +1,44 @@
+managed implementation in class zbp_sd_apps08_rv unique;
+strict ( 2 );
+with draft;
+define behavior for ZSD_APPS08_RV alias hdr
+with unmanaged save
+draft table zsd_apps08_df
+//persistent table zsd_apps08_db
+lock master
+total etag Createdon
+authorization master ( instance )
+etag master Createdon
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly : update ) Brokerid,brokername;
+  field (readonly) Createdby,Createdon,Netamt,Open_bal,Total_utlize;
+  determination fill_hdata on save { create; field Brokerid; }
+  draft action Resume;
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft determine action Prepare; //{ validation ( always )  ; }
+  association _item { create; with draft; }
+  mapping for zsd_apps08_db corresponding;
+}
+
+define behavior for ZSD_APPS08_IRV alias _item
+//persistent table zsd_apps08_idb
+with unmanaged save
+draft table zsd_apps08_idf
+lock dependent by _hdr
+authorization dependent by _hdr
+//etag master <field_name>
+{
+  update(features : instance);
+  delete(features : instance);
+  field ( readonly ) Srno,Brokerid,Createdby,Createdon,Partnerid;
+//  field ( readonly:update ) Partnerid;
+  association _hdr { with draft; }
+  determination fill_ldata on save { create;  field Srno;field Brokerid; }
+//  side effects { $self affects entity _hdr ; }
+   mapping for zsd_apps08_idb corresponding;
+}

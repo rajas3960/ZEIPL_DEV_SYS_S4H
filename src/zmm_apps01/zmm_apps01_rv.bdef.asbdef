@@ -1,0 +1,33 @@
+managed implementation in class zbp_mm_apps01_rv unique;
+strict ( 2 );
+
+define behavior for ZMM_APPS01_RV alias _HDR
+//persistent table ekko
+with unmanaged save
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+
+  field ( readonly ) RequestForQuotation;
+  association ITEM ;
+  action ( features : instance ) Compare result [1] $self;
+  action ( features : instance ) Award result [1] $self;
+side effects {
+  action Award affects entity ITEM;
+  action Compare affects entity ITEM;
+}
+
+}
+
+define behavior for ZMM_APPS01_IRV alias item
+//persistent table <???>
+with unmanaged save
+lock dependent by hdr
+authorization dependent by hdr
+//etag master <field_name>
+{
+  field ( readonly ) SupplierQuotation, RequestForQuotation, Supplier;
+  association hdr;
+
+}

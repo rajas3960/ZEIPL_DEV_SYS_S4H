@@ -1,0 +1,4 @@
+@EndUserText.label: 'Storage Location VH for BTP'
+define service ZSD_SD_SLOC {
+  expose ZSD_SLOC_VH as StorageLocation;
+}

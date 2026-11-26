@@ -1,0 +1,4 @@
+@EndUserText.label: 'SO Carrier Allocation Upload'
+define service ZSD_UI_SO_TMUPL {
+  expose ZC_SD_SO_TMUPL as Upload;
+}

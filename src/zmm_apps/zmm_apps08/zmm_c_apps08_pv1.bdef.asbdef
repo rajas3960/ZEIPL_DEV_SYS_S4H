@@ -1,0 +1,30 @@
+projection;
+strict ( 2 );
+use draft;
+use side effects;
+
+define behavior for ZMM_C_APPS08_PV1 //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Activate;
+  use action Discard;
+  use action Edit;
+  use action Prepare;
+  use action Resume;
+  use action submit;
+  use action finalsubmit;
+
+
+  use association _Item { create; with draft; }
+}
+
+define behavior for ZMM_C_APPS08_IPV //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _hdr { with draft; }
+}

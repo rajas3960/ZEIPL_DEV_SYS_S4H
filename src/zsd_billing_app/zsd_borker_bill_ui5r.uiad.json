@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Broker Bill Booking"
+  },
+  "ui5AppDetails": {
+    "appId": "zsdborkerbill.zsdborkerbill"
+  },
+  "navigation": {
+    "targetMappingId": "ZSD_BORKER_BILL_UI5R_TM",
+    "semanticObject": "zsd_borker_billing",
+    "action": "Display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "ZSD_BORKER_BILL_UI5R_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Broker Bill Booking"
+      }
+    }
+  ]
+}

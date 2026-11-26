@@ -1,0 +1,5 @@
+@EndUserText.label: 'RESERVATION SERVICE DEFINITION'
+define service ZRESERVATION_SDH {
+  expose ZRESERVATION_HDR_C  as MainHeader;
+  expose ZRESERVATION_ITEM_C as MainItem;
+}

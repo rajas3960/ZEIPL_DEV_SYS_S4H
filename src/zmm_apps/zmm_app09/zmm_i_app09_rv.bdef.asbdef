@@ -1,0 +1,24 @@
+managed implementation in class zbp_mm_i_app09_rv unique;
+strict ( 1 );
+
+define behavior for ZMM_I_APP09_RV //alias <alias_name>
+//persistent table <???>
+with unmanaged save
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+//  create ( authorization : global );
+//  update;
+//  delete;
+field(readonly ) AddressID,EmailAddress,OrganizationName1,Supplier,passcode,status;
+action gt_getmail ;
+action gt_related;
+
+side effects { action gt_getmail affects $self,field status, field passcode ;
+	
+}
+
+
+
+}

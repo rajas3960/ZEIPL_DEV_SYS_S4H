@@ -1,0 +1,5 @@
+@EndUserText.label: 'Gate Entry Apps SD - Service Definition'
+define service ZSD_GATE_API_UI {
+  expose ZSD_GATE_I      as GateHead;
+  expose ZSD_GATE_ITEM_I as GateItem;
+}

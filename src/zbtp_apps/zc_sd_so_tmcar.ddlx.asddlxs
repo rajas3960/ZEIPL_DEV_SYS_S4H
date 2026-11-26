@@ -1,0 +1,95 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Carrier Allocation',
+    typeNamePlural: 'Carrier Allocations',
+    title:       { type: #STANDARD, value: 'SalesOrder' },
+    description: { type: #STANDARD, value: 'CarrierName' }
+  },
+  presentationVariant: [{ sortOrder: [{ by: 'SalesOrder', direction: #DESC }] }]
+}
+annotate entity ZC_SD_SO_TMCAR with
+{
+  @UI.facet: [
+    { id: 'Allocation', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE,
+      label: 'Carrier Allocation', position: 10 },
+    { id: 'SOItem',     purpose: #STANDARD, type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'SO', label: 'Sales Order Item', position: 20 },
+    { id: 'FreightOrders', purpose: #STANDARD, type: #LINEITEM_REFERENCE,
+      targetElement: '_FreightOrder', label: 'Freight Orders', position: 30 },
+    { id: 'Admin',      purpose: #STANDARD, type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'Admin', label: 'Administrative Data', position: 40 }
+  ]
+
+  @UI: { lineItem:       [{ position: 10, importance: #HIGH },
+                          { type: #FOR_INTENT_BASED_NAVIGATION,
+                            semanticObject: 'ZSDCarrierAllocUpload',
+                            semanticObjectAction: 'display',
+                            label: 'Excel Upload',
+                            requiresContext: false }],
+         identification: [{ position: 10 }],
+         selectionField: [{ position: 10 }] }
+  @EndUserText.label: 'Sales Order'
+  SalesOrder;
+
+  @UI: { lineItem:       [{ position: 20, importance: #HIGH }],
+         identification: [{ position: 20 }] }
+  @EndUserText.label: 'SO Item'
+  SalesOrderItem;
+
+  @UI: { lineItem:       [{ position: 30, importance: #HIGH }],
+         identification: [{ position: 30 }],
+         selectionField: [{ position: 20 }] }
+  @EndUserText.label: 'Carrier'
+  Carrier;
+
+  @UI: { lineItem:       [{ position: 40, importance: #HIGH }],
+         identification: [{ position: 40 }] }
+  @EndUserText.label: 'Carrier Name'
+  CarrierName;
+
+  //  @UI: { lineItem:       [{ position: 50, importance: #HIGH }],
+  //         identification: [{ position: 50 }] }
+  //  @EndUserText.label: 'Carrier Quantity'
+  @UI.hidden: true
+  AllocatedQty;
+
+  @UI.hidden: true
+  OrderUnit;
+
+  @UI: { lineItem:  [{ position: 60 }],
+         fieldGroup: [{ qualifier: 'SO', position: 10 }] }
+  SOItemQuantity;
+
+  @UI: { lineItem:  [{ position: 70 }],
+         fieldGroup: [{ qualifier: 'SO', position: 20 }],
+         selectionField: [{ position: 30 }] }
+  Material;
+
+  @UI.fieldGroup: [{ qualifier: 'SO', position: 30 }]
+  MaterialName;
+
+  @UI: { lineItem:  [{ position: 80 }],
+         fieldGroup: [{ qualifier: 'SO', position: 40 }],
+         selectionField: [{ position: 40 }] }
+  Customer;
+
+  @UI.fieldGroup: [{ qualifier: 'SO', position: 50 }]
+  CustomerName;
+
+  @UI: { fieldGroup: [{ qualifier: 'SO', position: 60 }],
+         selectionField: [{ position: 50 }] }
+  Plant;
+
+  @UI.fieldGroup: [{ qualifier: 'Admin', position: 10 }]
+  CreatedBy;
+  @UI.fieldGroup: [{ qualifier: 'Admin', position: 20 }]
+  CreatedAt;
+  @UI.fieldGroup: [{ qualifier: 'Admin', position: 30 }]
+  LastChangedBy;
+  @UI.fieldGroup: [{ qualifier: 'Admin', position: 40 }]
+  LastChangedAt;
+
+  @UI.hidden: true
+  LocalLastChanged;
+}

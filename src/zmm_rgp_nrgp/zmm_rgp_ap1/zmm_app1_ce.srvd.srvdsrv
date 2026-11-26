@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service Defination Custom Entity'
+define service ZMM_APP1_CE {
+  expose ZMM_APP1_CE1;
+  expose ZMM_APP1_ITM;
+  expose ZPP_APPS05_CITM;
+}

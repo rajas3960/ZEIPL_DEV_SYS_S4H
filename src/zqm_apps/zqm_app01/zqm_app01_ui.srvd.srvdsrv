@@ -1,0 +1,6 @@
+@EndUserText.label: 'Manage PO Debit-Credit Master UI'
+define service ZQM_APP01_UI {
+  expose ZQM_C_HEAD as QMHead;
+  expose ZQM_C_MIC  as QMMic;
+  expose ZQM_C_SLAB as QMSlab;
+}

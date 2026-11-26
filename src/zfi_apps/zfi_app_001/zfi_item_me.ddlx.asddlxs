@@ -1,0 +1,154 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Debit Note',
+typeNamePlural: 'Debit Note',
+title: { type: #STANDARD, value: 'AccountingDocumentItem' } } }
+@UI.createHidden: true
+//@UI.updateHidden: true
+@UI.deleteHidden: true
+annotate entity ZFI_ITEM_PROJECTION_VIEW with
+{
+  @UI.facet: [ { id:              'Item',
+                   purpose:         #STANDARD,
+                   type:            #IDENTIFICATION_REFERENCE,
+                   label:           'Standard Item',
+                   position:        10 } ]
+
+//  @UI:{ lineItem: [{ position: 10, label: 'Accounting Document' }],
+//          identification: [{ position: 10, label: 'Accounting Document' }] }
+//  @EndUserText.label: 'Accounting Document' 
+
+ @UI: {
+    lineItem: [
+        { position: 10, label: 'Accounting Document' },
+        { type: #FOR_ACTION, dataAction: 'MatdesInput',label: 'Material Details', position: 20, invocationGrouping: #CHANGE_SET }
+    ],
+    identification: [ { position: 10, label: 'Accounting Document' }]
+ }
+ @EndUserText.label: 'Accounting Document'
+  AccountingDocument;
+  //  LedgerGLLineItem;
+  @UI:{ lineItem: [{ position: 20, label: 'Accounting Item' }],
+          identification: [{ position: 20, label: 'Accounting Item' }] }
+  @EndUserText.label: 'Accounting Item'
+  AccountingDocumentItem;
+  //  AccountingDocumentType;
+  //  Plant;
+  @UI:{ lineItem: [{ position: 30, label: 'GL Account' }],
+          identification: [{ position: 30, label: 'GL Account' }] }
+  @EndUserText.label: 'GL Account'
+  GLAccount;
+  @UI.hidden: true
+  GLAccountLongName;
+  @UI:{ lineItem: [{ position: 40, label: 'Taxable Value' }],
+          identification: [{ position: 40, label: 'Taxable Value' }] }
+  @EndUserText.label: 'Taxable Value'
+  TaxableValue;
+  @UI:{ lineItem: [{ position: 50, label: 'Currency' }],
+          identification: [{ position: 50, label: 'Currency' }] }
+  @EndUserText.label: 'Currency'
+  CompanyCodeCurrency;
+
+  // TaxCode;
+  // TaxItemGroup;
+  @UI:{ lineItem: [{ position: 60, label: 'CGST Amt' }],
+          identification: [{ position: 60, label: 'CGST Amt' }] }
+  @EndUserText.label: 'CGST Amt'
+  CgstAmt;
+  @UI:{ lineItem: [{ position: 70, label: 'CGST Rate' }],
+         identification: [{ position: 70, label: 'CGST Rate' }] }
+  @EndUserText.label: 'CGST Rate'
+  CgstRate;
+  @UI.hidden: true
+  CgstRateRatio;
+  @UI:{ lineItem: [{ position: 80, label: 'SGST Amt' }],
+          identification: [{ position: 80, label: 'SGST Amt' }] }
+  @EndUserText.label: 'SGST Amt'
+  SgstAmt;
+  @UI:{ lineItem: [{ position: 90, label: 'SGST Rate' }],
+          identification: [{ position: 90, label: 'SGST Rate' }] }
+  @EndUserText.label: 'SGST Rate'
+  SgstRate;
+  @UI.hidden: true
+  SgstRateRatio;
+  @UI:{ lineItem: [{ position: 100, label: 'IGST Amt' }],
+          identification: [{ position: 100, label: 'IGST Amt' }] }
+  @EndUserText.label: 'IGST Amt'
+  IgstAmt;
+  @UI:{ lineItem: [{ position: 110, label: 'IGST Rate' }],
+          identification: [{ position: 110, label: 'IGST Rate' }] }
+  @EndUserText.label: 'IGST Rate'
+  IgstRate;
+  @UI.hidden: true
+  IgstRateRatio;
+
+  //  InvoiceReference;
+
+  //Association for Purchase Order
+  @UI.identification: [{ position: 115, label: 'Purchase' }]
+  @EndUserText.label: 'Purchase'
+  PurchaseOrder;
+  @UI.identification: [{ position: 120, label: 'Purchase Item' }]
+  @EndUserText.label: 'Purchase Item'
+  PurchaseOrderItem;
+//  @UI.identification: [{ position: 125, label: 'Product' }]
+//  @EndUserText.label: 'Product'
+//  material;
+  @UI.identification: [{ position: 130, label: 'Product Des' }]
+  @EndUserText.label: 'Product Des'
+  PurchaseOrderItemText;
+  @UI.identification: [{ position: 135, label: 'HSN Code' }]
+  @EndUserText.label: 'HSN Code'
+  HSNCode;
+  @UI.identification: [{ position: 140, label: 'Quantity' }]
+  @EndUserText.label: 'Quantity'
+  OrderQuantity;
+  @UI.hidden: true
+  BaseUnit;
+  @UI.identification: [{ position: 145, label: 'Rate(Per Unit)' }]
+  @EndUserText.label: 'Rate(Per Unit)'
+  Rate;
+  @UI.identification: [{ position: 150, label: 'Amount' }]
+  @EndUserText.label: 'Amount'
+  Amount;
+  @UI.lineItem: [{ position: 155, label: 'Poitemtext' }]
+  @UI.identification: [{ position: 155, label: 'Poitemtext' }]
+  @EndUserText.label: 'Poitemtext'
+  Poitemtext;
+  @UI.lineItem: [{ position: 160, label: 'PoHsncode' }]
+  @UI.identification: [{ position: 160, label: 'PoHsncode' }]
+  @EndUserText.label: 'PoHsncode'
+  PoHsncode;
+  @UI.lineItem: [{ position: 165, label: 'PoQty' }]
+  @UI.identification: [{ position: 165, label: 'PoQty' }]
+  @EndUserText.label: 'PoQty'
+  PoQty;
+  @UI.lineItem: [{ position: 170, label: 'PoBaseunit' }]
+  @UI.identification: [{ position: 170, label: 'PoBaseunit' }]
+  @EndUserText.label: 'PoBaseunit'
+  PoBaseunit;
+  @UI.lineItem: [{ position: 175, label: 'PoRate' }]
+  @UI.identification: [{ position: 175, label: 'PoRate' }]
+  @EndUserText.label: 'PoRate'
+  PoRate;
+  //  POAmount;
+  //  DocumentCurrency;
+  @UI.hidden: true
+  SourceLedger;
+  @UI.hidden: true
+  CompanyCode;
+  @UI.hidden: true
+  FiscalYear;
+  @UI.hidden: true
+  LedgerGLLineItem;
+  @UI.hidden: true
+  Plant;
+  @UI.hidden: true
+  TaxCode;
+  @UI.hidden: true
+  TaxItemGroup;
+  /* Associations */
+  @UI.hidden: true
+  _Head;
+
+}

@@ -1,0 +1,79 @@
+@Metadata.layer: #CUSTOMER
+annotate entity ZMM_APP3_IPV1 with
+{
+  @UI.facet: [ { id:              'cItems',
+                     purpose:         #STANDARD,
+                     type:            #IDENTIFICATION_REFERENCE,
+                     label:           'Inward items',
+                     position:        10 }]
+  @UI.hidden: true
+  Uuid;
+  @UI: { lineItem: [{ position: 10, label: 'Item No' }],
+  identification: [{ position: 10, label: 'Item No'  }] }
+  Itemno;
+  @UI: { lineItem: [{ position: 20, label: 'S.No' }],
+  identification: [{ position: 20, label: 'S.No'  }] }
+  Sno;
+    @UI: { lineItem: [{ position: 30, label: 'Challan Quantity' }],
+  identification: [{ position: 30, label: 'Challan Quantity'  }] }
+  Recvqty;
+    @UI: { lineItem: [{ position: 40, label: 'UOM' }],
+  identification: [{ position: 40, label: 'UOM'  }] }
+  @EndUserText.label: 'UOM'
+  Uom;
+    @UI: { lineItem: [{ position: 50, label: 'Ref Invoice' }],
+  identification: [{ position: 50, label: 'Ref Invoice'  }] }
+  Invoice;
+    @UI: { lineItem: [{ position: 60, label: 'Received Date' }],
+  identification: [{ position: 60, label: 'Received Date'  }] }
+  Indt;
+    @UI: { lineItem: [{ position: 70, label: 'Received Time' }],
+  identification: [{ position: 70, label: 'Received Time'  }] }
+  Intim;
+    @UI: { lineItem: [{ position: 80, label: 'Gate In Number' }],
+  identification: [{ position: 80, label: 'Gate In Number'  }] }  
+  Gateinnumber;
+    @UI: { lineItem: [{ position: 90, label: 'Accepted Qty' }],
+  identification: [{ position: 90, label: 'Accepted Qty'  }] }
+  @EndUserText.label: 'Accepted Qty'  
+  Accqty;
+    @UI: { lineItem: [{ position: 100, label: 'Rejected Qty' }],
+  identification: [{ position: 100, label: 'Rejected Qty'  }] }
+  @EndUserText.label: 'Rejected Qty'  
+  Rjtqty;
+    @UI: { lineItem: [{ position: 110, label: 'Gate In Date' }],
+  identification: [{ position: 120, label: 'Gate In Date'  }] }  
+  Gateindate;
+      @UI: { lineItem: [{ position: 130, label: 'Gate In Time' }],
+  identification: [{ position: 130, label: 'Gate In Time'  }] }
+  Gateintime;
+  
+  @UI: { lineItem: [{ position: 140, label: 'Created By' }],
+  identification: [{ position: 140, label: 'Created By'  }] }
+  Createdby;
+  //  @UI: { lineItem: [{ position: 20, label: 'Material Code' }],
+  //  identification: [{ position: 20, label: 'Material Code'  }] }
+  @UI.hidden: true
+  Matnr;
+  //  @UI: { lineItem: [{ position: 30, label: 'Material Desc.' }],
+  //  identification: [{ position: 30, label: 'Material Desc.'  }] }
+  @UI.hidden: true
+  Maktx;
+  //  @UI: { lineItem: [{ position: 60, label: 'Quantity' }],
+  //  identification: [{ position: 60, label: 'Quantity'  }] }
+  @UI.hidden: true
+  Quantity;
+  //  @UI: { lineItem: [{ position: 70, label: 'Pending Quantity' }],
+  //  identification: [{ position: 70, label: 'Pending Quantity'  }] }
+  @UI.hidden: true
+  Penqty;
+
+  @UI.hidden: true
+  Createdat;
+
+
+  @UI.hidden: true
+  /* Associations */
+  _Header;
+
+}

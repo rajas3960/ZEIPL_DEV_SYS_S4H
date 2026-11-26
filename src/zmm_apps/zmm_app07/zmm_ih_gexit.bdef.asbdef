@@ -1,0 +1,45 @@
+managed implementation in class zbp_mm_ih_gexit unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMM_IH_GEXIT alias GateExitHead
+persistent table zmm_app04_hdb
+draft table zmm_app04_hdbd
+lock master total etag Lastchangedby
+authorization master ( instance )
+etag master Lastchangedby
+{
+  create ( authorization : global );
+  update ( features : instance );
+  delete ( features : instance );
+
+  field ( readonly, numbering : managed ) Uuid;
+  association _Item { create; with draft; }
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+
+  action ( features : instance ) GateExit result [1] $self;
+  action ( features : instance ) ImageVald result [1] $self;
+
+  mapping for zmm_app04_hdb corresponding;
+}
+
+define behavior for ZMM_II_GEXIT alias GateExitItem
+persistent table zmm_app04_idb
+draft table zmm_app04_idbd
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update ( features : instance );
+  delete ( features : instance );
+  field ( readonly ) Uuid, Purchaseorder, Purchaseorderitem;
+
+  association _Head{ with draft;}
+
+  mapping for zmm_app04_idb corresponding;
+}

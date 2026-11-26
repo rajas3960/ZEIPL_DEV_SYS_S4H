@@ -1,0 +1,49 @@
+managed implementation in class zbp_lc_app02_rv unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZLC_APP02_RV alias _hdr
+//persistent table <???>
+with unmanaged save
+draft table zsd_app02_hdt
+lock master
+total etag LastChangeDateTime
+authorization master ( instance )
+etag master LastChangeDateTime
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) SalesDocument, CreationDate, CreatedByUser, LastChangeDateTime, CustomerName,LastChangedByUser, SoldToParty,TotLCamt,Utilized_amt,Balance_amt;
+  association _litem { create; with draft; }
+  draft action Resume;
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft determine action Prepare;
+  mapping for zlc_app02_db corresponding;
+
+}
+
+define behavior for ZLC_APP02_IRV alias _litem
+//persistent table zlc_app02_idb
+with unmanaged save
+draft table zsd_app02_idt1
+lock dependent by _hdr
+authorization dependent by _hdr
+//etag master <field_name>
+{
+  update ( features : instance );
+  delete ( features : instance );
+  field ( readonly ) Salesdocument, Srno, Createdby, Createdon;
+  determination Gtdata1 on save { create; field Srno; }
+  validation validateLcAmount on save { create; update; }
+  side effects
+  {
+    field Lcnum affects field Lcamount;
+    field Srno affects field Lcnum;
+  }
+  determination Gtdata2 on save { field Srno, Lcnum; }
+  association _hdr { with draft; }
+  mapping for zlc_app02_idb corresponding;
+}

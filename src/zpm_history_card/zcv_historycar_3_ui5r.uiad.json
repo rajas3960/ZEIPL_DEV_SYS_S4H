@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "History card report",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "History Card Report"
+  },
+  "ui5AppDetails": {
+    "appId": "zcvhistorycard"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_84ED9BB0F488BDBC740584563BE1DB973A29285E_TM",
+    "semanticObject": "ZCV_HISTORYCARD",
+    "action": "DISPLAY",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_84ED9BB0F488BDBC740584563BE1DB973A29285E_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "History Card Report"
+      }
+    }
+  ]
+}

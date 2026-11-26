@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "An SAP Fiori application.",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "MSME Vendor Outstanding Report"
+  },
+  "ui5AppDetails": {
+    "appId": "zcmsmereport"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_4713E074A4960FCE8258D400F0B55FAB570F9681_TM",
+    "semanticObject": "ZI_MSME_REPORT_RV",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_4713E074A4960FCE8258D400F0B55FAB570F9681_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "MSME Vendor Outstanding Report"
+      }
+    }
+  ]
+}

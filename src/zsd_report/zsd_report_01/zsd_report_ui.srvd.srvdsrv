@@ -1,0 +1,4 @@
+@EndUserText.label: 'SD Billing report Aganist Broker'
+define service ZSD_REPORT_ui {
+  expose ZSD_REPORT_PV as BillingReport;
+}

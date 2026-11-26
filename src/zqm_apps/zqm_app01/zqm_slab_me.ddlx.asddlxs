@@ -1,0 +1,91 @@
+@Metadata.layer: #CUSTOMER
+@UI: { headerInfo: {
+typeName: 'Slab Basic Information',
+typeNamePlural: 'Slab Basic Information',
+title: { type: #STANDARD, value: 'Boocharacteristic' }
+}}
+annotate entity ZQM_C_SLAB
+    with 
+{
+  @UI.facet: [ { id:              'Header',
+                      purpose:         #STANDARD,
+                      type:            #IDENTIFICATION_REFERENCE,
+                      label:           'Slab Basic Information',
+                      position:        10 }]
+@UI.hidden: true 
+Uuid;
+@UI.hidden: true 
+Plangroup;
+@UI.hidden: true 
+Boocharacteristic;
+@UI.hidden: true 
+Granduuid;
+  @UI: {  lineItem:       [ { position: 10, label: 'SL No' } ],
+        identification:   [ { position: 10, label: 'SL No' } ]}
+        @EndUserText.label: 'SL No'
+Slabno;
+  @UI: {  lineItem:       [ { position: 20, label: 'Minus/Plus' } ],
+        identification:   [ { position: 20, label: 'Minus/Plus' } ]}
+        @EndUserText.label: 'Minus/Plus'
+@Consumption.valueHelpDefinition: [{ entity: { name: 'ZPLUSMINUS_VH', element: 'text' }, 
+                                    distinctValues: true }] //this one for Dropdown option        
+Minusplus;
+  @UI: {  lineItem:       [ { position: 30, label: 'From' } ],
+        identification:   [ { position: 30, label: 'From' } ]}
+        @EndUserText.label: 'From'
+Fromslab;
+  @UI: {  lineItem:       [ { position: 40, label: 'UOM' } ],
+        identification:   [ { position: 40, label: 'UOM' } ]}
+        @EndUserText.label: 'UOM'
+@Consumption.valueHelpDefinition: [{ entity: { name: 'I_UnitOfMeasureStdVH', element: 'UnitOfMeasure' } }]        
+Fromuom;
+  @UI: {  lineItem:       [ { position: 50, label: 'To' } ],
+        identification:   [ { position: 50, label: 'To' } ]}
+        @EndUserText.label: 'To'
+Toslab;
+  @UI: {  lineItem:       [ { position: 60, label: 'UOM' } ],
+        identification:   [ { position: 60, label: 'UOM' } ]}
+        @EndUserText.label: 'UOM'
+@Consumption.valueHelpDefinition: [{ entity: { name: 'I_UnitOfMeasureStdVH', element: 'UnitOfMeasure' } }]                
+Touom;
+  @UI: {  lineItem:       [ { position: 70, label: 'Debit/Credit Ind' } ],
+        identification:   [ { position: 70, label: 'Debit/Credit Ind' } ]}
+        @EndUserText.label: 'Debit/Credit Ind'
+Debitcreditindicator;
+  @UI: {  lineItem:       [ { position: 70, label: 'Amount' } ],
+        identification:   [ { position: 70, label: 'Amount' } ]}
+        @EndUserText.label: 'Amount'
+Amountnew;
+  @UI: {  lineItem:       [ { position: 80, label: 'Currency' } ],
+        identification:   [ { position: 80, label: 'Currency' } ]}
+        @EndUserText.label: 'Currency'
+Currency;
+  @UI: {  lineItem:       [ { position: 90, label: 'Per' } ],
+        identification:   [ { position: 90, label: 'Per' } ]}
+        @EndUserText.label: 'Per'
+Perrate;
+  @UI: {  lineItem:       [ { position: 100, label: 'PO Qty UOM' } ],
+        identification:   [ { position: 100, label: 'PO Qty UOM' } ]}
+        @EndUserText.label: 'PO Qty UOM'
+@Consumption.valueHelpDefinition: [{ entity: { name: 'I_UnitOfMeasureStdVH', element: 'UnitOfMeasure' } }]                
+Poqtyuom;
+@UI.hidden: true 
+Fromslabamt;
+@UI.hidden: true 
+Toslabamt;
+@UI.hidden: true 
+Amount;
+@UI.hidden: true 
+Createdby;
+@UI.hidden: true 
+Createdat;
+@UI.hidden: true 
+Lastchangedby;
+@UI.hidden: true 
+Lastchangedat;
+/* Associations */
+@UI.hidden: true 
+_Header;
+@UI.hidden: true 
+_ItemMIC;    
+}

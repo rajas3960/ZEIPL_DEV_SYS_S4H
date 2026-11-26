@@ -1,0 +1,74 @@
+@Metadata.layer: #CUSTOMER
+@UI.deleteHidden: true
+@UI.createHidden: true
+annotate entity ZMM_C_APPS08_IPV with
+{
+  @UI.facet: [
+    {
+      id:        'Item',
+      purpose:   #STANDARD,
+      type:      #IDENTIFICATION_REFERENCE,
+      label:     'Request For Quotation - Item',
+      position:  10
+    }
+  ]
+
+  @UI: { lineItem:       [ { position: 10, label: 'Supplier', importance: #HIGH } ],
+         identification: [ { position: 10, label: 'Supplier' } ] }
+  Supplier;
+
+  @UI: { lineItem:       [ { position: 20, label: 'Request For Quotation', importance: #HIGH } ],
+         identification: [ { position: 20, label: 'Request For Quotation' } ] }
+  RequestForQuotation;
+
+  @UI: { lineItem:       [ { position: 30, label: 'Request For Quotation Item', importance: #HIGH } ],
+         identification: [ { position: 30, label: 'Request For Quotation Item' } ] }
+  RequestForQuotationItem;
+
+  @UI: { lineItem:       [ { position: 40, label: 'Material', importance: #HIGH } ],
+         identification: [ { position: 40, label: 'Material' } ] }
+  Material;
+
+  @UI.hidden: true
+  /* Associations */
+  _hdr;
+
+  @UI.hidden: true
+  BaseUnit;
+
+  @UI.hidden: true
+  OrderQuantityUnit;
+
+  @UI.hidden: true
+  OrderItemQtyToBaseQtyNmrtr;
+
+  @UI.hidden: true
+  OrderItemQtyToBaseQtyDnmntr;
+
+  @UI: { lineItem:       [ { position: 50, label: 'Quotation Quantity', importance: #HIGH } ],
+         identification: [ { position: 50, label: 'Quotation Quantity' } ] }
+  ScheduleLineOrderQuantity;
+
+  @UI: { lineItem:       [ { position: 60, label: 'Requested Quantity', importance: #HIGH } ],
+         identification: [ { position: 60, label: 'Requested Quantity' } ] }
+  requested;
+
+  @UI: { lineItem:       [ { position: 70, label: 'Net Order Price', importance: #HIGH } ],
+         identification: [ { position: 70, label: 'Net Order Price' } ] }
+  rate;
+
+  @UI: { lineItem:       [ { position: 80, label: 'Quotation Net Value', importance: #HIGH } ],
+         identification: [ { position: 80, label: 'Quotation Net Value' } ] }
+  netamount;
+//
+//  @UI: { lineItem:       [ { position: 90, label: 'Awarded Quantity', importance: #HIGH } ],
+//         identification: [ { position: 90, label: 'Awarded Quantity' } ] }
+@UI.hidden: true
+  arwared;
+
+//  @UI: { lineItem:       [ { position: 100, label: 'Delivery Date', importance: #HIGH } ],
+//         identification: [ { position: 100, label: 'Delivery Date' } ] }
+@UI.hidden: true
+  ScheduleLineDeliveryDate;
+
+}

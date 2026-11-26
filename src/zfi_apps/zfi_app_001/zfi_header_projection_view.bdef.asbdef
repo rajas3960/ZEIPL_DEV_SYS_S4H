@@ -1,0 +1,20 @@
+projection;
+strict ( 2 );
+
+define behavior for ZFI_HEADER_PROJECTION_VIEW alias Head
+{
+  use create;
+  use update;
+  use delete;
+  use action PDF;
+  use association _Item { create; }
+}
+
+define behavior for ZFI_ITEM_PROJECTION_VIEW //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _Head;
+  use action MatdesInput;
+}

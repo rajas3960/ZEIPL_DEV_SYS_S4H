@@ -1,0 +1,4 @@
+@EndUserText.label: 'Gate Entry Slip Form UI'
+define service ZMM_ENTRY_SLIP_SD {
+  expose ZMM_ENTRY_SLIP_CE as MainHead;
+}

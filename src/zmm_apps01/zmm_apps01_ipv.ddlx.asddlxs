@@ -1,0 +1,94 @@
+@Metadata.layer: #PARTNER
+@UI.presentationVariant: [{
+    sortOrder: [{
+        by: 'Compare',
+        direction: #DESC
+    }]
+}]
+annotate entity ZMM_APPS01_IPV with
+{
+  @UI.facet: [ { id:              'Item',
+                    purpose:         #STANDARD,
+                    type:            #IDENTIFICATION_REFERENCE,
+                    label:           'Quotations',
+                    position:        10 } ]
+
+  @UI: {  lineItem:       [ { position: 05, label: 'Compare Status',criticality:'stuscrt' } ],
+     identification: [ { position: 05, label: 'Compare Status'} ] }
+  @UI.textArrangement: #TEXT_ONLY
+  @UI.dataPoint: { qualifier: 'StatusData', title: 'Compare Status', criticality: 'stuscrt' }
+  @EndUserText.label: 'Compare Status'
+  text;
+  @UI: { lineItem: [{ position: 10, label: 'Supplier Quotation' }],
+  //{ type: #FOR_ACTION, dataAction: 'Award',   label: 'Award',   position: 20 }],
+  identification : [{ position: 10, label: 'Supplier Quotation' }]  }
+  SupplierQuotation;
+  @UI.hidden: true
+  RequestForQuotation;
+  //  @UI: { lineItem: [{ position: 20, label: 'Supplier' }],
+  //  identification : [{ position: 20, label: 'Supplier' }]  }
+  @UI.hidden: true
+  Supplier;
+  @UI: { lineItem: [{ position: 30, label: 'Supplier Name' }],
+  identification : [{ position: 30, label: 'Supplier Name' }]  }
+  Supname;
+  @UI.hidden: true
+  SupplierName;
+   @UI: { lineItem: [{ position: 35, label: 'Material' }],
+  identification : [{ position: 35, label: 'Material' }]  }
+  Material;
+  @UI: { lineItem: [{ position: 40, label: 'Address' }],
+  identification : [{ position: 40, label: 'Address' }]  }
+  Address;
+  @UI: { lineItem: [{ position: 42, label: 'RFQ Qty' }],
+  identification : [{ position: 42, label: 'RFQ Qty' }]  }
+  rfqty;
+  @UI.hidden: true
+  rate;
+  @UI: { lineItem: [{ position: 46, label: 'Quotation Qty' }],
+  identification : [{ position: 46, label: 'Quotation Qty' }]  }
+  sqty;
+    @UI: { lineItem: [{ position: 48, label: 'Quotation Rate' }],
+  identification : [{ position: 48, label: 'Quotation Rate' }]  }
+  NetPriceAmount;
+  @UI: { lineItem: [{ position: 50, label: 'Total Quotation Net Value' }],
+  identification : [{ position: 50, label: 'Total Quotation Net Value' }]  }
+  NetAmount;
+  @UI: { lineItem: [{ position: 60, label: 'Quotation Date' }],
+  identification : [{ position: 60, label: 'Quotation Date' }]  }
+  PurgDocPriceDate;
+  @UI.hidden: true
+  DocumentCurrency;
+  @UI: { lineItem: [{ position: 70, label: 'Last Purchase Order' }],
+  identification : [{ position: 70, label: 'Last Purchase Order' }]  }
+  PurchaseOrder;
+  @UI: { lineItem: [{ position: 70, label: 'Last PO Vendor' }],
+  identification : [{ position: 70, label: 'Last PO Vendor' }]  }  
+  lastpo_supplier;
+  @UI: { lineItem: [{ position: 80, label: 'Last PO Creation Date' }],
+  identification : [{ position: 80, label: 'Last PO Creation Date' }]  }
+  CreationDate;
+  @UI: { lineItem: [{ position: 90, label: 'Last PO  Amount' }],
+  identification : [{ position: 90, label: 'Last PO  Amount' }]  }
+  PoNetAmount;
+  @UI: { lineItem: [{ position: 100, label: 'GRN Number' }],
+  identification : [{ position: 100, label: 'GRN Number' }]  }
+  MaterialDocument;
+  @UI: { lineItem: [{ position: 110, label: 'GRN Date' }],
+  identification : [{ position: 110, label: 'GRN Date' }]  }
+  PostingDate;
+  @UI: { lineItem: [{ position: 120, label: 'Total GRN Amount' }],
+  identification : [{ position: 120, label: 'Total GRN Amount' }]  }
+  Totamtgrn;  
+  @UI: { lineItem: [{ position: 130, label: 'Payment Terms' }],
+  identification : [{ position: 130, label: 'Payment Terms' }]  }
+  PaymentTerms;
+  @UI.hidden: true
+  stuscrt;
+  @UI.hidden: true
+  OrderQuantityUnit;
+  @UI.hidden: true
+  /* Associations */
+  hdr;
+
+}

@@ -1,0 +1,46 @@
+managed implementation in class zbp_mm_ih_unload unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMM_IH_UNLOAD alias UnloadHead
+persistent table zmm_app04_hdb
+draft table zmm_app04_hdbd
+lock master total etag Lastchangedby
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update ( features : instance );
+  delete ( features : instance );
+  field ( readonly, numbering : managed ) Uuid;
+  field ( readonly ) Gateentryno,Gateentryseries,Gateno,Plant,Vehicleno,Unloadstdate,Unloadsttime,Unloadenddate,Unloadendtime;
+  association _Item { create; with draft;}
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Resume;
+  draft action Discard;
+  draft determine action Prepare;
+
+  action ( features : instance ) Unloadst result [1] $self;
+  action ( features : instance ) UnloadEnd result [1] $self;
+
+  mapping for zmm_app04_hdb corresponding;
+}
+
+define behavior for ZMM_II_UNLOAD alias UnloadItem
+persistent table zmm_app04_idb
+draft table zmm_app04_idbd
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update ( features : instance );
+  delete ( features : instance );
+  field ( readonly ) Uuid, Purchaseorder, Purchaseorderitem;
+  field (readonly) Material,Materialtext;
+  determination imagecount on modify { field Unloadind; }
+  association _Head { with draft; }
+
+  mapping for zmm_app04_idb corresponding;
+}

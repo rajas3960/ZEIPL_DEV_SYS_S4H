@@ -1,0 +1,23 @@
+@Metadata.layer: #CORE
+annotate entity ZAPP1_TRUCK_PV
+    with 
+{
+
+@UI.facet: [{ id: 'ID01', type: #COLLECTION, label: 'Tax Code', position: 10 },
+      { id: 'Idc01', type: #IDENTIFICATION_REFERENCE, parentId: 'ID01' } ]
+  @UI.lineItem: [{ position: 10, label: 'TaxCode' }]
+  @UI.identification:  [{ position: 10, label: 'Vehicle Type' }]
+  @EndUserText.label: 'TaxCode'
+
+////@UI: { lineItem: [{ position: 30, label: 'Vehicle No' }],
+//  identification: [{ position: 10, label: 'Vehicle No',importance: #HIGH }]}
+//  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZMM_APP2_RV',
+//    element: 'Vehicleno' }
+
+Vehicletype;
+@UI.lineItem: [{ position: 20, label: 'Vehicle Description' }]
+  @UI.identification:  [{ position: 20, label: 'Vehicle Description' }]
+  @EndUserText.label: 'Vehicle Description'
+Vehicledesc;
+    
+}

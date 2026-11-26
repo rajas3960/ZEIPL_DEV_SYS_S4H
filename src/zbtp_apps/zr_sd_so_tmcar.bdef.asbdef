@@ -1,0 +1,63 @@
+managed implementation in class zbp_r_sd_so_tmcar unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZR_SD_SO_TMCAR alias Carrier
+persistent table zsd_so_tmcar
+draft table zsd_so_tmcar_d
+lock master
+total etag LastChangedAt
+authorization master ( global )
+etag master LocalLastChanged
+{
+  create;
+  update;
+  delete;
+
+  field ( mandatory : create, readonly : update ) SalesOrder, SalesOrderItem, Carrier;
+  field ( readonly ) AllocatedQty, CarrierName, OrderUnit,
+  CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChanged;
+
+  association _FreightOrder { create; with draft; }
+
+  determination fillFromSOAndCarrier on modify { create; field SalesOrder, SalesOrderItem, Carrier; }
+
+  validation checkSOItem on save { create; field SalesOrder, SalesOrderItem; }
+  validation checkCarrier on save { create; field Carrier; }
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare
+  {
+    validation checkSOItem;
+    validation checkCarrier;
+    validation FreightOrder~checkFreightOrder;
+    validation FreightOrder~checkDuplicate;
+  }
+
+  mapping for zsd_so_tmcar corresponding;
+}
+
+define behavior for ZR_SD_SO_TMFO alias FreightOrder
+persistent table zsd_so_tmfo
+draft table zsd_so_tmfo_d
+lock dependent by _Carrier
+authorization dependent by _Carrier
+etag master LocalLastChanged
+{
+  update;
+  delete;
+
+  field ( readonly, numbering : managed ) FoUuid;
+  field ( readonly ) SalesOrder, SalesOrderItem, Carrier, FoQty, FoUnit, ValidFrom, ValidTo, LocalLastChanged;
+  field ( mandatory ) FreightOrder;
+
+  association _Carrier { with draft; }
+
+  validation checkFreightOrder on save { create; field FreightOrder; }
+  validation checkDuplicate on save { create; field FreightOrder; }
+
+  mapping for zsd_so_tmfo corresponding;
+}

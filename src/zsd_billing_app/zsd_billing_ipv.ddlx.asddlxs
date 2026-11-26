@@ -1,0 +1,133 @@
+@Metadata.layer: #PARTNER
+annotate entity ZSD_BILLING_IPV with
+{
+  @UI.facet: [ { id:              'Item',
+                      purpose:         #STANDARD,
+                      type:            #IDENTIFICATION_REFERENCE,
+                      label:           'Broker Billing Line Item',
+                      position:        10 } ]
+  @UI.hidden: true
+  ItemUuid;
+
+  @UI: { lineItem:       [{ position: 10, label: 'G/L Account' }],
+         identification: [{ position: 10, label: 'G/L Account' }] }
+  GlAccount;
+
+  @UI: { lineItem:       [{ position: 20, label: 'Cost Centre' }],
+         identification: [{ position: 20, label: 'Cost Centre' }] }
+  CostCentre;
+
+  @UI: { lineItem:       [{ position: 30, label: 'Item Text' }],
+         identification: [{ position: 30, label: 'Item Text' }] }
+  ItemText;
+
+  @UI: { lineItem:       [{ position: 40, label: 'Assignment' }],
+         identification: [{ position: 40, label: 'Assignment' }] }
+  Assignment;
+
+  @UI: { lineItem:       [{ position: 50, label: 'Payment Terms' }],
+         identification: [{ position: 50, label: 'Payment Terms' }] }
+  @Consumption.valueHelpDefinition: [{
+      entity: {
+   name: 'zsd_paymet_v4',
+   element: 'PaymentTerms'
+      }} ]
+  PaymentTerms;
+
+  @UI: { lineItem:       [{ position: 60, label: 'Tax Code' }],
+         identification: [{ position: 60, label: 'Tax Code' }] }
+         @Consumption.valueHelpDefinition: [{
+      entity: {
+   name: 'zsd_Taxxode_v4',
+   element: 'name'
+      }} ]
+  TaxCode;
+
+  @UI: { lineItem:       [{ position: 70, label: 'Sales Billing No' }],
+         identification: [{ position: 70, label: 'Sales Billing No' }] }
+  @Consumption.valueHelpDefinition: [{
+      entity: {
+          name: 'ZSD_BILLING_V4',
+          element: 'BillingDocument'
+      },
+      additionalBinding: [
+          {
+              localElement: 'SalesBillingItem',
+              element: 'Item',
+              usage: #RESULT
+          }
+//          {
+//              localElement: 'Amount',
+//              element: 'NetValue',
+//              usage: #RESULT
+//          },
+//          {
+//              localElement: 'Plant',
+//              element: 'Plant',
+//              usage: #RESULT
+//          },
+//          {
+//              localElement: 'CurrencyKey',
+//              element: 'TransactionCurrency',
+//              usage: #RESULT
+//          },
+//          {
+//              localElement: 'CostCentre',
+//              element: 'Costcenter',
+//              usage: #RESULT
+//          },
+//          {
+//              localElement: 'GlAccount',
+//              element: 'Gla',
+//              usage: #RESULT
+//          },
+//          {
+//              localElement: 'invoicingparty',
+//              element: 'Broker_Code',
+//              usage: #RESULT
+//          }
+      ]
+  }]
+  SalesBillingNo;
+
+  @UI: { lineItem:       [{ position: 80, label: 'Sales Billing Item' }],
+         identification: [{ position: 80, label: 'Sales Billing Item' }] }
+  SalesBillingItem;
+
+  @UI: { lineItem:       [{ position: 90, label: 'Amount' }],
+         identification: [{ position: 90, label: 'Amount' }] }
+  Amount;
+
+  @UI.hidden: true
+  CurrencyKey;
+
+  @UI: { lineItem:       [{ position: 110, label: 'Tax Amount' }],
+         identification: [{ position: 110, label: 'Tax Amount' }] }
+  TaxAmount;
+
+  @UI: { lineItem:       [{ position: 120, label: 'Plant' }],
+         identification: [{ position: 120, label: 'Plant' }] }
+  Plant;
+  @UI: { lineItem:       [{ position: 130, label: 'Invoicing Party' }],
+         identification: [{ position: 130, label: 'Invoicing Party' }] }
+  invoicingparty;
+
+  @UI.hidden: true
+  LocalCreatedBy;
+
+  @UI.hidden: true
+  LocalCreatedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  /* Associations */
+  hdr;
+}

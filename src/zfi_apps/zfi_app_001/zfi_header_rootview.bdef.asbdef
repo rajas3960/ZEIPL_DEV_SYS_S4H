@@ -1,0 +1,31 @@
+managed implementation in class zbp_fi_header_rootview unique;
+strict ( 2 );
+
+define behavior for ZFI_HEADER_ROOTVIEW alias Head
+//persistent table <???>
+with unmanaged save
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) AccountingDocument, FiscalYear, CompanyCode;
+  association _Item { create; }
+   action ( features : instance ) PDF  result [1] $self;
+}
+
+define behavior for ZFI_ITEM_ROOTVIEW //alias <alias_name>
+//persistent table <???>
+with unmanaged save
+lock dependent by _Head
+authorization dependent by _Head
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) SourceLedger, CompanyCode, FiscalYear, AccountingDocument, LedgerGLLineItem;
+  association _Head;
+  action ( features : instance ) MatdesInput parameter ZFI_MD_INPUT result [1] $self;
+}

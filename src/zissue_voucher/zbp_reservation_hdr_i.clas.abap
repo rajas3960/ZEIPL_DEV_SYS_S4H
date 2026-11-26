@@ -1,0 +1,11 @@
+CLASS zbp_reservation_hdr_i DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zreservation_hdr_i.
+
+ PUBLIC SECTION.
+        CLASS-DATA: gt_header TYPE table of zreser_table.
+
+ENDCLASS.
+
+
+
+CLASS ZBP_RESERVATION_HDR_I IMPLEMENTATION.
+ENDCLASS.

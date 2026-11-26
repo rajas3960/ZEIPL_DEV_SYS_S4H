@@ -1,0 +1,4 @@
+@EndUserText.label: 'Weighment Slip Form - UI'
+define service ZWEIGHT_SLIP_CE_SD {
+  expose ZMM_WEIGHT_SLIP_CE as Weighment;
+}
